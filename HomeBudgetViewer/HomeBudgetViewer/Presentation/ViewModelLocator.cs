@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HomeBudgetViewer.Presentation.MainPage;
+using HomeBudgetViewer.Presentation.SettingsPage;
 using Microsoft.Practices.ServiceLocation;
 
 namespace HomeBudgetViewer.Presentation
@@ -25,11 +26,17 @@ namespace HomeBudgetViewer.Presentation
             }
 
             SimpleIoc.Default.Register<MainPageViewModel>();
+            SimpleIoc.Default.Register<SettingsPageViewModel>();
         }
 
         public MainPageViewModel MainPageViewModel
         {
             get { return ServiceLocator.Current.GetInstance<MainPageViewModel>(); }
+        }
+
+        public SettingsPageViewModel SettingsPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<SettingsPageViewModel>(); }
         }
 
     }

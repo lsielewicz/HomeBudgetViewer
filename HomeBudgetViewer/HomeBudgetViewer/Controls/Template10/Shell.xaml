@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="HomeBudgetViewer.Controls.Template10.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Controls.Template10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:homeBudgetViewer="using:HomeBudgetViewer"
+    xmlns:settingsPage="using:HomeBudgetViewer.Presentation.SettingsPage"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <controls:HamburgerMenu x:Name="MyHamburgerMenu">
+        <controls:HamburgerMenu.PrimaryButtons>
+            <!--  mainpage button  -->
+            <controls:HamburgerButtonInfo ClearHistory="True" PageType="homeBudgetViewer:MainPage" 
+                                          AutomationProperties.Name="Jerry"
+                                          >
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48" Height="48"
+                                Symbol="Home" />
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
+                               Text="Home" />
+                </StackPanel>
+            </controls:HamburgerButtonInfo>
+        </controls:HamburgerMenu.PrimaryButtons>
+
+        <controls:HamburgerMenu.SecondaryButtons>
+            <!--  settingspage button  -->
+            <controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0"
+                                          PageType="settingsPage:SettingsPage">
+                <controls:HamburgerButtonInfo.NavigationTransitionInfo>
+                    <SuppressNavigationTransitionInfo />
+                </controls:HamburgerButtonInfo.NavigationTransitionInfo>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48" Height="48"
+                                Symbol="Setting" />
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
+                               Text="Settings" />
+                </StackPanel>
+            </controls:HamburgerButtonInfo>
+        </controls:HamburgerMenu.SecondaryButtons>
+
+    </controls:HamburgerMenu>
+</Page>
