@@ -3,6 +3,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:HomeBudgetViewer"
+    xmlns:presentation="using:HomeBudgetViewer.Presentation"
     RequestedTheme="Light">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <presentation:ViewModelLocator x:Key="Locator"/>
+        </ResourceDictionary>
+    </Application.Resources>
+    
 </Application>
