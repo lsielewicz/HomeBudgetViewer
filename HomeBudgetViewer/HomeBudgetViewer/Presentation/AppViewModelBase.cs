@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight;
+using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
 using Template10.Services.NavigationService;
 
@@ -12,17 +16,22 @@ namespace HomeBudgetViewer.Presentation
 {
     public abstract class AppViewModelBase : ViewModelBase, INavigable
     {
-        public Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        protected AppViewModelBase()
+        {
+            _resourceLoader = ResourceLoader.GetForViewIndependentUse();
+        }
+
+        public virtual Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             return Task.CompletedTask;
         }
 
-        public Task OnNavigatedFromAsync(IDictionary<string, object> suspensionState, bool suspending)
+        public virtual Task OnNavigatedFromAsync(IDictionary<string, object> suspensionState, bool suspending)
         {
             return Task.CompletedTask;
         }
 
-        public Task OnNavigatingFromAsync(NavigatingEventArgs args)
+        public virtual Task OnNavigatingFromAsync(NavigatingEventArgs args)
         {
             return Task.CompletedTask;
         }
@@ -47,5 +56,13 @@ namespace HomeBudgetViewer.Presentation
                 this.RaisePropertyChanged();
             }
         }
+
+        private readonly ResourceLoader _resourceLoader;
+        public string GetLocalizedString(string resourceKey)
+        {
+            return this._resourceLoader.GetString(resourceKey);
+        }
+
+
     }
 }

@@ -14,7 +14,13 @@ namespace HomeBudgetViewer.Presentation.SettingsPage
 {
     public class SettingsPageViewModel : AppViewModelBase
     {
-        public SettingsPartViewModel SettingsPartViewModel { get; } = new SettingsPartViewModel();
+        private SettingsPartViewModel _settingsPartViewModel;
+
+        public SettingsPartViewModel SettingsPartViewModel
+        {
+            get { return _settingsPartViewModel ?? (_settingsPartViewModel = new SettingsPartViewModel(this)); } 
+        }
+
         public AboutPartViewModel AboutPartViewModel { get; } = new AboutPartViewModel();
     }
 

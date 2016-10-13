@@ -90,6 +90,12 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <PRIResource Include="Strings\pl\Resources.resw">
+      <CustomToolNamespace>HomeBudgetViewer</CustomToolNamespace>
+    </PRIResource>
+    <PRIResource Include="Strings\en\Resources.resw">
+      <CustomToolNamespace>HomeBudgetViewer</CustomToolNamespace>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -123,6 +129,7 @@
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartViewModel.cs" />
     <Compile Include="Presentation\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SettingService\ApplicationLanguage.cs" />
     <Compile Include="Services\SettingService\SettingService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,23 +13,26 @@
 
    <RelativePanel>
 
-        <controls:PageHeader x:Name="pageHeader" Content="Settings Page"
-                             Frame="{x:Bind Frame}"
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" />
+        <controls:PageHeader 
+            x:Uid="SettingsPageHeader"
+            x:Name="PageHeader"
+            Frame="{x:Bind Frame}"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True" />
 
-        <Pivot x:Name="MyPivot" Grid.Row="1"
-               RelativePanel.AlignBottomWithPanel="True"
-               RelativePanel.AlignLeftWithPanel="True"
-               RelativePanel.AlignRightWithPanel="True"
-               RelativePanel.Below="pageHeader">
+        <Pivot 
+            x:Name="MyPivot" Grid.Row="1"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="PageHeader">
             <!--Settings Part-->
-            <PivotItem DataContext="{Binding Path=SettingsPartViewModel}" Header="Settings">
+            <PivotItem DataContext="{Binding Path=SettingsPartViewModel}" x:Uid="SettingsPart">
                 <settings:SettingsPartView/>
             </PivotItem>
             <!--About View-->
-            <PivotItem DataContext="{Binding Path=AboutPartViewModel}" Header="About">
+            <PivotItem DataContext="{Binding Path=AboutPartViewModel}" x:Uid="AboutPart">
                 <about:AboutPartView/>
             </PivotItem>
         </Pivot>

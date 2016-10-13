@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Services.SettingService;
@@ -12,18 +13,13 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
 {
     public class SettingsPartViewModel : AppViewModelBase
     {
-        readonly SettingsService _settings;
+        private readonly AppViewModelBase _parentViewModel;
+        private readonly SettingsService _settings;
 
-        public SettingsPartViewModel()
+        public SettingsPartViewModel(AppViewModelBase parentViewModel) : base()
         {
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-            {
-                // designtime
-            }
-            else
-            {
-                _settings = SettingsService.Instance;
-            }
+            _settings = SettingsService.Instance;
+            _parentViewModel = parentViewModel;
         }
 
         public bool UseShellBackButton
@@ -32,7 +28,7 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
             set
             {
                 _settings.UseShellBackButton = value;
-                base.RaisePropertyChanged();
+                this.RaisePropertyChanged();
             }
         }
 
@@ -42,9 +38,49 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
             set
             {
                 _settings.AppTheme = value ? ApplicationTheme.Light : ApplicationTheme.Dark;
-                base.RaisePropertyChanged();
+                this.RaisePropertyChanged();
             }
         }
+
+        public string CurrentLanguage
+        {
+            get
+            {
+                return GetCurrentLanguage();
+            }
+            set
+            {
+                SetCurrentLanguage(value);
+                _parentViewModel.NavigationService.Navigate(typeof(SettingsPage));
+                this.RaisePropertyChanged();
+            }
+        }
+
+        private void SetCurrentLanguage(string item)
+        {
+            if (item == this.GetLocalizedString("Polish"))
+            {
+                _settings.CurrentLanguage = ApplicationLanguage.Polish;
+                ApplicationLanguages.PrimaryLanguageOverride = ApplicationLanguage.Polish;
+            }
+               
+            if (item == this.GetLocalizedString("English"))
+            {
+                _settings.CurrentLanguage = ApplicationLanguage.English;
+                ApplicationLanguages.PrimaryLanguageOverride = ApplicationLanguage.English;
+            }
+             
+        }
+
+        private string GetCurrentLanguage()
+        {
+            var item = _settings.CurrentLanguage;
+            if (item == ApplicationLanguage.Polish)
+                return this.GetLocalizedString("Polish");
+            else
+                return this.GetLocalizedString("English");
+        }
+
     }
 
 }

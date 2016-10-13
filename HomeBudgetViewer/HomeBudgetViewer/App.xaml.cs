@@ -8,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,6 +41,14 @@ namespace HomeBudgetViewer
             RequestedTheme = settings.AppTheme;
             CacheMaxDuration = settings.CacheMaxDuration;
             ShowShellBackButton = settings.UseShellBackButton;
+            try
+            {
+                ApplicationLanguages.PrimaryLanguageOverride = settings.CurrentLanguage;
+            }
+            catch
+            {
+                ApplicationLanguages.PrimaryLanguageOverride = "en";
+            }
         }
 
         /// <summary>

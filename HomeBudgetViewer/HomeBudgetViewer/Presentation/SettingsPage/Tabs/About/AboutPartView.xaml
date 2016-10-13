@@ -12,11 +12,13 @@
 
     <RelativePanel>
 
-        <Border x:Name="LogoImage" HorizontalAlignment="Right"
-                            VerticalAlignment="Top" BorderBrush="DimGray"
-                            BorderThickness="1" IsHitTestVisible="False"
-                            RelativePanel.AlignRightWithPanel="True"
-                            RelativePanel.AlignTopWithPanel="True">
+        <Border 
+            x:Name="LogoImage" 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top" BorderBrush="DimGray"
+            BorderThickness="1" IsHitTestVisible="False"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True">
             <Border.Background>
                 <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
             </Border.Background>
@@ -24,22 +26,26 @@
                                Stretch="None" />
         </Border>
 
-        <TextBlock x:Name="DisplayNameTextBlock" Margin="0,0,0,12"
-                               FontSize="24" RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.AlignRightWith="LogoImage"
-                               RelativePanel.AlignTopWithPanel="True"
-                               Text="{Binding DisplayName}" />
+        <TextBlock 
+            x:Name="DisplayNameTextBlock" 
+            Margin="0,0,0,12"
+            FontSize="24" RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWith="LogoImage"
+            RelativePanel.AlignTopWithPanel="True"
+            Text="{Binding DisplayName}" />
 
-        <TextBlock x:Name="PublisherTextBlock"
-                               RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.Below="DisplayNameTextBlock"
-                               Text="{Binding Publisher}" />
+        <TextBlock 
+            x:Name="PublisherTextBlock"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.Below="DisplayNameTextBlock"
+            Text="{Binding Publisher}" />
 
-        <TextBlock x:Name="VersionTextBlock"
-                               RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.Below="PublisherTextBlock">
-                        <Run>Version</Run>
-                        <Run Text="{Binding Version}" />
+        <TextBlock 
+            x:Name="VersionTextBlock"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.Below="PublisherTextBlock">
+            <Run>Version</Run>
+            <Run Text="{Binding Version}" />
         </TextBlock>
 
     </RelativePanel>

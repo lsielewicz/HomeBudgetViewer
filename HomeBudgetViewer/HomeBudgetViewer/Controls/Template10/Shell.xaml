@@ -27,7 +27,7 @@
         </controls:HamburgerMenu.PrimaryButtons>
 
         <controls:HamburgerMenu.SecondaryButtons>
-            <!--  settingspage button  -->
+            <!--  settingsp age button  -->
             <controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0"
                                           PageType="settingsPage:SettingsPage">
                 <controls:HamburgerButtonInfo.NavigationTransitionInfo>

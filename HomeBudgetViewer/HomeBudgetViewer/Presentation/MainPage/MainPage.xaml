@@ -10,10 +10,22 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <controls:PageHeader x:Name="pageHeader" Content="Home page"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <controls:PageHeader x:Uid="HomePageHeader"
                              Frame="{x:Bind Frame}"
                              RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" />
+        <!--Content-->
+        <TextBlock 
+            Grid.Row="1"
+            x:Uid="HomeTestTextBox"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24"/>
     </Grid>
 </Page>

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.Template10;
 using Template10.Common;
+using Template10.Services.SettingsService;
 using Template10.Utils;
 
 namespace HomeBudgetViewer.Services.SettingService
@@ -13,15 +10,18 @@ namespace HomeBudgetViewer.Services.SettingService
     public class SettingsService
     {
         public static SettingsService Instance { get; } = new SettingsService();
-        Template10.Services.SettingsService.ISettingsHelper _helper;
+        private ISettingsHelper _helper;
         private SettingsService()
         {
-            _helper = new Template10.Services.SettingsService.SettingsHelper();
+            _helper = new SettingsHelper();
         }
 
         public bool UseShellBackButton
         {
-            get { return _helper.Read<bool>(nameof(UseShellBackButton), true); }
+            get
+            {
+                return _helper.Read<bool>(nameof(UseShellBackButton), true);
+            }
             set
             {
                 _helper.Write(nameof(UseShellBackButton), value);
@@ -56,11 +56,26 @@ namespace HomeBudgetViewer.Services.SettingService
 
         public TimeSpan CacheMaxDuration
         {
-            get { return _helper.Read<TimeSpan>(nameof(CacheMaxDuration), TimeSpan.FromDays(2)); }
+            get
+            {
+                return _helper.Read<TimeSpan>(nameof(CacheMaxDuration), TimeSpan.FromDays(2));
+            }
             set
             {
                 _helper.Write(nameof(CacheMaxDuration), value);
                 BootStrapper.Current.CacheMaxDuration = value;
+            }
+        }
+
+        public string CurrentLanguage
+        {
+            get
+            {
+                return _helper.Read<string>(nameof(CurrentLanguage), "en");
+            }
+            set
+            {
+                _helper.Write(nameof(CurrentLanguage),value);
             }
         }
     }
