@@ -137,6 +137,14 @@
     <value>Angielski</value>
     <comment>Settings</comment>
   </data>
+  <data name="HamburgerHome.Text" xml:space="preserve">
+    <value>Dom</value>
+    <comment>Hamburger</comment>
+  </data>
+  <data name="HamburgerSettings.Text" xml:space="preserve">
+    <value>Ustawienia</value>
+    <comment>Hamburger</comment>
+  </data>
   <data name="HomePageHeader.Content" xml:space="preserve">
     <value>Strona domowa</value>
   </data>

@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.ApplicationModel;
+﻿using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Globalization;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
@@ -37,18 +23,7 @@ namespace HomeBudgetViewer
             InitializeComponent();
             SplashFactory = (e) => new Splash(e);
 
-            var settings = SettingsService.Instance;
-            RequestedTheme = settings.AppTheme;
-            CacheMaxDuration = settings.CacheMaxDuration;
-            ShowShellBackButton = settings.UseShellBackButton;
-            try
-            {
-                ApplicationLanguages.PrimaryLanguageOverride = settings.CurrentLanguage;
-            }
-            catch
-            {
-                ApplicationLanguages.PrimaryLanguageOverride = "en";
-            }
+            SettingsService.Instance.InitializeStartupSettings(this);
         }
 
         /// <summary>

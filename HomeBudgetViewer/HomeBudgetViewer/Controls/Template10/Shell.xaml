@@ -14,30 +14,33 @@
     <controls:HamburgerMenu x:Name="MyHamburgerMenu">
         <controls:HamburgerMenu.PrimaryButtons>
             <!--  mainpage button  -->
-            <controls:HamburgerButtonInfo ClearHistory="True" PageType="homeBudgetViewer:MainPage" 
-                                          AutomationProperties.Name="Jerry"
-                                          >
+            <controls:HamburgerButtonInfo ClearHistory="True" PageType="homeBudgetViewer:MainPage" AutomationProperties.Name="Jerry">
                 <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48" Height="48"
-                                Symbol="Home" />
-                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
-                               Text="Home" />
+                    <SymbolIcon
+                        Width="48" Height="48"
+                        Symbol="Home" />
+                    <TextBlock 
+                        x:Uid="HamburgerHome"
+                        Margin="12,0,0,0" 
+                        VerticalAlignment="Center"/>
                 </StackPanel>
             </controls:HamburgerButtonInfo>
         </controls:HamburgerMenu.PrimaryButtons>
 
         <controls:HamburgerMenu.SecondaryButtons>
             <!--  settingsp age button  -->
-            <controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0"
-                                          PageType="settingsPage:SettingsPage">
+            <controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0" PageType="settingsPage:SettingsPage">
                 <controls:HamburgerButtonInfo.NavigationTransitionInfo>
                     <SuppressNavigationTransitionInfo />
                 </controls:HamburgerButtonInfo.NavigationTransitionInfo>
                 <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48" Height="48"
-                                Symbol="Setting" />
-                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
-                               Text="Settings" />
+                    <SymbolIcon 
+                        Width="48" Height="48"
+                        Symbol="Setting" />
+                    <TextBlock 
+                        x:Uid="HamburgerSettings"
+                        Margin="12,0,0,0" 
+                        VerticalAlignment="Center"/>
                 </StackPanel>
             </controls:HamburgerButtonInfo>
         </controls:HamburgerMenu.SecondaryButtons>

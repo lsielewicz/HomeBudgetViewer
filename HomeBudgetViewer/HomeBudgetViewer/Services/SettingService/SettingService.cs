@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.Template10;
 using Template10.Common;
@@ -14,6 +15,21 @@ namespace HomeBudgetViewer.Services.SettingService
         private SettingsService()
         {
             _helper = new SettingsHelper();
+        }
+
+        public void InitializeStartupSettings(BootStrapper app)
+        {
+            app.RequestedTheme = this.AppTheme;
+            app.CacheMaxDuration = this.CacheMaxDuration;
+            app.ShowShellBackButton = this.UseShellBackButton;
+            try
+            {
+                ApplicationLanguages.PrimaryLanguageOverride = this.CurrentLanguage;
+            }
+            catch
+            {
+                ApplicationLanguages.PrimaryLanguageOverride = "en";
+            }
         }
 
         public bool UseShellBackButton
