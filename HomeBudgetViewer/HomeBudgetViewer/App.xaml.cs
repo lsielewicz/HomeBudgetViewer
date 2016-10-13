@@ -3,9 +3,11 @@ using Windows.ApplicationModel.Activation;
 using Windows.Globalization;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.Template10;
+using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
 using Template10.Controls;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeBudgetViewer
 {
@@ -24,6 +26,11 @@ namespace HomeBudgetViewer
             SplashFactory = (e) => new Splash(e);
 
             SettingsService.Instance.InitializeStartupSettings(this);
+
+            using (var db = new BudgetContext())
+            {
+                db.Database.Migrate();
+            }
         }
 
         /// <summary>
@@ -49,9 +56,9 @@ namespace HomeBudgetViewer
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-
             NavigationService.Navigate(typeof(MainPage));
             await Task.CompletedTask;
         }
+
     }
 }

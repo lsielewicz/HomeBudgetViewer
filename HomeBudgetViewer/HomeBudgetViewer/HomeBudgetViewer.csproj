@@ -89,6 +89,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="App.config" />
     <None Include="project.json" />
     <PRIResource Include="Strings\pl\Resources.resw">
       <CustomToolNamespace>HomeBudgetViewer</CustomToolNamespace>
@@ -188,6 +189,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HomeBudgetViewer.Database.Engine\HomeBudgetViewer.Database.Engine.csproj">
+      <Project>{17c1c4ad-2512-4e15-b89c-02535b721e83}</Project>
+      <Name>HomeBudgetViewer.Database.Engine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomeBudgetViewer.Models\HomeBudgetViewer.Models.csproj">
       <Project>{28c1568c-57f5-410b-b73d-caa677f54e47}</Project>
       <Name>HomeBudgetViewer.Models</Name>

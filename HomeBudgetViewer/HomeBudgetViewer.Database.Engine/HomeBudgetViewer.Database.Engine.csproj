@@ -104,12 +104,31 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="App.config" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\BudgetContext.cs" />
+    <Compile Include="Entities\BudgetItem.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\20161013200248_Migration2.cs" />
+    <Compile Include="Migrations\20161013200248_Migration2.designer.cs">
+      <DependentUpon>20161013200248_Migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\BudgetContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BudgetItemRepository.cs" />
+    <Compile Include="Repository\Interfaces\IBudgetItemRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repository\Base\Repository.cs" />
+    <Compile Include="Repository\Base\UnitOfWork.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <EmbeddedResource Include="Properties\HomeBudgetViewer.Database.Engine.rd.xml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
