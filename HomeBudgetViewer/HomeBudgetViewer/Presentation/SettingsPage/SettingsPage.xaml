@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Template10.Controls"
     xmlns:settings="using:HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings"
-    xmlns:about="using:HomeBudgetViewer.Presentation.SettingsPage.Tabs.About"
+    xmlns:aboutPage="using:HomeBudgetViewer.Presentation.AboutPage"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=SettingsPageViewModel}">
 
@@ -31,9 +31,9 @@
             <PivotItem DataContext="{Binding Path=SettingsPartViewModel}" x:Uid="SettingsPart">
                 <settings:SettingsPartView/>
             </PivotItem>
-            <!--About View-->
-            <PivotItem DataContext="{Binding Path=AboutPartViewModel}" x:Uid="AboutPart">
-                <about:AboutPartView/>
+            <!--UserProfile View-->
+            <PivotItem>
+                
             </PivotItem>
         </Pivot>
        

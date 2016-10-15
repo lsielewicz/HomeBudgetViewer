@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.About
+namespace HomeBudgetViewer.Presentation.AboutPage
 {
-    public class AboutPartViewModel : AppViewModelBase
+    public class AboutPageViewModel : AppViewModelBase
     {
+        public AboutPageViewModel()
+        {
+            
+        }
+
         public Uri Logo => Windows.ApplicationModel.Package.Current.Logo;
 
         public string DisplayName => Windows.ApplicationModel.Package.Current.DisplayName;
 
-        public string Publisher => Windows.ApplicationModel.Package.Current.PublisherDisplayName;
+        public string Publisher => "Łukasz Sielewicz";
 
         public string Version
         {

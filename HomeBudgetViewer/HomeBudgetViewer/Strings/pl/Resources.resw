@@ -117,7 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutPart.Header" xml:space="preserve">
+  <data name="AboutPageHeader.Header" xml:space="preserve">
+    <value>O programie</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="AboutPart.Text" xml:space="preserve">
     <value>O programie</value>
     <comment>Settings</comment>
   </data>
@@ -188,6 +192,10 @@
   </data>
   <data name="ThemeSetting.OnContent" xml:space="preserve">
     <value>Jasny motyw</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="UserProfilesPart.Header" xml:space="preserve">
+    <value>Profile użytkowników</value>
     <comment>Settings</comment>
   </data>
 </root>

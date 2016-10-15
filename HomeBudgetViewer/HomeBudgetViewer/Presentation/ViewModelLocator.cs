@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using HomeBudgetViewer.Presentation.AboutPage;
 using HomeBudgetViewer.Presentation.MainPage;
 using HomeBudgetViewer.Presentation.SettingsPage;
 using Microsoft.Practices.ServiceLocation;
@@ -27,6 +28,12 @@ namespace HomeBudgetViewer.Presentation
 
             SimpleIoc.Default.Register<MainPageViewModel>();
             SimpleIoc.Default.Register<SettingsPageViewModel>();
+            SimpleIoc.Default.Register<AboutPageViewModel>();
+        }
+
+        public AboutPageViewModel AboutPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<AboutPageViewModel>(); }
         }
 
         public MainPageViewModel MainPageViewModel

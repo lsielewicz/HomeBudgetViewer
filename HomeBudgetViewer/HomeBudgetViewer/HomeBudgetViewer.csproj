@@ -120,10 +120,10 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\SettingsPageViewModel.cs" />
-    <Compile Include="Presentation\SettingsPage\Tabs\About\AboutPartView.xaml.cs">
-      <DependentUpon>AboutPartView.xaml</DependentUpon>
+    <Compile Include="Presentation\AboutPage\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\SettingsPage\Tabs\About\AboutPartViewModel.cs" />
+    <Compile Include="Presentation\AboutPage\AboutPageViewModel.cs" />
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartView.xaml.cs">
       <DependentUpon>SettingsPartView.xaml</DependentUpon>
     </Compile>
@@ -174,7 +174,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\SettingsPage\Tabs\About\AboutPartView.xaml">
+    <Page Include="Presentation\AboutPage\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
