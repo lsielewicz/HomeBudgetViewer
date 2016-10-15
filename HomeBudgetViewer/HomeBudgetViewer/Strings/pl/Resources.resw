@@ -159,6 +159,9 @@
     <value>Ustawienia</value>
     <comment>Hamburger</comment>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Witaj</value>
+  </data>
   <data name="HomePageHeader.Content" xml:space="preserve">
     <value>Strona domowa</value>
   </data>

@@ -1,9 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.Globalization;
 using Windows.UI.Xaml;
+using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Database.Engine.Engine;
+using HomeBudgetViewer.Database.Engine.Repository.Base;
+using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage;
 using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
 using Template10.Controls;
@@ -56,8 +61,34 @@ namespace HomeBudgetViewer
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
+            if (this.IsDbEmpty())
+            {
+                var dialog = new AddUserProfileDialog();
+                var result = await dialog.ShowAsync();
+                if (string.IsNullOrEmpty(SettingsService.Instance.CurrentUser.Name))
+                {
+                    using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                    {
+                        var user = unitOfWork.Users.GetAll().FirstOrDefault();
+                        if (user != null)
+                        {
+                            SettingsService.Instance.CurrentUser = user;
+                        }
+                    }
+                }
+            }
+           
             NavigationService.Navigate(typeof(MainPage));
+
             await Task.CompletedTask;
+        }
+
+        private bool IsDbEmpty()
+        {
+            using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+            {
+                return !unitOfWork.Users.GetAll().Any();
+            }    
         }
 
     }
