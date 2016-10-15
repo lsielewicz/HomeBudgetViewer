@@ -102,6 +102,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml.cs">
+      <DependentUpon>AddUserProfileDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialogViewModel.cs" />
+    <Compile Include="Controls\AddUserProfileDialog\UserProfileDialogResult.cs" />
     <Compile Include="Controls\Template10\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
@@ -154,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Template10\Busy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

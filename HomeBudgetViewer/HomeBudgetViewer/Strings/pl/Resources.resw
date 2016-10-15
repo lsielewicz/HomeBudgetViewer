@@ -125,6 +125,9 @@
     <value>O programie</value>
     <comment>Settings</comment>
   </data>
+  <data name="AddText.Text" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Pokaż przycisk cofania widoku</value>
     <comment>Settings</comment>
@@ -136,6 +139,9 @@
   <data name="BackButtonSetting.OnContent" xml:space="preserve">
     <value>Przycisk cofania w pasku tytułowym</value>
     <comment>Settings</comment>
+  </data>
+  <data name="CancelText.Text" xml:space="preserve">
+    <value>Anuluj</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>Angielski</value>
@@ -161,6 +167,9 @@
   <data name="ItemPolish.Content" xml:space="preserve">
     <value>Polski</value>
     <comment>Settings</comment>
+  </data>
+  <data name="OkText.Text" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="Polish" xml:space="preserve">
     <value>Polski</value>
@@ -194,8 +203,23 @@
     <value>Jasny motyw</value>
     <comment>Settings</comment>
   </data>
+  <data name="UserProfileDialog.Title" xml:space="preserve">
+    <value>Dodaj nowy profil użytkownika</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfileDialogProfileCurrency.Text" xml:space="preserve">
+    <value>Waluta profilu</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfileDialogProfileName.Text" xml:space="preserve">
+    <value>Nazwa profilu</value>
+    <comment>add user profile dialog</comment>
+  </data>
   <data name="UserProfilesPart.Header" xml:space="preserve">
     <value>Profile użytkowników</value>
     <comment>Settings</comment>
+  </data>
+  <data name="ValuesCannotBeEmpty" xml:space="preserve">
+    <value>Wartości nie mogą być puste</value>
   </data>
 </root>

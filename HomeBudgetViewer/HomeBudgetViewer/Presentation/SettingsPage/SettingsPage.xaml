@@ -32,7 +32,7 @@
                 <settings:SettingsPartView/>
             </PivotItem>
             <!--UserProfile View-->
-            <PivotItem>
+            <PivotItem x:Uid="UserProfilesPart">
                 
             </PivotItem>
         </Pivot>

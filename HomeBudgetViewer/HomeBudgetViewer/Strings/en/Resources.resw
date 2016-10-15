@@ -125,6 +125,9 @@
     <value>About</value>
     <comment>Settings</comment>
   </data>
+  <data name="AddText.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Use shell-drawn back button</value>
     <comment>Settings</comment>
@@ -136,6 +139,9 @@
   <data name="BackButtonSetting.OnContent" xml:space="preserve">
     <value>Back button in titlebar or taskbar</value>
     <comment>Settings</comment>
+  </data>
+  <data name="CancelText.Text" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
@@ -161,6 +167,9 @@
   <data name="ItemPolish.Content" xml:space="preserve">
     <value>Polish</value>
     <comment>Settings</comment>
+  </data>
+  <data name="OkText.Text" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="Polish" xml:space="preserve">
     <value>Polish</value>
@@ -194,8 +203,23 @@
     <value>Light theme</value>
     <comment>Settings</comment>
   </data>
+  <data name="UserProfileDialog.Title" xml:space="preserve">
+    <value>Add new user profile</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfileDialogProfileCurrency.Text" xml:space="preserve">
+    <value>Profile currency</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfileDialogProfileName.Text" xml:space="preserve">
+    <value>Profile name</value>
+    <comment>add user profile dialog</comment>
+  </data>
   <data name="UserProfilesPart.Header" xml:space="preserve">
     <value>User profiles</value>
     <comment>Settings</comment>
+  </data>
+  <data name="ValuesCannotBeEmpty" xml:space="preserve">
+    <value>Values cannot be empty</value>
   </data>
 </root>
