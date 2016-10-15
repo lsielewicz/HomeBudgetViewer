@@ -8,6 +8,7 @@
     xmlns:controls="using:Template10.Controls"
     xmlns:settings="using:HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings"
     xmlns:aboutPage="using:HomeBudgetViewer.Presentation.AboutPage"
+    xmlns:userProfiles="using:HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=SettingsPageViewModel}">
 
@@ -32,8 +33,8 @@
                 <settings:SettingsPartView/>
             </PivotItem>
             <!--UserProfile View-->
-            <PivotItem x:Uid="UserProfilesPart">
-                
+            <PivotItem DataContext="{Binding Path=UserProfilesPartViewModel}" x:Uid="UserProfilesPart">
+                <userProfiles:UserProfilePartView/>
             </PivotItem>
         </Pivot>
        

@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage.UserSelectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Template10.Controls"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=UserSelectionPageVIewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader 
+            x:Uid="UserSelectionHeader"
+            Frame="{x:Bind Frame}"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True" />
+        
+        <ListBox 
+            Grid.Row="1"
+            Margin="0,15"
+            SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
+            ItemsSource="{Binding Users, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <SymbolIcon 
+                            Symbol="Contact" 
+                            Height="24" 
+                            Width="24"
+                            VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="{Binding Name}"
+                            VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <Button
+            Grid.Row="2"
+            Command="{Binding SetSelectedUserAsCurrentUserCommand}"
+            Background="{StaticResource MainAppBrush}"
+            HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon 
+                    Symbol="Accept" 
+                    Width="32" 
+                    Height="32"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+                <TextBlock
+                    x:Uid="SelectUserProfile"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"
+                    />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Page>

@@ -133,6 +133,14 @@
       <DependentUpon>SettingsPartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartViewModel.cs" />
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilePartView.xaml.cs">
+      <DependentUpon>UserProfilePartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilesPartViewModel.cs" />
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml.cs">
+      <DependentUpon>UserSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPageVIewModel.cs" />
     <Compile Include="Presentation\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingService\ApplicationLanguage.cs" />
@@ -188,6 +196,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilePartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

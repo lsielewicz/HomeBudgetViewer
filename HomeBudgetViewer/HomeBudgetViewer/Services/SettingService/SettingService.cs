@@ -2,6 +2,7 @@
 using Windows.Globalization;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.Template10;
+using HomeBudgetViewer.Database.Engine.Entities;
 using Template10.Common;
 using Template10.Services.SettingsService;
 using Template10.Utils;
@@ -92,6 +93,18 @@ namespace HomeBudgetViewer.Services.SettingService
             set
             {
                 _helper.Write(nameof(CurrentLanguage),value);
+            }
+        }
+
+        public User CurrentUser
+        {
+            get
+            {
+                return _helper.Read<User>(nameof(CurrentUser), null);
+            }
+            set
+            {
+                _helper.Write(nameof(CurrentUser),value);
             }
         }
     }

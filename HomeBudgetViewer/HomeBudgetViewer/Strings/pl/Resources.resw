@@ -183,6 +183,10 @@
     <value>Wybierz domyślny język</value>
     <comment>Settings</comment>
   </data>
+  <data name="SelectUserProfile.Text" xml:space="preserve">
+    <value>Wybierz ten profil użytkownika</value>
+    <comment>UserSelectionPage</comment>
+  </data>
   <data name="SettingsPageHeader.Content" xml:space="preserve">
     <value>Ustawienia</value>
     <comment>Settings</comment>
@@ -221,6 +225,10 @@
   <data name="UserProfilesPart.Header" xml:space="preserve">
     <value>Profile użytkowników</value>
     <comment>Settings</comment>
+  </data>
+  <data name="UserSelectionHeader.Text" xml:space="preserve">
+    <value>Wybór profilu użytkownika</value>
+    <comment>UserSelectionPage</comment>
   </data>
   <data name="ValuesCannotBeEmpty" xml:space="preserve">
     <value>Wartości nie mogą być puste</value>

@@ -183,6 +183,10 @@
     <value>Select default language</value>
     <comment>Settings</comment>
   </data>
+  <data name="SelectUserProfile.Text" xml:space="preserve">
+    <value>Select this user profile</value>
+    <comment>UserSelectionPage</comment>
+  </data>
   <data name="SettingsPageHeader.Content" xml:space="preserve">
     <value>Settings</value>
     <comment>Settings</comment>
@@ -221,6 +225,10 @@
   <data name="UserProfilesPart.Header" xml:space="preserve">
     <value>User profiles</value>
     <comment>Settings</comment>
+  </data>
+  <data name="UserSelectionHeader.Text" xml:space="preserve">
+    <value>User profile selection</value>
+    <comment>UserSelectionPage</comment>
   </data>
   <data name="ValuesCannotBeEmpty" xml:space="preserve">
     <value>Values cannot be empty</value>
