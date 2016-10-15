@@ -17,6 +17,7 @@
 
     <Brush x:Key="MainAppBrush">#1f5060</Brush>
     <Brush x:Key="RedAppBrush">#a23232</Brush>
+    <Brush x:Key="BlueAppBrush">#3366af</Brush>
     
     <ResourceDictionary.ThemeDictionaries>
 

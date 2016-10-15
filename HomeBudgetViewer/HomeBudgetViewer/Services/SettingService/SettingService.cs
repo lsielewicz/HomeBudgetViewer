@@ -100,7 +100,7 @@ namespace HomeBudgetViewer.Services.SettingService
         {
             get
             {
-                return _helper.Read<User>(nameof(CurrentUser), null);
+                return _helper.Read<User>(nameof(CurrentUser), null) ?? new User();
             }
             set
             {

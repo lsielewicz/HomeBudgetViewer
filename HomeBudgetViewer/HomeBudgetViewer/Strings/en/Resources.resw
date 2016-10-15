@@ -125,6 +125,10 @@
     <value>About</value>
     <comment>Settings</comment>
   </data>
+  <data name="AddNewProfile.Text" xml:space="preserve">
+    <value>Add new user profile</value>
+    <comment>UserProfilePart</comment>
+  </data>
   <data name="AddText.Text" xml:space="preserve">
     <value>Add</value>
   </data>
@@ -179,6 +183,14 @@
     <value>Region and language</value>
     <comment>Settings</comment>
   </data>
+  <data name="RemoveProfile.Text" xml:space="preserve">
+    <value>Remove current user profile</value>
+    <comment>UserProfilePart</comment>
+  </data>
+  <data name="SelectAnotherProfile.Text" xml:space="preserve">
+    <value>Select other user profile</value>
+    <comment>UserProfilePart</comment>
+  </data>
   <data name="SelectDefaultLanguage.Text" xml:space="preserve">
     <value>Select default language</value>
     <comment>Settings</comment>
@@ -206,6 +218,10 @@
   <data name="ThemeSetting.OnContent" xml:space="preserve">
     <value>Light theme</value>
     <comment>Settings</comment>
+  </data>
+  <data name="UpdateProfile.Text" xml:space="preserve">
+    <value>Update current user profile</value>
+    <comment>UserProfilePart</comment>
   </data>
   <data name="UserAlreadyExist" xml:space="preserve">
     <value>User profile already exists.</value>

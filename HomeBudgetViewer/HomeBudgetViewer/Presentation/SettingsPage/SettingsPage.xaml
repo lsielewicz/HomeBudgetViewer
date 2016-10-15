@@ -28,13 +28,13 @@
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="PageHeader">
-            <!--Settings Part-->
-            <PivotItem DataContext="{Binding Path=SettingsPartViewModel}" x:Uid="SettingsPart">
-                <settings:SettingsPartView/>
-            </PivotItem>
             <!--UserProfile View-->
             <PivotItem DataContext="{Binding Path=UserProfilesPartViewModel}" x:Uid="UserProfilesPart">
                 <userProfiles:UserProfilePartView/>
+            </PivotItem>
+            <!--Settings Part-->
+            <PivotItem DataContext="{Binding Path=SettingsPartViewModel}" x:Uid="SettingsPart">
+                <settings:SettingsPartView/>
             </PivotItem>
         </Pivot>
        

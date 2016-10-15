@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Command;
+using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
@@ -24,9 +25,19 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelec
             
         }
 
+        private async void AddNewUser()
+        {
+            var dialog = new AddUserProfileDialog();
+            await dialog.ShowAsync();
+        }
+
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             this.GetUsers();
+            if (!this.Users.Any())
+            {
+                this.AddNewUser();
+            }
             return base.OnNavigatedToAsync(parameter, mode, state);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Database.Engine.Engine;
@@ -11,8 +12,8 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles
 {
     public class UserProfilesPartViewModel : AppViewModelBase
     {
-        private SettingsService _settings;
-        private AppViewModelBase _parentViewModel;
+        private readonly SettingsService _settings;
+        private readonly AppViewModelBase _parentViewModel;
         private RelayCommand _addNewUserCommand;
         private RelayCommand _deleteSelectedUserCommand;
         private RelayCommand _updateSelectedUserCommand;
@@ -26,7 +27,7 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles
 
         public string CurrentUser
         {
-            get { return _settings.CurrentUser.Name; }
+            get { return _settings.CurrentUser.Name ?? string.Empty; }
         }
 
         public RelayCommand AddNewUserCommand
@@ -37,6 +38,7 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles
                 {
                     var dialog = new AddUserProfileDialog();
                     await dialog.ShowAsync();
+                    _parentViewModel.NavigationService.Navigate(typeof(UserSelectionPage.UserSelectionPage));
                 }));
             }
         }
@@ -47,14 +49,21 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles
             {
                 return _deleteSelectedUserCommand ?? (_deleteSelectedUserCommand = new RelayCommand(() =>
                 {
-                    if (_settings.CurrentUser == null)
+                    if (_settings.CurrentUser == null || string.IsNullOrEmpty(_settings.CurrentUser.Name))
                         return;
 
+                    bool isDbEmpty = true;
                     using (var unitOfWork = new UnitOfWork(new BudgetContext()))
                     {
                         unitOfWork.Users.Remove(_settings.CurrentUser);
                         unitOfWork.Complete();
+                        _settings.CurrentUser = null;
+                        isDbEmpty = !unitOfWork.Users.GetAll().Any();
                     }
+                    if(isDbEmpty)
+                        this.AddNewUserCommand.Execute(this);
+                    else
+                        _parentViewModel.NavigationService.Navigate(typeof(UserSelectionPage.UserSelectionPage));
                 }));
             }
         }
