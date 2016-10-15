@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
+using HomeBudgetViewer.Database.Engine.Repository.Base;
+using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
 using HomeBudgetViewer.Presentation;
 
 namespace HomeBudgetViewer.Controls.AddUserProfileDialog
@@ -17,7 +14,7 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
         private RelayCommand _okButtonCommand;
         private RelayCommand _cancelButtonCommand;
         private string _profileName;
-        private string _profileCurrency;
+        private CurrencyModel _profileCurrency;
         private string _validationMessage;
 
         private AddUserProfileDialog _dialog;
@@ -39,9 +36,15 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
             {
                 return _okButtonCommand ?? (_okButtonCommand = new RelayCommand(() =>
                 {
-                    if (string.IsNullOrEmpty(ProfileName) || string.IsNullOrEmpty(ProfileCurrency))
+                    if (string.IsNullOrEmpty(ProfileName) || this.ProfileCurrency == null)
                     {
                         this.ValidationMessage = this.GetLocalizedString("ValuesCannotBeEmpty");
+                        return;
+                    }
+                    bool result = this.AddUserToDataBase();
+                    if (!result)
+                    {
+                        this.ValidationMessage = this.GetLocalizedString("UserAlreadyExist");
                         return;
                     }
 
@@ -52,6 +55,22 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
             }
         }
 
+        private bool AddUserToDataBase()
+        {
+            using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+            {
+                bool userExist = unitOfWork.Users.CheckIfUserNameExists(this.ProfileName);
+                if (userExist)
+                    return false;
+                unitOfWork.Users.Add(new User()
+                {
+                    Name = this.ProfileName,
+                    Currency = this.ProfileCurrency.CurrencyName
+                });
+                unitOfWork.Complete();
+            }
+            return true;
+        }
         public RelayCommand CancelButtonCommand
         {
             get
@@ -79,11 +98,11 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
             }
         }
 
-        public string ProfileCurrency
+        public CurrencyModel ProfileCurrency
         {
             get
             {
-                return _profileCurrency;
+                return _profileCurrency ?? (_profileCurrency = Currencies.FirstOrDefault());
             }
             set
             {
@@ -106,6 +125,11 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
                 _validationMessage = value;
                 this.RaisePropertyChanged();
             }
+        }
+
+        public List<CurrencyModel> Currencies
+        {
+            get { return CurrencyModel.PossibleCurrencies; }
         }
 
     }

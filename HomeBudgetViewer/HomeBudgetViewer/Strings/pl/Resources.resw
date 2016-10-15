@@ -203,6 +203,9 @@
     <value>Jasny motyw</value>
     <comment>Settings</comment>
   </data>
+  <data name="UserAlreadyExist" xml:space="preserve">
+    <value>Profil użytkownika o podanej nazwie już istnieje.</value>
+  </data>
   <data name="UserProfileDialog.Title" xml:space="preserve">
     <value>Dodaj nowy profil użytkownika</value>
     <comment>add user profile dialog</comment>

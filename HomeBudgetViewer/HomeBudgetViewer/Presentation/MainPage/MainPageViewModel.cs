@@ -10,22 +10,7 @@ namespace HomeBudgetViewer.Presentation.MainPage
     {
         public MainPageViewModel()
         {
-           TestDialog();
-        }
-
-        private async void TestDialog()
-        {
-            var dialog = new AddUserProfileDialog();
-            await dialog.ShowAsync();
-            switch (dialog.Result)
-            {
-                case UserProfileDialogResult.Ok:
-                    break;
-                case UserProfileDialogResult.Cancel:
-                    break;
-                case UserProfileDialogResult.UserExists:
-                    break;
-            }
+           
         }
        
     }   

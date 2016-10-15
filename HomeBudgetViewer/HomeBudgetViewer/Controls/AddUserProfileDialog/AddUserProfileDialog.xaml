@@ -20,24 +20,46 @@
         <!--Name-->
         <StackPanel Grid.Row="0">
             <TextBlock 
+                x:Name="NameTb"
                 x:Uid="UserProfileDialogProfileName"/>
             <TextBox
                 Text="{Binding Path=ProfileName, Mode=TwoWay}"/>
         </StackPanel>
         <!--Currency-->
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Width="{Binding ElementName=NameTb, Path=Width}">
             <TextBlock
                 x:Uid="UserProfileDialogProfileCurrency"/>
-            <TextBox
-                Text="{Binding Path=ProfileCurrency, Mode=TwoWay}"/>
+            <ComboBox
+                HorizontalAlignment="Stretch"
+                SelectedValue="{Binding ProfileCurrency, Mode=TwoWay}"
+                ItemsSource="{Binding Currencies}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="{StaticResource MainAppBrush}">
+                            <TextBlock 
+                                Text="{Binding CurrencySymbol}" 
+                                Foreground="White"
+                                Margin="0,0,5,0"
+                                />
+                            </Border>
+                            <TextBlock
+                                Text="{Binding CurrencyName}"
+                                Foreground="Black"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
         <!--Validation Message-->
         <TextBlock 
             Grid.Row="2"
             Text="{Binding Path=ValidationMessage}"
-            Foreground="DarkRed"/>
+            Foreground="DarkRed"
+            Margin="0,5"/>
         <!--Buttons?-->
         <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <!--Add-->
             <Button Command="{Binding OkButtonCommand}" Padding="5,0" Margin="0,0,5,0" Background="{StaticResource CustomColorBrush}">
                 <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
                     <SymbolIcon 
@@ -51,7 +73,8 @@
                         Foreground="{StaticResource ContrastColorBrush}"/>
                 </StackPanel>
             </Button>
-            <Button Command="{Binding CancelButtonCommand}" Padding="5,0" Margin="0,0,5,0" Background="#a23232">
+            <!--Cancel-->
+            <Button Command="{Binding CancelButtonCommand}" Padding="5,0" Margin="0,0,5,0" Background="{StaticResource RedAppBrush}">
                 <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
                     <SymbolIcon
                         Symbol="Cancel"
