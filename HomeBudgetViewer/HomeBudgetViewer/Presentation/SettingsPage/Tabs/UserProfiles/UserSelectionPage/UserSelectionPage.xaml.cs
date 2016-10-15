@@ -13,13 +13,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.About
+namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage
 {
-    public sealed partial class AboutPartView : UserControl
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class UserSelectionPage : Page
     {
-        public AboutPartView()
+        public UserSelectionPage()
         {
             this.InitializeComponent();
         }

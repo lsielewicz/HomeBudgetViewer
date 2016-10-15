@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using HomeBudgetViewer.Presentation.AboutPage;
 using HomeBudgetViewer.Presentation.MainPage;
 using HomeBudgetViewer.Presentation.SettingsPage;
+using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage;
 using Microsoft.Practices.ServiceLocation;
 
 namespace HomeBudgetViewer.Presentation
@@ -27,6 +29,18 @@ namespace HomeBudgetViewer.Presentation
 
             SimpleIoc.Default.Register<MainPageViewModel>();
             SimpleIoc.Default.Register<SettingsPageViewModel>();
+            SimpleIoc.Default.Register<AboutPageViewModel>();
+            SimpleIoc.Default.Register<UserSelectionPageVIewModel>();
+        }
+
+        public UserSelectionPageVIewModel UserSelectionPageVIewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<UserSelectionPageVIewModel>(); }
+        }
+
+        public AboutPageViewModel AboutPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<AboutPageViewModel>(); }
         }
 
         public MainPageViewModel MainPageViewModel

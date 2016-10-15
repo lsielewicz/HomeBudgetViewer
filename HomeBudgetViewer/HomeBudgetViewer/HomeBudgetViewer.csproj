@@ -102,6 +102,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml.cs">
+      <DependentUpon>AddUserProfileDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialogViewModel.cs" />
+    <Compile Include="Controls\AddUserProfileDialog\UserProfileDialogResult.cs" />
     <Compile Include="Controls\Template10\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
@@ -120,14 +125,22 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\SettingsPageViewModel.cs" />
-    <Compile Include="Presentation\SettingsPage\Tabs\About\AboutPartView.xaml.cs">
-      <DependentUpon>AboutPartView.xaml</DependentUpon>
+    <Compile Include="Presentation\AboutPage\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\SettingsPage\Tabs\About\AboutPartViewModel.cs" />
+    <Compile Include="Presentation\AboutPage\AboutPageViewModel.cs" />
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartView.xaml.cs">
       <DependentUpon>SettingsPartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartViewModel.cs" />
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilePartView.xaml.cs">
+      <DependentUpon>UserProfilePartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilesPartViewModel.cs" />
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml.cs">
+      <DependentUpon>UserSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPageVIewModel.cs" />
     <Compile Include="Presentation\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingService\ApplicationLanguage.cs" />
@@ -140,6 +153,7 @@
     <None Include="HomeBudgetViewer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\Black\Circled User Male-100.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Template10\Busy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,11 +192,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\SettingsPage\Tabs\About\AboutPartView.xaml">
+    <Page Include="Presentation\AboutPage\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilePartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

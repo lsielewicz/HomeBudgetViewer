@@ -15,11 +15,12 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
-        <controls:PageHeader x:Uid="HomePageHeader"
-                             Frame="{x:Bind Frame}"
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" />
+        <controls:PageHeader         
+            Frame="{x:Bind Frame}"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True" 
+            Text="{Binding HelloMessage}"/>
         <!--Content-->
         <TextBlock 
             Grid.Row="1"

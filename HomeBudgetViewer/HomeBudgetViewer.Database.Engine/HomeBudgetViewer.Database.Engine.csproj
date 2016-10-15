@@ -112,6 +112,7 @@
     <Compile Include="Entities\BudgetItem.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\HomeBudgetDbException.cs" />
     <Compile Include="Migrations\20161013200248_Migration2.cs" />
     <Compile Include="Migrations\20161013200248_Migration2.designer.cs">
       <DependentUpon>20161013200248_Migration2.cs</DependentUpon>
@@ -126,6 +127,8 @@
     <Compile Include="Repository\Base\Repository.cs" />
     <Compile Include="Repository\Base\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Restrictions\Currency\Currency.cs" />
+    <Compile Include="Restrictions\Currency\CurrencyModel.cs" />
     <EmbeddedResource Include="Properties\HomeBudgetViewer.Database.Engine.rd.xml" />
   </ItemGroup>
   <ItemGroup />

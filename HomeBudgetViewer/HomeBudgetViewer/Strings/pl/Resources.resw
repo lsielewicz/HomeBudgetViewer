@@ -117,9 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutPart.Header" xml:space="preserve">
+  <data name="AboutPageHeader.Header" xml:space="preserve">
     <value>O programie</value>
     <comment>Settings</comment>
+  </data>
+  <data name="AboutPart.Text" xml:space="preserve">
+    <value>O programie</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="AddNewProfile.Text" xml:space="preserve">
+    <value>Dodaj nowy profil użytkownika</value>
+    <comment>UserProfilePart</comment>
+  </data>
+  <data name="AddText.Text" xml:space="preserve">
+    <value>Dodaj</value>
   </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Pokaż przycisk cofania widoku</value>
@@ -133,6 +144,9 @@
     <value>Przycisk cofania w pasku tytułowym</value>
     <comment>Settings</comment>
   </data>
+  <data name="CancelText.Text" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>Angielski</value>
     <comment>Settings</comment>
@@ -144,6 +158,9 @@
   <data name="HamburgerSettings.Text" xml:space="preserve">
     <value>Ustawienia</value>
     <comment>Hamburger</comment>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Witaj</value>
   </data>
   <data name="HomePageHeader.Content" xml:space="preserve">
     <value>Strona domowa</value>
@@ -158,6 +175,9 @@
     <value>Polski</value>
     <comment>Settings</comment>
   </data>
+  <data name="OkText.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Polish" xml:space="preserve">
     <value>Polski</value>
     <comment>Settings</comment>
@@ -166,9 +186,21 @@
     <value>Region i język</value>
     <comment>Settings</comment>
   </data>
+  <data name="RemoveProfile.Text" xml:space="preserve">
+    <value>Usuń obecny profil użytkownika</value>
+    <comment>UserProfilePart</comment>
+  </data>
+  <data name="SelectAnotherProfile.Text" xml:space="preserve">
+    <value>Wybierz inny profil użytkownika</value>
+    <comment>UserProfilePart</comment>
+  </data>
   <data name="SelectDefaultLanguage.Text" xml:space="preserve">
     <value>Wybierz domyślny język</value>
     <comment>Settings</comment>
+  </data>
+  <data name="SelectUserProfile.Text" xml:space="preserve">
+    <value>Wybierz ten profil użytkownika</value>
+    <comment>UserSelectionPage</comment>
   </data>
   <data name="SettingsPageHeader.Content" xml:space="preserve">
     <value>Ustawienia</value>
@@ -189,5 +221,35 @@
   <data name="ThemeSetting.OnContent" xml:space="preserve">
     <value>Jasny motyw</value>
     <comment>Settings</comment>
+  </data>
+  <data name="UpdateProfile.Text" xml:space="preserve">
+    <value>Zaktualizuj obecny profil użytkownika</value>
+    <comment>UserProfilePart</comment>
+  </data>
+  <data name="UserAlreadyExist" xml:space="preserve">
+    <value>Profil użytkownika o podanej nazwie już istnieje.</value>
+  </data>
+  <data name="UserProfileDialog.Title" xml:space="preserve">
+    <value>Dodaj nowy profil użytkownika</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfileDialogProfileCurrency.Text" xml:space="preserve">
+    <value>Waluta profilu</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfileDialogProfileName.Text" xml:space="preserve">
+    <value>Nazwa profilu</value>
+    <comment>add user profile dialog</comment>
+  </data>
+  <data name="UserProfilesPart.Header" xml:space="preserve">
+    <value>Profile użytkowników</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="UserSelectionHeader.Text" xml:space="preserve">
+    <value>Wybór profilu użytkownika</value>
+    <comment>UserSelectionPage</comment>
+  </data>
+  <data name="ValuesCannotBeEmpty" xml:space="preserve">
+    <value>Wartości nie mogą być puste</value>
   </data>
 </root>

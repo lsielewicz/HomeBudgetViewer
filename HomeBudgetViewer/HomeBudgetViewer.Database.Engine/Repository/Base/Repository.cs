@@ -50,5 +50,15 @@ namespace HomeBudgetViewer.Database.Engine.Repository.Base
         {
             Context.Set<TEntity>().RemoveRange(entities);
         }
+
+        public void Update(TEntity entity)
+        {
+            Context.Set<TEntity>().Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<TEntity> entities)
+        {
+            Context.Set<TEntity>().UpdateRange(entities);
+        }
     }
 }

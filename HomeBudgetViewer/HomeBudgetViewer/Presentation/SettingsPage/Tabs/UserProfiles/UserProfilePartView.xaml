@@ -1,0 +1,131 @@
+﻿<UserControl
+    x:Class="HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserProfilePartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    d:DataContext="{d:DesignInstance local:UserProfilesPartViewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MaxWidth="750"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+            <Image 
+                Source="../../../../Assets/Icons/Black/Circled User Male-100.png"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="100"
+                Height="100"/>
+            
+            <TextBlock
+                Text="{Binding CurrentUser, Mode=TwoWay}"
+                FontWeight="Light"
+                FontSize="32"
+                Margin="10,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"/>
+
+        </StackPanel>
+
+        <!--Add-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            Foreground="{StaticResource ContrastColorBrush}"
+            Background="{StaticResource MainAppBrush}"
+            Command="{Binding AddNewUserCommand}"
+            Margin="0,5,0,0">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon
+                    Symbol="Add"
+                    Width="32"
+                    Height="32"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+                <TextBlock
+                    x:Uid="AddNewProfile"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+            </StackPanel>
+        </Button>
+        <!--Update-->
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            Foreground="{StaticResource ContrastColorBrush}"
+            Background="{StaticResource BlueAppBrush}"
+            Command="{Binding UpdateSelectedUserCommand}"
+            Margin="0,5,0,0">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon
+                    Symbol="Refresh"
+                    Width="32"
+                    Height="32"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+                <TextBlock
+                    x:Uid="UpdateProfile"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+            </StackPanel>
+        </Button>
+        <!--Remove-->
+        <Button
+            Grid.Row="3"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            Foreground="{StaticResource ContrastColorBrush}"
+            Background="{StaticResource RedAppBrush}"
+            Command="{Binding DeleteSelectedUserCommand}"
+            Margin="0,5,0,0">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon
+                    Symbol="Remove"
+                    Width="32"
+                    Height="32"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+                <TextBlock
+                    x:Uid="RemoveProfile"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+            </StackPanel>
+        </Button>
+
+        <!--UserSelection-->
+        <Button 
+            Grid.Row="4"
+            Grid.Column="0"
+            VerticalAlignment="Bottom"
+            Command="{Binding NavigateToUserSelectionPage}"
+            Foreground="{StaticResource ContrastColorBrush}"
+            Background="{StaticResource MainAppBrush}"
+            Margin="0,5"
+            HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon
+                    Symbol="SelectAll"
+                    Width="32"
+                    Height="32"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+                <TextBlock
+                    x:Uid="SelectAnotherProfile"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

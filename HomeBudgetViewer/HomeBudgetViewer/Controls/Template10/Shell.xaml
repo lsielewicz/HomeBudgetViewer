@@ -8,6 +8,7 @@
     xmlns:controls="using:Template10.Controls"
     xmlns:homeBudgetViewer="using:HomeBudgetViewer"
     xmlns:settingsPage="using:HomeBudgetViewer.Presentation.SettingsPage"
+    xmlns:aboutPage="using:HomeBudgetViewer.Presentation.AboutPage"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -28,6 +29,21 @@
         </controls:HamburgerMenu.PrimaryButtons>
 
         <controls:HamburgerMenu.SecondaryButtons>
+            <!-- About button-->
+            <controls:HamburgerButtonInfo PageType="aboutPage:AboutPage">
+                <controls:HamburgerButtonInfo.NavigationTransitionInfo>
+                    <SuppressNavigationTransitionInfo/>
+                </controls:HamburgerButtonInfo.NavigationTransitionInfo>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon 
+                        Width="48" Height="48"
+                        Symbol="Help" />
+                    <TextBlock 
+                        x:Uid="AboutPart"
+                        Margin="12,0,0,0" 
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </controls:HamburgerButtonInfo>
             <!--  settingsp age button  -->
             <controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0" PageType="settingsPage:SettingsPage">
                 <controls:HamburgerButtonInfo.NavigationTransitionInfo>
