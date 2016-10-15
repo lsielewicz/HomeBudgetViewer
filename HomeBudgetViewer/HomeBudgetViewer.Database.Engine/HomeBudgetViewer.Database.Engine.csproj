@@ -112,6 +112,7 @@
     <Compile Include="Entities\BudgetItem.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\HomeBudgetDbException.cs" />
     <Compile Include="Migrations\20161013200248_Migration2.cs" />
     <Compile Include="Migrations\20161013200248_Migration2.designer.cs">
       <DependentUpon>20161013200248_Migration2.cs</DependentUpon>
