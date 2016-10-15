@@ -37,6 +37,7 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelec
             if (!this.Users.Any())
             {
                 this.AddNewUser();
+                this.GetUsers();
             }
             return base.OnNavigatedToAsync(parameter, mode, state);
         }

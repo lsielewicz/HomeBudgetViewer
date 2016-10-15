@@ -116,6 +116,10 @@
     <Compile Include="Controls\Template10\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialog.xaml.cs">
+      <DependentUpon>UpdateUserProfileDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
     <Compile Include="Presentation\AppViewModelBase.cs" />
     <Compile Include="Presentation\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -181,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Template10\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

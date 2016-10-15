@@ -28,7 +28,7 @@ namespace HomeBudgetViewer.Database.Engine.Repository
         {
             if (CheckIfUserNameExists(user.Name))
             {
-                throw new HomeBudgetDbException("User already exist in database");
+                throw new HomeBudgetDbException("User already exist in the database");
             }
             this.Add(user);
         }

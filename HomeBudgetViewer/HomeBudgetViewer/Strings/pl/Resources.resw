@@ -151,6 +151,9 @@
     <value>Angielski</value>
     <comment>Settings</comment>
   </data>
+  <data name="GivenNameAlreadyRegistered" xml:space="preserve">
+    <value>Podana nazwa jest już aktualnie zarejestrowana</value>
+  </data>
   <data name="HamburgerHome.Text" xml:space="preserve">
     <value>Dom</value>
     <comment>Hamburger</comment>
@@ -225,6 +228,12 @@
   <data name="UpdateProfile.Text" xml:space="preserve">
     <value>Zaktualizuj obecny profil użytkownika</value>
     <comment>UserProfilePart</comment>
+  </data>
+  <data name="UpdateText.Text" xml:space="preserve">
+    <value>Zaktualizuj</value>
+  </data>
+  <data name="UpdateUserProfileDialog.Title" xml:space="preserve">
+    <value>Zaktualizuj profil użytkownika</value>
   </data>
   <data name="UserAlreadyExist" xml:space="preserve">
     <value>Profil użytkownika o podanej nazwie już istnieje.</value>
