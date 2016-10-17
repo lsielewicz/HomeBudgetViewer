@@ -65,7 +65,7 @@ namespace HomeBudgetViewer.Controls.UpdateUserProfileDialog
         {
             using (var unitOfWork = new UnitOfWork(new BudgetContext()))
             {
-                if (unitOfWork.Users.CheckIfUserNameExists(this.ProfileName))
+                if (this.ProfileName != _user.Name && unitOfWork.Users.CheckIfUserNameExists(this.ProfileName))
                     return false;
                 _user.Name = this.ProfileName;
                 _user.Currency = this.ProfileCurrency.CurrencyName;

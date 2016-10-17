@@ -32,17 +32,17 @@
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.AlignTopWithPanel="True"/>
-
+         <!--Categories-->
         <ScrollViewer Grid.Row="1">
-        <ListBox 
+            <ListBox 
             Grid.Row="1"
             Margin="0,15"
             SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
             ItemsSource="{Binding PossibleCategories, Mode=TwoWay}"
            >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Border
                                 CornerRadius="42"
                                 Background="{Binding CategoryEnum, Converter={StaticResource CategoryToBrushConventer}}"
@@ -61,12 +61,9 @@
                                 Foreground="Black"
                                 FontWeight="Light"/>
                         </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ScrollViewer>
-        <Button
-            Grid.Row="2"
-            Content="TEST"/>
     </Grid>
 </Page>

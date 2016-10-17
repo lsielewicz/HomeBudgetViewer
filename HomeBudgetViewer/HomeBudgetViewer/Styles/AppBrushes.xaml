@@ -42,8 +42,8 @@
     <LinearGradientBrush x:Key="TransportBrush" StartPoint="0,0.5" EndPoint="1,0.5" Opacity="1">
         <LinearGradientBrush.GradientStops>
             <GradientStopCollection>
-                <GradientStop Color="#c7a0d2" Offset="0" />
-                <GradientStop Color="#c9b6cc" Offset="1" />
+                <GradientStop Color="#191996" Offset="0" />
+                <GradientStop Color="#3232a2" Offset="1" />
             </GradientStopCollection>
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>

@@ -10,7 +10,8 @@
     d:DesignWidth="400"
     d:DataContext="{d:DesignInstance local:UserProfilesPartViewModel}">
 
-    <Grid>
+    <ScrollViewer Margin="0,12,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -128,4 +129,5 @@
             </StackPanel>
         </Button>
     </Grid>
+    </ScrollViewer>
 </UserControl>

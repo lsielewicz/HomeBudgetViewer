@@ -186,10 +186,6 @@
     <value>Angielski</value>
     <comment>Settings</comment>
   </data>
-  <data name="Entertaiment" xml:space="preserve">
-    <value>Rozrywka</value>
-    <comment>CategoryEnum</comment>
-  </data>
   <data name="Entertainment" xml:space="preserve">
     <value>Rozrywka</value>
     <comment>CategoryEnum</comment>
