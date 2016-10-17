@@ -1,0 +1,29 @@
+﻿namespace HomeBudgetViewer.Database.Engine.Restrictions.Categories
+{
+    public enum Category
+    {
+        Car,
+        Food,
+        FoodOutsideTheHome,
+        Sport,
+        Transport,
+        Entertaiment,
+        Culture,
+        Clothes,
+        Personal,
+        Children,
+        Animals,
+        Home,
+        Phone,
+        Internet,
+        Electronic,
+        Credit,
+        Lent,
+        Vacation,
+        Other,
+        Fashion,
+        Health,
+        Salary,
+        Drinking
+    }
+}

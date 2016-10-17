@@ -121,6 +121,14 @@
     </Compile>
     <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
     <Compile Include="Presentation\AppViewModelBase.cs" />
+    <Compile Include="Presentation\BudgetItemPage\BudgetItemPage.xaml.cs">
+      <DependentUpon>BudgetItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\BudgetItemPage\BudgetItemPageViewModel.cs" />
+    <Compile Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPage.xaml.cs">
+      <DependentUpon>CategorySelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPageViewModel.cs" />
     <Compile Include="Presentation\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -189,6 +197,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\BudgetItemPage\BudgetItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

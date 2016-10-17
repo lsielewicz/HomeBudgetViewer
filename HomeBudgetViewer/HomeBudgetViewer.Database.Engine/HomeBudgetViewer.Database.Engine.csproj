@@ -127,6 +127,8 @@
     <Compile Include="Repository\Base\Repository.cs" />
     <Compile Include="Repository\Base\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Restrictions\Categories\Category.cs" />
+    <Compile Include="Restrictions\Categories\CategoryModel.cs" />
     <Compile Include="Restrictions\Currency\Currency.cs" />
     <Compile Include="Restrictions\Currency\CurrencyModel.cs" />
     <EmbeddedResource Include="Properties\HomeBudgetViewer.Database.Engine.rd.xml" />

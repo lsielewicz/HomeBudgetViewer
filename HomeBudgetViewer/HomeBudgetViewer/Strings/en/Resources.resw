@@ -132,6 +132,10 @@
   <data name="AddText.Text" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Anials" xml:space="preserve">
+    <value>Animals</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Use shell-drawn back button</value>
     <comment>Settings</comment>
@@ -147,9 +151,56 @@
   <data name="CancelText.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Car" xml:space="preserve">
+    <value>Car</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="CategorySelectionHeader.Text" xml:space="preserve">
+    <value>Select the category</value>
+  </data>
+  <data name="Children" xml:space="preserve">
+    <value>Children</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>Clothes</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>Credit</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Culture" xml:space="preserve">
+    <value>Culture</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Drinking" xml:space="preserve">
+    <value>Drinking</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Electronic" xml:space="preserve">
+    <value>Electronic</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
     <comment>Settings</comment>
+  </data>
+  <data name="Entertaiment" xml:space="preserve">
+    <value>Entertaiment</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Fashion" xml:space="preserve">
+    <value>Fashion</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Food" xml:space="preserve">
+    <value>Food</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="FoodOutsideTheHome" xml:space="preserve">
+    <value>Food outside the home</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="GivenNameAlreadyRegistered" xml:space="preserve">
     <value>Given name is already regeistered</value>
@@ -162,14 +213,26 @@
     <value>Settings</value>
     <comment>Hamburger</comment>
   </data>
+  <data name="Health" xml:space="preserve">
+    <value>Health</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>Hello</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="HomePageHeader.Content" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="HomeTestTextBox.Text" xml:space="preserve">
     <value>TEST ENG</value>
+  </data>
+  <data name="Internet" xml:space="preserve">
+    <value>Internet</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="ItemEnglish.Content" xml:space="preserve">
     <value>English</value>
@@ -178,8 +241,24 @@
     <value>Polish</value>
     <comment>Settings</comment>
   </data>
+  <data name="Lent" xml:space="preserve">
+    <value>Lent</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="OkText.Text" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Personal</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="Polish" xml:space="preserve">
     <value>Polish</value>
@@ -192,6 +271,10 @@
   <data name="RemoveProfile.Text" xml:space="preserve">
     <value>Remove current user profile</value>
     <comment>UserProfilePart</comment>
+  </data>
+  <data name="Salary" xml:space="preserve">
+    <value>Salary</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="SelectAnotherProfile.Text" xml:space="preserve">
     <value>Select other user profile</value>
@@ -213,6 +296,10 @@
     <value>Settings</value>
     <comment>Settings</comment>
   </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Sport</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="ThemeSetting.Header" xml:space="preserve">
     <value>Use Light Theme</value>
     <comment>Settings</comment>
@@ -224,6 +311,10 @@
   <data name="ThemeSetting.OnContent" xml:space="preserve">
     <value>Light theme</value>
     <comment>Settings</comment>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Transport</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="UpdateProfile.Text" xml:space="preserve">
     <value>Update current user profile</value>
@@ -257,6 +348,10 @@
   <data name="UserSelectionHeader.Text" xml:space="preserve">
     <value>User profile selection</value>
     <comment>UserSelectionPage</comment>
+  </data>
+  <data name="Vacation" xml:space="preserve">
+    <value>Vacation</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="ValuesCannotBeEmpty" xml:space="preserve">
     <value>Values cannot be empty</value>
