@@ -28,7 +28,6 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.CategorySelectionPage
             {
                 ViewModelLocator.Instance.BudgetItemPageViewModel.SelectedCategory = value;
                 OnCategoryChanged();
-                RaisePropertyChanged();
             }
         }
 

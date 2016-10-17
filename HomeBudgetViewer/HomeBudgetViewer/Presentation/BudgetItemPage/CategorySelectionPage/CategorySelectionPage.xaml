@@ -6,10 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Template10.Controls"
+    xmlns:conventers="using:HomeBudgetViewer.Conventers"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance local:CategorySelectionPageViewModel}"
     DataContext="{Binding Source={StaticResource Locator}, Path=CategorySelectionPageViewModel}">
 
+    <Page.Resources>
+        <conventers:CategoryToImageConventer x:Key="CategoryToImageConventer"/>
+        <conventers:CategoryToBrushConventer x:Key="CategoryToBrushConventer"/>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -32,19 +38,29 @@
             Grid.Row="1"
             Margin="0,15"
             SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
-            ItemsSource="{Binding PossibleCategories, Mode=TwoWay}">
+            ItemsSource="{Binding PossibleCategories, Mode=TwoWay}"
+           >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <SymbolIcon 
-                            Symbol="Contact" 
-                            Height="24" 
-                            Width="24"
-                            VerticalAlignment="Center"/>
-                        <TextBlock 
-                            Text="{Binding CategoryName}"
-                            VerticalAlignment="Center"/>
-                    </StackPanel>
+                            <Border
+                                CornerRadius="42"
+                                Background="{Binding CategoryEnum, Converter={StaticResource CategoryToBrushConventer}}"
+                                Width="42"
+                                Height="42"
+                                Margin="5,0"
+                                >
+                                <Image
+                                    Width="36"
+                                    Height="36"
+                                    Source="{Binding CategoryEnum, Converter={StaticResource CategoryToImageConventer}}"/>
+                            </Border>
+                            <TextBlock 
+                                Text="{Binding CategoryName}"
+                                VerticalAlignment="Center"
+                                Foreground="Black"
+                                FontWeight="Light"/>
+                        </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

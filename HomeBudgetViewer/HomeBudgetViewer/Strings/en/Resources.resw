@@ -132,7 +132,7 @@
   <data name="AddText.Text" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="Anials" xml:space="preserve">
+  <data name="Animals" xml:space="preserve">
     <value>Animals</value>
     <comment>CategoryEnum</comment>
   </data>
@@ -186,8 +186,8 @@
     <value>English</value>
     <comment>Settings</comment>
   </data>
-  <data name="Entertaiment" xml:space="preserve">
-    <value>Entertaiment</value>
+  <data name="Entertainment" xml:space="preserve">
+    <value>Entertainment</value>
     <comment>CategoryEnum</comment>
   </data>
   <data name="Fashion" xml:space="preserve">

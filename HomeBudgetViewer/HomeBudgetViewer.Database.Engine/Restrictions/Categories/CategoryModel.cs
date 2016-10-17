@@ -35,7 +35,7 @@ namespace HomeBudgetViewer.Database.Engine.Restrictions.Categories
                     new CategoryModel(Category.FoodOutsideTheHome),
                     new CategoryModel(Category.Sport),
                     new CategoryModel(Category.Transport),
-                    new CategoryModel(Category.Entertaiment),
+                    new CategoryModel(Category.Entertainment),
                     new CategoryModel(Category.Culture),
                     new CategoryModel(Category.Clothes),
                     new CategoryModel(Category.Personal),

@@ -7,7 +7,7 @@
         FoodOutsideTheHome,
         Sport,
         Transport,
-        Entertaiment,
+        Entertainment,
         Culture,
         Clothes,
         Personal,

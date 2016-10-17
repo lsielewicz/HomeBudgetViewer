@@ -132,7 +132,7 @@
   <data name="AddText.Text" xml:space="preserve">
     <value>Dodaj</value>
   </data>
-  <data name="Anials" xml:space="preserve">
+  <data name="Animals" xml:space="preserve">
     <value>Zwierzęta</value>
     <comment>CategoryEnum</comment>
   </data>
@@ -187,6 +187,10 @@
     <comment>Settings</comment>
   </data>
   <data name="Entertaiment" xml:space="preserve">
+    <value>Rozrywka</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="Entertainment" xml:space="preserve">
     <value>Rozrywka</value>
     <comment>CategoryEnum</comment>
   </data>
@@ -273,7 +277,7 @@
     <comment>UserProfilePart</comment>
   </data>
   <data name="Salary" xml:space="preserve">
-    <value>Pęsja</value>
+    <value>Pensja</value>
     <comment>CategoryEnum</comment>
   </data>
   <data name="SelectAnotherProfile.Text" xml:space="preserve">
