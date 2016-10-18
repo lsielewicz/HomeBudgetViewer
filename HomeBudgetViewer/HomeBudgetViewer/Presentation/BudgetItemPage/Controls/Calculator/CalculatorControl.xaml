@@ -1,0 +1,190 @@
+﻿<UserControl
+    x:Class="HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator.CalculatorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:enum="using:HomeBudgetViewer.Models.Enum"
+    xmlns:system="using:System"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    d:DataContext="{d:DesignInstance local:CalculatorViewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Display section-->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Orientation="Horizontal">
+            <TextBlock
+                x:Name="MemoryTextBox"
+                Text="{Binding MemoryArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
+                FontWeight="Light"
+                FontSize="24"
+                Foreground="Black"
+                />
+            <TextBlock
+                x:Name="SignTextBox"
+                RelativePanel.RightOf="MemoryTextBox"
+                Text="{Binding ArithmeticalSignText, UpdateSourceTrigger=PropertyChanged}"
+                FontWeight="Light"
+                FontSize="24"
+                Foreground="Black"/>
+            <TextBlock
+                RelativePanel.RightOf="SignTextBox"
+                Text="{Binding CurrentArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
+                FontWeight="Light"
+                FontSize="24"
+                Foreground="Black"/>
+        </StackPanel>
+        <!--NumericButtons-->
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <Button
+                Content="7"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    7
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Content="8"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    8
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Content="9"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    9
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+            <Button
+                Content="4"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    4
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Content="5"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    5
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Content="6"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    6
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+            <Button
+                Content="1"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    1
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Content="2"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    2
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Content="3"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>
+                    3
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+        <!--Coma/Zero/Clear-->
+        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
+            <Button
+                Content=","
+                Command="{Binding AppendCommaCommand}">
+                
+            </Button>
+            <Button
+                Content="3"
+                Command="{Binding HandleNumberCommand}">
+                <Button.CommandParameter>0</Button.CommandParameter>
+            </Button>
+            <Button
+                Content="C"
+                Command="{Binding ClearOutputCommand}"/>
+        </StackPanel>
+        <!--Operation buttons column-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Command="{Binding HandleArithmeticalOperationCommand}"
+            Content="+">
+            <Button.CommandParameter>
+                <enum:ArithmeticOperation>Addition</enum:ArithmeticOperation>
+            </Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Command="{Binding HandleArithmeticalOperationCommand}"
+            Content="-">
+            <Button.CommandParameter>
+                <enum:ArithmeticOperation>Substraction</enum:ArithmeticOperation>
+            </Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Command="{Binding HandleArithmeticalOperationCommand}"
+            Content="*">
+            <Button.CommandParameter>
+                <enum:ArithmeticOperation>Multiplication</enum:ArithmeticOperation>
+            </Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Command="{Binding HandleArithmeticalOperationCommand}"
+            Content="/">
+            <Button.CommandParameter>
+                <enum:ArithmeticOperation>Division</enum:ArithmeticOperation>
+            </Button.CommandParameter>
+        </Button>
+        <!--Result-->
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Command="{Binding CalculateResultCommand}"
+            Content="=">
+        </Button>
+        <!--Undo-->
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Command="{Binding UndoLastNumberCommand}"
+            Content="Undo">
+        </Button>
+    </Grid>
+</UserControl>

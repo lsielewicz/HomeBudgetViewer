@@ -131,6 +131,10 @@
       <DependentUpon>CategorySelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPageViewModel.cs" />
+    <Compile Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorControl.xaml.cs">
+      <DependentUpon>CalculatorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorViewModel.cs" />
     <Compile Include="Presentation\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -235,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

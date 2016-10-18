@@ -5,12 +5,11 @@
     xmlns:local="using:HomeBudgetViewer.Presentation.BudgetItemPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:calculator="using:HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=BudgetItemPageViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button
-            Content="Temp navigation to category"
-            Command="{Binding NavigateToCategorySelectionCommand}"/>
+        <calculator:CalculatorControl/>
     </Grid>
 </Page>

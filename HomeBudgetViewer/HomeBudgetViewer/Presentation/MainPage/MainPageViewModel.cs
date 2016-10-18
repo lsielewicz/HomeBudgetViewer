@@ -26,7 +26,7 @@ namespace HomeBudgetViewer.Presentation.MainPage
 
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            this.NavigationService.Navigate(typeof(CategorySelectionPage));
+            this.NavigationService.Navigate(typeof(BudgetItemPage.BudgetItemPage));
             return base.OnNavigatedToAsync(parameter, mode, state);
         }
     }   
