@@ -127,6 +127,7 @@
     <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
     <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
+    <Compile Include="Messages\IsModifyingStateToBudgetItemMessage.cs" />
     <Compile Include="Presentation\AppViewModelBase.cs" />
     <Compile Include="Presentation\BudgetItemPage\BudgetItemPage.xaml.cs">
       <DependentUpon>BudgetItemPage.xaml</DependentUpon>

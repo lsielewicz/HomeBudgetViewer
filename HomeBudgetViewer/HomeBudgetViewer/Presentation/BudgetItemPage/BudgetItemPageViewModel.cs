@@ -10,8 +10,11 @@ using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Database.Engine.Restrictions.Categories;
 using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
+using HomeBudgetViewer.Messages;
+using HomeBudgetViewer.Models.Enum;
 using HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator;
 using HomeBudgetViewer.Services.SettingService;
+using Template10.Utils;
 
 namespace HomeBudgetViewer.Presentation.BudgetItemPage
 {
@@ -22,14 +25,17 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         private CategoryModel _selectedCategory;
         private string _itemDescription;
         private ItemType _budgetItemType;
-
+        public BudgetItem ModifyingItem { get; set; }
+       
         public BudgetItemPageViewModel()
         {
+            this.MessengerInstance.Register<IsModifyingStateToBudgetItemMessage>(this, HandleModifyingStateMessage);
             this.CalculatorViewModel = new CalculatorViewModel(this);
             this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
         }
 
         public CalculatorViewModel CalculatorViewModel { get; set; }
+        public BudgetItemAction BudgetItemAction { get; set; }
 
         public ItemType BudgetItemType
         {
@@ -100,23 +106,43 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                     {
                         moneyValue = 0;
                     }
+                    switch (this.BudgetItemAction)
+                    {
+                        case BudgetItemAction.Adding:
+                            var budgetItem = new BudgetItem()
+                            {
+                                Category = this.SelectedCategory.CategoryEnum.ToString(),
+                                UserId = SettingsService.Instance.CurrentUser.Id,
+                                Date = DateTime.Now,
+                                Description = this.ItemDescription,
+                                MoneyValue = moneyValue,
+                                ItemType = this.BudgetItemType.ToString(),
+                            };
 
-                    var budgetItem = new BudgetItem()
-                    {
-                        Category = this.SelectedCategory.CategoryEnum.ToString(),
-                        UserId = SettingsService.Instance.CurrentUser.Id,
-                        Date = DateTime.Now,
-                        Description = this.ItemDescription,
-                        MoneyValue = moneyValue,
-                        ItemType = this.BudgetItemType.ToString(),       
-                    };
-                        
-                    using (var unitOfWork = new UnitOfWork(new BudgetContext()))
-                    {
-                        unitOfWork.BudgetItems.Add(budgetItem);
-                        unitOfWork.Complete();
+                            using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                            {
+                                unitOfWork.BudgetItems.Add(budgetItem);
+                                unitOfWork.Complete();
+                            }
+                            this.NavigationService.Navigate(typeof(HomeBudgetViewer.MainPage));
+                            break;
+                        case BudgetItemAction.Modifying:
+                            if (this.ModifyingItem != null)
+                            {
+                                this.ModifyingItem.Category = this.SelectedCategory.CategoryEnum.ToString();
+                                this.ModifyingItem.Description = this.ItemDescription;
+                                this.ModifyingItem.MoneyValue = moneyValue;
+                                this.ModifyingItem.ItemType = this.BudgetItemType.ToString();
+                            }
+                            using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                            {
+                                unitOfWork.BudgetItems.Update(ModifyingItem);
+                                unitOfWork.Complete();
+                            }
+                            this.NavigationService.Navigate(typeof(OverviewPage.OverviewPage));
+                            break;
                     }
-                    this.NavigationService.Navigate(typeof(HomeBudgetViewer.MainPage));
+                   
                     this.ClearViewModel();
                 }));
             }
@@ -143,7 +169,22 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
             this.ItemDescription = string.Empty;
             this.SelectedCategory =
                 ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
+            this.BudgetItemAction = BudgetItemAction.Adding;
         }
 
+        private void HandleModifyingStateMessage(IsModifyingStateToBudgetItemMessage data)
+        {
+            this.ModifyingItem = data.BudgetItem;
+            if (this.ModifyingItem != null)
+            {
+                this.BudgetItemAction = BudgetItemAction.Modifying;
+                this.ItemDescription = this.ModifyingItem.Description;
+                this.CalculatorViewModel.CurrentArithmeticalNumber = this.ModifyingItem.MoneyValue.ToString();
+                this.SelectedCategory =
+                    ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(
+                        c => c.CategoryEnum.ToString() == this.ModifyingItem.Category);
+                this.BudgetItemType = (ItemType)Enum.Parse(typeof(ItemType), this.ModifyingItem.ItemType);
+            }
+        }
     }
 }

@@ -39,7 +39,8 @@
                 Frame="{x:Bind Frame}"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.AlignTopWithPanel="True" />
+                RelativePanel.AlignTopWithPanel="True" >
+            </controls:PageHeader>
             <!--Calculator-->
             <calculator:CalculatorControl Grid.Row="1" DataContext="{Binding ElementName=Root, Path=DataContext.CalculatorViewModel}"/>
             <!--Income/Expense-->

@@ -179,7 +179,7 @@
                                         UpdateSourceTrigger=PropertyChanged}"
                         Margin="5,0"/>
                     <TextBlock
-                        x:Uid="Income"
+                        x:Uid="Incomes"
                         Foreground="{Binding BudgetItemType, 
                                         Converter={StaticResource ItemTypeToForegroundConventer}, 
                                         ConverterParameter={StaticResource IncomeItemType},
@@ -204,7 +204,7 @@
                                             UpdateSourceTrigger=PropertyChanged}"
                             Margin="5,0"/>
                     <TextBlock
-                            x:Uid="Expense"
+                            x:Uid="Expenses"
                             Foreground="{Binding BudgetItemType, 
                                             Converter={StaticResource ItemTypeToForegroundConventer}, 
                                             ConverterParameter={StaticResource ExpenseItemType},
