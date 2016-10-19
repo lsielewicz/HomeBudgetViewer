@@ -8,6 +8,7 @@
     xmlns:controls="using:Template10.Controls"
     xmlns:enum="using:HomeBudgetViewer.Models.Enum"
     xmlns:conventers="using:HomeBudgetViewer.Conventers"
+    xmlns:itemType="using:HomeBudgetViewer.Database.Engine.Restrictions.ItemType"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=OverviewPageViewModel}"
     x:Name="Root">
@@ -15,15 +16,20 @@
     <Page.Resources>
         <conventers:CategoryModelToImageConventer x:Key="CategoryToImageConventer"/>
         <conventers:CategoryModelToBrushConventer x:Key="CategoryToBrushConventer"/>
+        <conventers:ItemTypeToForegroundConventer x:Key="ItemTypeToForegroundConventer"/>
+        <conventers:ItemTypeToBackgroundConventer x:Key="ItemTypeToBackgroundConventer"/>
+        <itemType:ItemType x:Key="ExpenseItemType">Expense</itemType:ItemType>
+        <itemType:ItemType x:Key="IncomeItemType">Income</itemType:ItemType>
     </Page.Resources>
     
-    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
             <!--Header-->
             <controls:PageHeader      
                 x:Uid="OverviewHeader"
@@ -78,8 +84,8 @@
                 </Button>
             </Grid>
             <!--List od budget items-->
+        <ScrollViewer Grid.Row="2" Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
             <ListBox 
-                Grid.Row="2"
                 SelectedItem="{Binding SelectedBudgetItem, Mode=TwoWay}"
                 ItemsSource="{Binding CurrentItems}"
                 HorizontalContentAlignment="Stretch">
@@ -148,6 +154,64 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+        </ScrollViewer>
+        <!--Income/Expense-->
+        <Grid Grid.Row="3" Margin="0,10" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                HorizontalAlignment="Stretch"
+                Background="{Binding BudgetItemType, 
+                                    Converter={StaticResource ItemTypeToBackgroundConventer}, 
+                                    ConverterParameter={StaticResource IncomeItemType},
+                                    UpdateSourceTrigger=PropertyChanged}"
+                Command="{Binding SwitchItemType}"
+                CommandParameter="{StaticResource IncomeItemType}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon
+                        Symbol="Add"
+                        Foreground="{Binding BudgetItemType, 
+                                        Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                        ConverterParameter={StaticResource IncomeItemType},
+                                        UpdateSourceTrigger=PropertyChanged}"
+                        Margin="5,0"/>
+                    <TextBlock
+                        x:Uid="Income"
+                        Foreground="{Binding BudgetItemType, 
+                                        Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                        ConverterParameter={StaticResource IncomeItemType},
+                                        UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Button>
+            <Button
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Background="{Binding BudgetItemType, 
+                                        Converter={StaticResource ItemTypeToBackgroundConventer}, 
+                                        ConverterParameter={StaticResource ExpenseItemType},
+                                        UpdateSourceTrigger=PropertyChanged}"          
+                    Command="{Binding SwitchItemType}"
+                    CommandParameter="{StaticResource ExpenseItemType}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon
+                            Symbol="Remove"
+                            Foreground="{Binding BudgetItemType, 
+                                            Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                            ConverterParameter={StaticResource ExpenseItemType},
+                                            UpdateSourceTrigger=PropertyChanged}"
+                            Margin="5,0"/>
+                    <TextBlock
+                            x:Uid="Expense"
+                            Foreground="{Binding BudgetItemType, 
+                                            Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                            ConverterParameter={StaticResource ExpenseItemType},
+                                            UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Button>
         </Grid>
-    </ScrollViewer>
+    </Grid>
+
 </Page>

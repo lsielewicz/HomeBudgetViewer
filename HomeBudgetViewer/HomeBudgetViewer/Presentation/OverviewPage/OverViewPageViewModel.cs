@@ -11,6 +11,7 @@ using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
+using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
 using HomeBudgetViewer.Models.Enum;
 using HomeBudgetViewer.Services.SettingService;
 
@@ -20,7 +21,8 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
     {
         private ObservableCollection<BudgetItem> _currentItems;
         private RelayCommand<object> _switchMonthCommand;
-
+        private RelayCommand<object> _switchItemType;
+        private ItemType _budgetItemType;
         public int CurrentMonthIndex { get; private set; }
         public DateTime CurrentDateTime { get; private set; }
         public BudgetItem SelectedBudgetItem { get; set; }
@@ -48,13 +50,38 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
             }
         }
 
+        public ItemType BudgetItemType
+        {
+            get { return _budgetItemType; }
+            set
+            {
+                if (_budgetItemType == value)
+                    return;
+
+                _budgetItemType = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private void GetData()
         {
             using (var unitOfWork = new UnitOfWork(new BudgetContext()))
             {
-                var items = unitOfWork.BudgetItems.GetAllOfUserByDate(
-                    SettingsService.Instance.CurrentUser.Id,
-                    this.CurrentDateTime);
+                List<BudgetItem> items=null;
+                switch (this.BudgetItemType)
+                {
+                    case ItemType.Expense:
+                        items = unitOfWork.BudgetItems.GetAllExpensesOfUserByDate(
+                            SettingsService.Instance.CurrentUser.Id,
+                            this.CurrentDateTime);
+                        break;
+                    case ItemType.Income:
+                        items = unitOfWork.BudgetItems.GetAllIncomesOfUserByDate(
+                            SettingsService.Instance.CurrentUser.Id,
+                            this.CurrentDateTime);
+                        break;
+                }
+
                 CurrentItems = new ObservableCollection<BudgetItem>(items);
             }
         }
@@ -107,5 +134,20 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
             return this.GetLocalizedString($"Month{monthIndex}");
         }
 
+        public RelayCommand<object> SwitchItemType
+        {
+            get
+            {
+                return _switchItemType ?? (_switchItemType = new RelayCommand<object>(param =>
+                {
+                    if (param != null)
+                    {
+                        var itemType = (ItemType)param;
+                        this.BudgetItemType = itemType;
+                        GetData();
+                    }
+                }));
+            }
+        }
     }
 }
