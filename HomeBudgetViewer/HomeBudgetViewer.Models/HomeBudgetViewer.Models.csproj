@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\ArithmeticOperation.cs" />
+    <Compile Include="Enum\ConventerDirection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\HomeBudgetViewer.Models.rd.xml" />
   </ItemGroup>

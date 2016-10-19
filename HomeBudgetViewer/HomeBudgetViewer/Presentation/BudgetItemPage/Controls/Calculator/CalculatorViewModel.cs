@@ -108,6 +108,8 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
                         {
                             if (param != null)
                             {
+                                if (string.IsNullOrEmpty(this.CurrentArithmeticalNumber))
+                                    return;
                                 if (this._lastOperation != ArithmeticOperation.None ||
                                     this._lastOperation != ArithmeticOperation.Result)
                                 {

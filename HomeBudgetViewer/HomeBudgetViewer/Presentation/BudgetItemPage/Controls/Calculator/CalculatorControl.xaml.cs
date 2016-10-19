@@ -22,7 +22,6 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
         public CalculatorControl()
         {
             this.InitializeComponent();
-            this.DataContext = new CalculatorViewModel(ViewModelLocator.Instance.BudgetItemPageViewModel);
         }
     }
 }
