@@ -1,0 +1,153 @@
+﻿<Page
+    x:Class="HomeBudgetViewer.Presentation.OverviewPage.OverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Presentation.OverviewPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:enum="using:HomeBudgetViewer.Models.Enum"
+    xmlns:conventers="using:HomeBudgetViewer.Conventers"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=OverviewPageViewModel}"
+    x:Name="Root">
+
+    <Page.Resources>
+        <conventers:CategoryModelToImageConventer x:Key="CategoryToImageConventer"/>
+        <conventers:CategoryModelToBrushConventer x:Key="CategoryToBrushConventer"/>
+    </Page.Resources>
+    
+    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <controls:PageHeader      
+                x:Uid="OverviewHeader"
+                Frame="{x:Bind Frame}"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True" />
+            <!--Month switiching section-->
+            <Grid Grid.Row="1" Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Background="{StaticResource RedAppBrush}"
+                    Command="{Binding SwitchMonthCommand}"
+                    MinWidth="100"
+                    >
+                    <Button.CommandParameter>
+                        <enum:SwitchingMonthDirection>Previous</enum:SwitchingMonthDirection>
+                    </Button.CommandParameter>
+                    <Button.Content>
+                        <SymbolIcon 
+                            HorizontalAlignment="Left"
+                            Symbol="Previous"
+                            Foreground="White"/>
+                    </Button.Content>
+                </Button>
+                <TextBlock
+                    Grid.Column="1"
+                    Text="{Binding CurrentDateHeader}"
+                    FontSize="32"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                <Button
+                    Grid.Column="2"
+                    Background="{StaticResource RedAppBrush}"
+                    Command="{Binding SwitchMonthCommand}"
+                    MinWidth="100"
+                    >
+                    <Button.CommandParameter>
+                        <enum:SwitchingMonthDirection>Next</enum:SwitchingMonthDirection>
+                    </Button.CommandParameter>
+                    <Button.Content>
+                        <SymbolIcon 
+                            Symbol="Next"
+                            Foreground="White"
+                            HorizontalAlignment="Right"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <!--List od budget items-->
+            <ListBox 
+                Grid.Row="2"
+                SelectedItem="{Binding SelectedBudgetItem, Mode=TwoWay}"
+                ItemsSource="{Binding CurrentItems}"
+                HorizontalContentAlignment="Stretch">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid RelativePanel.AlignLeftWith="True" Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="2"
+                                    VerticalAlignment="Center"
+                                    CornerRadius="42"
+                                    Background="{Binding Category, Converter={StaticResource CategoryToBrushConventer}}"
+                                    Width="42"
+                                    Height="42"
+                                    Margin="5,0">
+                                    <Image
+                                        Width="36"
+                                        Height="36"
+                                        Source="{Binding Category, Converter={StaticResource CategoryToImageConventer}}"/>
+                                </Border>
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Date}"
+                                    FontSize="16"
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"/>
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Description}"
+                                    FontSize="12"
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                            <!--Money-->
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1" Margin="25,0">
+                                <TextBlock
+                                    Text="{Binding MoneyValue}"
+                                    FontSize="24"/>
+                                <TextBlock
+                                    Text="{Binding ElementName=Root, Path=DataContext.CurrentCurrencyString}"
+                                    FontSize="24"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </ScrollViewer>
+</Page>

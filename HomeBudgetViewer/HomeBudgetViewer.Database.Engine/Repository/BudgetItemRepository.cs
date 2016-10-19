@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
@@ -21,5 +22,12 @@ namespace HomeBudgetViewer.Database.Engine.Repository
             get { return Context as BudgetContext; }
         }
 
+        public List<BudgetItem> GetAllOfUserByDate(int userId, DateTime date)
+        {
+            var items = BudgetContext.BudgetItem.
+                Where(item=> item.Date.Month == date.Month && item.Date.Year == date.Year && item.UserId==userId).ToList();
+
+            return items;
+        }
     }
 }

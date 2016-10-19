@@ -103,7 +103,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
 
                     var budgetItem = new BudgetItem()
                     {
-                        Category = this.SelectedCategory.CategoryName,
+                        Category = this.SelectedCategory.CategoryEnum.ToString(),
                         UserId = SettingsService.Instance.CurrentUser.Id,
                         Date = DateTime.Now,
                         Description = this.ItemDescription,

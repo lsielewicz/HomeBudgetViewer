@@ -260,12 +260,63 @@
     <value>Pożyczki</value>
     <comment>CategoryEnum</comment>
   </data>
+  <data name="Month1" xml:space="preserve">
+    <value>Styczeń</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month10" xml:space="preserve">
+    <value>Październik</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month11" xml:space="preserve">
+    <value>Listopad</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month12" xml:space="preserve">
+    <value>Grudzień</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month2" xml:space="preserve">
+    <value>Luty</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month3" xml:space="preserve">
+    <value>Marzec</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month4" xml:space="preserve">
+    <value>Kwiecień</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month5" xml:space="preserve">
+    <value>Maj</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month6" xml:space="preserve">
+    <value>Czerwiec</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month7" xml:space="preserve">
+    <value>Lipiec</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month8" xml:space="preserve">
+    <value>Sierpień</value>
+    <comment>Months</comment>
+  </data>
+  <data name="Month9" xml:space="preserve">
+    <value>Wrzesień</value>
+    <comment>Months</comment>
+  </data>
   <data name="OkText.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Inne</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="OverviewHeader.Text" xml:space="preserve">
+    <value>Przegląd</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Osobiste</value>

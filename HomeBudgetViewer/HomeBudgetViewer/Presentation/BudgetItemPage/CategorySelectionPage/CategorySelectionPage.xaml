@@ -38,8 +38,7 @@
             Grid.Row="1"
             Margin="0,15"
             SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
-            ItemsSource="{Binding PossibleCategories, Mode=TwoWay}"
-           >
+            ItemsSource="{Binding PossibleCategories, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

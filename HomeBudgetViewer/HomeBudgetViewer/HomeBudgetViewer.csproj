@@ -120,6 +120,8 @@
       <DependentUpon>UpdateUserProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
+    <Compile Include="Conventers\CategoryModelToBrushConventer.cs" />
+    <Compile Include="Conventers\CategoryModelToImageConventer.cs" />
     <Compile Include="Conventers\CategoryToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryToImageConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
@@ -142,6 +144,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\MainPage\MainPageViewModel.cs" />
+    <Compile Include="Presentation\OverviewPage\OverviewPage.xaml.cs">
+      <DependentUpon>OverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OverviewPage\OverviewPageViewModel.cs" />
     <Compile Include="Presentation\SettingsPage\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -253,6 +259,10 @@
     <Page Include="Presentation\MainPage\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\OverviewPage\OverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\SettingsPage.xaml">
       <SubType>Designer</SubType>
