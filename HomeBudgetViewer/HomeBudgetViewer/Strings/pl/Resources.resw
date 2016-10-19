@@ -125,6 +125,9 @@
     <value>O programie</value>
     <comment>Settings</comment>
   </data>
+  <data name="AddNewItem.Text" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
   <data name="AddNewProfile.Text" xml:space="preserve">
     <value>Dodaj nowy profil użytkownika</value>
     <comment>UserProfilePart</comment>
@@ -135,6 +138,9 @@
   <data name="Animals" xml:space="preserve">
     <value>Zwierzęta</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="Assign.Text" xml:space="preserve">
+    <value>Zatwierdź</value>
   </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Pokaż przycisk cofania widoku</value>
@@ -147,6 +153,9 @@
   <data name="BackButtonSetting.OnContent" xml:space="preserve">
     <value>Przycisk cofania w pasku tytułowym</value>
     <comment>Settings</comment>
+  </data>
+  <data name="BudgetItemHeader.Text" xml:space="preserve">
+    <value>Budżet</value>
   </data>
   <data name="CancelText.Text" xml:space="preserve">
     <value>Anuluj</value>
@@ -190,6 +199,9 @@
     <value>Rozrywka</value>
     <comment>CategoryEnum</comment>
   </data>
+  <data name="Expense.Text" xml:space="preserve">
+    <value>Wydatek</value>
+  </data>
   <data name="Fashion" xml:space="preserve">
     <value>Moda</value>
     <comment>CategoryEnum</comment>
@@ -229,6 +241,9 @@
   </data>
   <data name="HomeTestTextBox.Text" xml:space="preserve">
     <value>TEST PL</value>
+  </data>
+  <data name="Income.Text" xml:space="preserve">
+    <value>Przychód</value>
   </data>
   <data name="Internet" xml:space="preserve">
     <value>Internet</value>
@@ -295,6 +310,9 @@
   <data name="SettingsPart.Header" xml:space="preserve">
     <value>Ustawienia</value>
     <comment>Settings</comment>
+  </data>
+  <data name="ShortDescription.Text" xml:space="preserve">
+    <value>Krótki opis:</value>
   </data>
   <data name="Sport" xml:space="preserve">
     <value>Sport</value>

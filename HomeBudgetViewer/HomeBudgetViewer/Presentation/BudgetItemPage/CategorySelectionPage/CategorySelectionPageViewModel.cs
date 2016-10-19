@@ -13,7 +13,6 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.CategorySelectionPage
         public CategorySelectionPageViewModel()
         {
             var localizedCategories = this.GetLocalizedCategories(CategoryModel.PossibleCategories);
-            //this.PossibleCategories = new ObservableCollection<CategoryModel>(CategoryModel.PossibleCategories);
             this.PossibleCategories = new ObservableCollection<CategoryModel>(localizedCategories);
         }
         public ObservableCollection<CategoryModel> PossibleCategories { get; set; }

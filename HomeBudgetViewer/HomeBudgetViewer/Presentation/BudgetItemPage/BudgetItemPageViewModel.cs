@@ -22,10 +22,11 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         private CategoryModel _selectedCategory;
         private string _itemDescription;
         private ItemType _budgetItemType;
+
         public BudgetItemPageViewModel()
         {
             this.CalculatorViewModel = new CalculatorViewModel(this);
-            this.SelectedCategory = CategoryModel.PossibleCategories.FirstOrDefault();
+            this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
         }
 
         public CalculatorViewModel CalculatorViewModel { get; set; }
@@ -140,7 +141,8 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         {
             this.CalculatorViewModel.ClearOutputCommand.Execute(this.CalculatorViewModel);
             this.ItemDescription = string.Empty;
-            this.SelectedCategory = CategoryModel.PossibleCategories.FirstOrDefault();
+            this.SelectedCategory =
+                ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
         }
 
     }
