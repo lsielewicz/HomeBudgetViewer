@@ -12,162 +12,213 @@
     d:DesignWidth="400"
     d:DataContext="{d:DesignInstance local:CalculatorViewModel}">
 
+    <UserControl.Resources>
+        <Style x:Key="CalculatorButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
         <!--Display section-->
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Orientation="Horizontal">
+        <StackPanel 
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4" 
+            BorderBrush="{StaticResource MainAppBrush}" 
+            BorderThickness="0,0,0,1" 
+            Orientation="Horizontal"
+            Margin="25,25,0,25">
             <TextBlock
                 x:Name="MemoryTextBox"
                 Text="{Binding MemoryArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
-                FontWeight="Light"
-                FontSize="24"
+                FontSize="48"
                 Foreground="Black"
                 />
             <TextBlock
                 x:Name="SignTextBox"
                 RelativePanel.RightOf="MemoryTextBox"
                 Text="{Binding ArithmeticalSignText, UpdateSourceTrigger=PropertyChanged}"
-                FontWeight="Light"
-                FontSize="24"
+                FontSize="48"
                 Foreground="Black"/>
             <TextBlock
                 RelativePanel.RightOf="SignTextBox"
                 Text="{Binding CurrentArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
-                FontWeight="Light"
-                FontSize="24"
+                FontSize="48"
                 Foreground="Black"/>
         </StackPanel>
         <!--NumericButtons-->
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-            <Button
-                Content="7"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    7
-                </Button.CommandParameter>
-            </Button>
-            <Button
-                Content="8"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    8
-                </Button.CommandParameter>
-            </Button>
-            <Button
-                Content="9"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    9
-                </Button.CommandParameter>
-            </Button>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
-            <Button
-                Content="4"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    4
-                </Button.CommandParameter>
-            </Button>
-            <Button
-                Content="5"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    5
-                </Button.CommandParameter>
-            </Button>
-            <Button
-                Content="6"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    6
-                </Button.CommandParameter>
-            </Button>
-        </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
-            <Button
-                Content="1"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    1
-                </Button.CommandParameter>
-            </Button>
-            <Button
-                Content="2"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    2
-                </Button.CommandParameter>
-            </Button>
-            <Button
-                Content="3"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>
-                    3
-                </Button.CommandParameter>
-            </Button>
-        </StackPanel>
-        <!--Coma/Zero/Clear-->
-        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
-            <Button
-                Content=","
-                Command="{Binding AppendCommaCommand}">
-                
-            </Button>
-            <Button
-                Content="3"
-                Command="{Binding HandleNumberCommand}">
-                <Button.CommandParameter>0</Button.CommandParameter>
-            </Button>
-            <Button
-                Content="C"
-                Command="{Binding ClearOutputCommand}"/>
-        </StackPanel>
-        <!--Operation buttons column-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="7"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>7</Button.CommandParameter>
+        </Button>
         <Button
             Grid.Row="1"
             Grid.Column="1"
+            Content="8"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>8</Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Content="9"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>9</Button.CommandParameter>
+        </Button>
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Content="4"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>4</Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Content="5"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>5</Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Content="6"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>6</Button.CommandParameter>
+        </Button>
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="0"
+            Content="1"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>1</Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Content="2"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>2</Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="3"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>3</Button.CommandParameter>
+        </Button>
+        <!--Coma/Zero/Undo-->
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Content=","
+            Command="{Binding AppendCommaCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+        </Button>
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Content="0"
+            Command="{Binding HandleNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}">
+            <Button.CommandParameter>0</Button.CommandParameter>
+        </Button>
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            Command="{Binding UndoLastNumberCommand}"
+            Style="{StaticResource CalculatorButtonStyle}"
+            FontWeight="Normal">
+            <Button.Content>
+                <SymbolIcon 
+                    Foreground="Black" 
+                    Symbol="Back"/>
+            </Button.Content>
+        </Button>
+        <!--Operation buttons column-->
+        <Button
+            Grid.Row="1"
+            Grid.Column="3"
             Command="{Binding HandleArithmeticalOperationCommand}"
-            Content="+">
+            Content="+"
+            Style="{StaticResource CalculatorButtonStyle}"
+            Background="#E6E6E6"
+            FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Addition</enum:ArithmeticOperation>
             </Button.CommandParameter>
         </Button>
         <Button
             Grid.Row="2"
-            Grid.Column="1"
+            Grid.Column="3"
             Command="{Binding HandleArithmeticalOperationCommand}"
-            Content="-">
+            Content="-"
+            Style="{StaticResource CalculatorButtonStyle}"
+            Background="#E6E6E6"
+            FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Substraction</enum:ArithmeticOperation>
             </Button.CommandParameter>
         </Button>
         <Button
             Grid.Row="3"
-            Grid.Column="1"
+            Grid.Column="3"
             Command="{Binding HandleArithmeticalOperationCommand}"
-            Content="*">
+            Content="*"
+            Style="{StaticResource CalculatorButtonStyle}"
+            Background="#E6E6E6"
+            FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Multiplication</enum:ArithmeticOperation>
             </Button.CommandParameter>
         </Button>
         <Button
             Grid.Row="4"
-            Grid.Column="1"
+            Grid.Column="3"
             Command="{Binding HandleArithmeticalOperationCommand}"
-            Content="/">
+            Content="/"
+            Style="{StaticResource CalculatorButtonStyle}"
+            Background="#E6E6E6"
+            FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Division</enum:ArithmeticOperation>
             </Button.CommandParameter>
@@ -175,16 +226,21 @@
         <!--Result-->
         <Button
             Grid.Row="5"
-            Grid.Column="1"
+            Grid.Column="3"
             Command="{Binding CalculateResultCommand}"
-            Content="=">
+            Content="="
+            Style="{StaticResource CalculatorButtonStyle}"
+            Background="#E6E6E6"
+            FontWeight="Normal">
         </Button>
-        <!--Undo-->
+        <!--Clear-->
         <Button
             Grid.Row="5"
-            Grid.Column="0"
-            Command="{Binding UndoLastNumberCommand}"
-            Content="Undo">
-        </Button>
+            Grid.Column="2"
+            Content="C"
+            Command="{Binding ClearOutputCommand}"
+            Style="{StaticResource CalculatorButtonStyle}"
+            Background="#E6E6E6"
+            FontWeight="Normal"/>
     </Grid>
 </UserControl>

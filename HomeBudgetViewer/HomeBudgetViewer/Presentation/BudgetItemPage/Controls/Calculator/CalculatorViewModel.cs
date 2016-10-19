@@ -21,7 +21,6 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
         private string _arithmeticalSignText;
         private ArithmeticOperation _lastOperation;
 
-
         public CalculatorViewModel(AppViewModelBase parentViewModel)
         {
             _parentViewModel = parentViewModel;
@@ -188,10 +187,10 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
                         this.CurrentArithmeticalNumber = string.Empty;
                         this._lastOperation = ArithmeticOperation.None;
                     }
-                    if (this.CurrentArithmeticalNumber.Contains('.') || string.IsNullOrEmpty(this.CurrentArithmeticalNumber))
+                    if (this.CurrentArithmeticalNumber.Contains(',') || string.IsNullOrEmpty(this.CurrentArithmeticalNumber))
                         return;
 
-                    this.CurrentArithmeticalNumber += ".";
+                    this.CurrentArithmeticalNumber += ",";
                 }));
             }
         }
