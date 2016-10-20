@@ -1,0 +1,30 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Assets.Images">
+    
+    <!--Categories-->
+    <BitmapImage x:Key="Car" UriSource="Categories/Car.png"/>
+    <BitmapImage x:Key="Food" UriSource="Categories/Food.png"/>
+    <BitmapImage x:Key="FoodOutsideTheHome" UriSource="Categories/FoodOutsideTheHome.png"/>
+    <BitmapImage x:Key="Sport" UriSource="Categories/Sport.png"/>
+    <BitmapImage x:Key="Transport" UriSource="Categories/Transport.png"/>
+    <BitmapImage x:Key="Entertainment" UriSource="Categories/Entertainment.png"/>
+    <BitmapImage x:Key="Culture" UriSource="Categories/Culture.png"/>
+    <BitmapImage x:Key="Clothes" UriSource="Categories/Clothes.png"/>
+    <BitmapImage x:Key="Personal" UriSource="Categories/Personal.png"/>
+    <BitmapImage x:Key="Children" UriSource="Categories/Children.png"/>
+    <BitmapImage x:Key="Animals" UriSource="Categories/Animals.png"/>
+    <BitmapImage x:Key="Home" UriSource="Categories/Home.png"/>
+    <BitmapImage x:Key="Phone" UriSource="Categories/Phone.png"/>
+    <BitmapImage x:Key="Internet" UriSource="Categories/Internet.png"/>
+    <BitmapImage x:Key="Electronic" UriSource="Categories/Electronic.png"/>
+    <BitmapImage x:Key="Credit" UriSource="Categories/Credit.png"/>
+    <BitmapImage x:Key="Lent" UriSource="Categories/Lent.png"/>
+    <BitmapImage x:Key="Vacation" UriSource="Categories/Vacation.png"/>
+    <BitmapImage x:Key="Other" UriSource="Categories/Other.png"/>
+    <BitmapImage x:Key="Fashion" UriSource="Categories/Fashion.png"/>
+    <BitmapImage x:Key="Health" UriSource="Categories/Health.png"/>
+    <BitmapImage x:Key="Salary" UriSource="Categories/Salary.png"/>
+    <BitmapImage x:Key="Drinking" UriSource="Categories/Drinking.png"/>
+</ResourceDictionary>

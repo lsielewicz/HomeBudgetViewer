@@ -9,24 +9,26 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <!--Header-->
-        <controls:PageHeader         
-            Frame="{x:Bind Frame}"
-            RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.AlignTopWithPanel="True" 
-            Text="{Binding HelloMessage}"/>
-        <!--Content-->
-        <TextBlock 
-            Grid.Row="1"
-            x:Uid="HomeTestTextBox"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="24"/>
-    </Grid>
+    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <controls:PageHeader         
+                Frame="{x:Bind Frame}"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True" 
+                Text="{Binding HelloMessage}"/>
+            <!--Content-->
+            <TextBlock 
+                    Grid.Row="1"
+                    x:Uid="HomeTestTextBox"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="24"/>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -11,6 +11,8 @@
             <presentation:ViewModelLocator x:Key="Locator"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Custom.xaml" />
+                <ResourceDictionary Source="Assets/Images/AppImages.xaml"/>
+                <ResourceDictionary Source="Styles/AppBrushes.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

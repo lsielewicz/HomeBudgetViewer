@@ -9,6 +9,8 @@
     xmlns:homeBudgetViewer="using:HomeBudgetViewer"
     xmlns:settingsPage="using:HomeBudgetViewer.Presentation.SettingsPage"
     xmlns:aboutPage="using:HomeBudgetViewer.Presentation.AboutPage"
+    xmlns:budgetItemPage="using:HomeBudgetViewer.Presentation.BudgetItemPage"
+    xmlns:overviewPage="using:HomeBudgetViewer.Presentation.OverviewPage"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -22,6 +24,30 @@
                         Symbol="Home" />
                     <TextBlock 
                         x:Uid="HamburgerHome"
+                        Margin="12,0,0,0" 
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </controls:HamburgerButtonInfo>
+            <!--Add new budget item-->
+            <controls:HamburgerButtonInfo ClearHistory="True" PageType="budgetItemPage:BudgetItemPage" AutomationProperties.Name="Jerry">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon
+                        Width="48" Height="48"
+                        Symbol="Add" />
+                    <TextBlock 
+                        x:Uid="AddNewItem"
+                        Margin="12,0,0,0" 
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </controls:HamburgerButtonInfo>
+            <!--Overview-->
+            <controls:HamburgerButtonInfo ClearHistory="True" PageType="overviewPage:OverviewPage" AutomationProperties.Name="Jerry">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon
+                        Width="48" Height="48"
+                        Symbol="View" />
+                    <TextBlock 
+                        x:Uid="OverviewHeader"
                         Margin="12,0,0,0" 
                         VerticalAlignment="Center"/>
                 </StackPanel>

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HomeBudgetViewer.Presentation.AboutPage;
+using HomeBudgetViewer.Presentation.BudgetItemPage;
+using HomeBudgetViewer.Presentation.BudgetItemPage.CategorySelectionPage;
 using HomeBudgetViewer.Presentation.MainPage;
+using HomeBudgetViewer.Presentation.OverviewPage;
 using HomeBudgetViewer.Presentation.SettingsPage;
 using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage;
 using Microsoft.Practices.ServiceLocation;
@@ -15,6 +18,13 @@ namespace HomeBudgetViewer.Presentation
 {
     public class ViewModelLocator
     {
+        private static ViewModelLocator _instance;
+
+        public static ViewModelLocator Instance
+        {
+            get { return _instance ?? (_instance = new ViewModelLocator()); }
+        }
+
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(()=>SimpleIoc.Default);
@@ -31,6 +41,24 @@ namespace HomeBudgetViewer.Presentation
             SimpleIoc.Default.Register<SettingsPageViewModel>();
             SimpleIoc.Default.Register<AboutPageViewModel>();
             SimpleIoc.Default.Register<UserSelectionPageVIewModel>();
+            SimpleIoc.Default.Register<BudgetItemPageViewModel>();
+            SimpleIoc.Default.Register<CategorySelectionPageViewModel>();
+            SimpleIoc.Default.Register<OverviewPageViewModel>();
+        }
+
+        public OverviewPageViewModel OverviewPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<OverviewPageViewModel>(); }
+        }
+
+        public CategorySelectionPageViewModel CategorySelectionPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<CategorySelectionPageViewModel>(); }
+        }
+
+        public BudgetItemPageViewModel BudgetItemPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<BudgetItemPageViewModel>(); }
         }
 
         public UserSelectionPageVIewModel UserSelectionPageVIewModel
