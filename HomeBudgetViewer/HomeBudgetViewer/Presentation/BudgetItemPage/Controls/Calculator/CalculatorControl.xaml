@@ -16,7 +16,6 @@
         <Style x:Key="CalculatorButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Light"/>
-            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -57,19 +56,16 @@
                 x:Name="MemoryTextBox"
                 Text="{Binding MemoryArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="48"
-                Foreground="Black"
                 />
             <TextBlock
                 x:Name="SignTextBox"
                 RelativePanel.RightOf="MemoryTextBox"
                 Text="{Binding ArithmeticalSignText, UpdateSourceTrigger=PropertyChanged}"
-                FontSize="48"
-                Foreground="Black"/>
+                FontSize="48"/>
             <TextBlock
                 RelativePanel.RightOf="SignTextBox"
                 Text="{Binding CurrentArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
-                FontSize="48"
-                Foreground="Black"/>
+                FontSize="48"/>
         </StackPanel>
         <!--NumericButtons-->
         <Button
@@ -170,7 +166,6 @@
             FontWeight="Normal">
             <Button.Content>
                 <SymbolIcon 
-                    Foreground="Black" 
                     Symbol="Back"/>
             </Button.Content>
         </Button>
@@ -182,6 +177,7 @@
             Content="+"
             Style="{StaticResource CalculatorButtonStyle}"
             Background="#E6E6E6"
+            Foreground="Black"
             FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Addition</enum:ArithmeticOperation>
@@ -194,6 +190,7 @@
             Content="-"
             Style="{StaticResource CalculatorButtonStyle}"
             Background="#E6E6E6"
+            Foreground="Black"
             FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Substraction</enum:ArithmeticOperation>
@@ -206,6 +203,7 @@
             Content="*"
             Style="{StaticResource CalculatorButtonStyle}"
             Background="#E6E6E6"
+            Foreground="Black"
             FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Multiplication</enum:ArithmeticOperation>
@@ -218,6 +216,7 @@
             Content="/"
             Style="{StaticResource CalculatorButtonStyle}"
             Background="#E6E6E6"
+            Foreground="Black"
             FontWeight="Normal">
             <Button.CommandParameter>
                 <enum:ArithmeticOperation>Division</enum:ArithmeticOperation>
@@ -231,6 +230,7 @@
             Content="="
             Style="{StaticResource CalculatorButtonStyle}"
             Background="#E6E6E6"
+            Foreground="Black"
             FontWeight="Normal">
         </Button>
         <!--Clear-->
@@ -241,6 +241,7 @@
             Command="{Binding ClearOutputCommand}"
             Style="{StaticResource CalculatorButtonStyle}"
             Background="#E6E6E6"
+            Foreground="Black"
             FontWeight="Normal"/>
     </Grid>
 </UserControl>

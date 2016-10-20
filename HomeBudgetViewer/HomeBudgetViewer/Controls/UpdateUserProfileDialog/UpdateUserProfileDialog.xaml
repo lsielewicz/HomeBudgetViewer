@@ -28,6 +28,7 @@
             <TextBlock
                 x:Uid="UserProfileDialogProfileCurrency"/>
             <ComboBox
+                x:Name="ComboBox"
                 HorizontalAlignment="Stretch"
                 SelectedValue="{Binding ProfileCurrency, Mode=TwoWay}"
                 ItemsSource="{Binding Currencies}">
@@ -42,8 +43,7 @@
                                 />
                             </Border>
                             <TextBlock
-                                Text="{Binding CurrencyName}"
-                                Foreground="Black"/>
+                                Text="{Binding CurrencyName}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>

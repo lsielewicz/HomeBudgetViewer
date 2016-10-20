@@ -115,6 +115,9 @@
     <Compile Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml.cs">
       <DependentUpon>NoActivitiesTextControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PointerControl\PointerControl.xaml.cs">
+      <DependentUpon>PointerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Template10\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
@@ -252,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PointerControl\PointerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,67 +6,110 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:aboutPage="using:HomeBudgetViewer.Presentation.AboutPage"
     xmlns:controls="using:Template10.Controls"
+    xmlns:pointerControl="using:HomeBudgetViewer.Controls.PointerControl"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
     DataContext="{Binding Source={StaticResource Locator}, Path=AboutPageViewModel}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
         
-        <controls:PageHeader 
-            Grid.Row="0"
-            x:Uid="AboutPart"
-            Frame="{x:Bind Frame}"
-            RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.AlignTopWithPanel="True" />
+            <controls:PageHeader 
+                Grid.Row="0"
+                x:Uid="AboutPart"
+                Frame="{x:Bind Frame}"/>
         
-        <Border 
-            Grid.Row="1"
-            x:Name="LogoImage" 
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top" BorderBrush="DimGray"
-            BorderThickness="1" IsHitTestVisible="False"
-            RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.AlignTopWithPanel="True">
-            <Border.Background>
-                <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
-            </Border.Background>
-            <Image Margin="12" Source="{Binding Logo}"
-                               Stretch="None" />
-        </Border>
-
-        <TextBlock 
-            Grid.Row="1"
-            x:Name="DisplayNameTextBlock" 
-            Margin="0,0,0,12"
-            FontSize="24" RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.AlignRightWith="LogoImage"
-            RelativePanel.AlignTopWithPanel="True"
-            Text="{Binding DisplayName}" />
-
-        <TextBlock 
-            Grid.Row="2"
-            x:Name="PublisherTextBlock"
-            RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.Below="DisplayNameTextBlock"
-            Text="{Binding Publisher}" />
-
-        <TextBlock 
-            Grid.Row="3"
-            x:Name="VersionTextBlock"
-            RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.Below="PublisherTextBlock">
-            <Run>Version</Run>
-            <Run Text="{Binding Version}" />
-        </TextBlock>
-
-    </Grid>
+            <!--Application name-->
+            <TextBlock 
+                Grid.Row="1"
+                Margin="0,0,0,12"
+                FontSize="32"
+                Text="{Binding DisplayName}" 
+                HorizontalAlignment="Center"
+                />
+            <!--Image-->
+            <Border 
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top" 
+                BorderBrush="Transparent"
+                CornerRadius="48"
+                BorderThickness="0" 
+                IsHitTestVisible="False"
+                Margin="15">
+                <Border.Background>
+                    <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
+                </Border.Background>
+                <Image
+                    Margin="12" 
+                    Source="{Binding Logo}"
+                    Stretch="None" />
+            </Border>
+            <!--Author-->
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <pointerControl:PointerControl/>
+                <TextBlock 
+                    x:Uid="Author"
+                    FontSize="24"
+                    VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Margin="48,0,0,0">
+                <TextBlock
+                    Text="{Binding Publisher}"
+                    FontSize="16"
+                    FontWeight="Light"/>
+                <HyperlinkButton
+                    NavigateUri="https://github.com/lsielewicz"
+                    Content="https://github.com/lsielewicz"
+                    FontSize="16"
+                    FontWeight="Light"/>
+                <HyperlinkButton
+                    NavigateUri="https://pl.linkedin.com/in/%C5%82ukasz-sielewicz-569298bb"
+                    Content="LinkedIn"
+                    FontSize="16"
+                    FontWeight="Light"/>
+            </StackPanel> 
+            <!--Version-->
+            <StackPanel Grid.Row="5" Orientation="Horizontal">
+                <pointerControl:PointerControl/>
+                <TextBlock 
+                    x:Uid="Version"
+                    FontSize="24"
+                    VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Margin="48,0,0,0">
+                <TextBlock
+                    Text="{Binding Version}"
+                    FontSize="16"
+                    FontWeight="Light"/>
+            </StackPanel>
+            <!--Icons-->
+            <StackPanel Grid.Row="7" Orientation="Horizontal">
+                <pointerControl:PointerControl/>
+                <TextBlock 
+                    x:Uid="Icons"
+                    FontSize="24"
+                    VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="8" Margin="48,0,0,0">
+                <HyperlinkButton
+                    NavigateUri="https://icons8.com/"
+                    Content="https://icons8.com/"
+                    FontSize="16"
+                    FontWeight="Light"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

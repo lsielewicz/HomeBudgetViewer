@@ -68,7 +68,7 @@ namespace HomeBudgetViewer.Controls.UpdateUserProfileDialog
                 if (this.ProfileName != _user.Name && unitOfWork.Users.CheckIfUserNameExists(this.ProfileName))
                     return false;
                 _user.Name = this.ProfileName;
-                _user.Currency = this.ProfileCurrency.CurrencyName;
+                _user.Currency = this.ProfileCurrency.CurrencyEnum.ToString();
                 unitOfWork.Users.Update(_user);
                 unitOfWork.Complete();
             }

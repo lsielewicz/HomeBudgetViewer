@@ -20,7 +20,7 @@ namespace HomeBudgetViewer.Conventers
             {
                 return Application.Current.Resources[$"{(Category)value}Brush"] as LinearGradientBrush;
             }
-            return Colors.Black;
+            return new SolidColorBrush(Colors.Black);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -6,7 +6,7 @@
         Zloty,
         Dolar,
         Yen,
-        Peso,
+        Pesos,
         Pound,
         TaiwanNewDolar
     }

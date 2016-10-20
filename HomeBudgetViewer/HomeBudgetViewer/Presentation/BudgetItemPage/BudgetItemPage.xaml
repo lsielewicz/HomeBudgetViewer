@@ -139,7 +139,6 @@
                     <TextBlock 
                         Text="{Binding SelectedCategory.CategoryName}"
                         VerticalAlignment="Center"
-                        Foreground="Black"
                         FontWeight="Light"/>
                 </StackPanel>
             </Button>

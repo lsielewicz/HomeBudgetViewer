@@ -142,6 +142,9 @@
   <data name="Assign.Text" xml:space="preserve">
     <value>Zatwierdź</value>
   </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>Autor</value>
+  </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Pokaż przycisk cofania widoku</value>
     <comment>Settings</comment>
@@ -256,6 +259,9 @@
   </data>
   <data name="HomeTestTextBox.Text" xml:space="preserve">
     <value>TEST PL</value>
+  </data>
+  <data name="Icons.Text" xml:space="preserve">
+    <value>Icons</value>
   </data>
   <data name="Income.Text" xml:space="preserve">
     <value>Przychód</value>
@@ -454,5 +460,8 @@
   </data>
   <data name="ValuesCannotBeEmpty" xml:space="preserve">
     <value>Wartości nie mogą być puste</value>
+  </data>
+  <data name="Version.Text" xml:space="preserve">
+    <value>Wersja</value>
   </data>
 </root>

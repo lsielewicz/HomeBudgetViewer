@@ -25,7 +25,12 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
         {
             //var viewModel = new AddUserProfileDialogViewModel(this);
             this.InitializeComponent();
-            this.DataContext = new AddUserProfileDialogViewModel(this); ;
+            this.DataContext = new AddUserProfileDialogViewModel(this);
+            this.Loaded += (s, e) =>
+            {
+                this.ComboBox.SelectedIndex = 0;
+            };
+
         }
 
     }

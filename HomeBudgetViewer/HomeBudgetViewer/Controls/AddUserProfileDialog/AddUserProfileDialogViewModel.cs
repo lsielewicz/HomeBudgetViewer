@@ -65,7 +65,7 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
                 unitOfWork.Users.Add(new User()
                 {
                     Name = this.ProfileName,
-                    Currency = this.ProfileCurrency.CurrencyName
+                    Currency = this.ProfileCurrency.CurrencyEnum.ToString()
                 });
                 unitOfWork.Complete();
             }

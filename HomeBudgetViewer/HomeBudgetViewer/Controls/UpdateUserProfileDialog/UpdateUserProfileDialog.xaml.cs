@@ -26,7 +26,11 @@ namespace HomeBudgetViewer.Controls.UpdateUserProfileDialog
         public UpdateUserProfileDialog(User user)
         {
             this.InitializeComponent();
-            this.DataContext = new UpdateUserProfileDialogViewModel(this, user); ;
+            this.DataContext = new UpdateUserProfileDialogViewModel(this, user);
+            this.Loaded += (s, e) =>
+            {
+                this.ComboBox.SelectedIndex = 0;
+            };
         }
 
        
