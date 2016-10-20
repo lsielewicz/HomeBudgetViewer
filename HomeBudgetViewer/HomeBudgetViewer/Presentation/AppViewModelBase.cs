@@ -63,6 +63,17 @@ namespace HomeBudgetViewer.Presentation
             return this._resourceLoader.GetString(resourceKey);
         }
 
+        public string GetLocalizedMonth(int monthIndex)
+        {
+            return this.GetLocalizedString($"Month{monthIndex}");
+        }
+
+        public string GetMoneyValue(double moneyValue)
+        {
+            NumberFormatInfo nfi = (NumberFormatInfo) CultureInfo.InvariantCulture.NumberFormat.Clone();
+            nfi.NumberGroupSeparator = " ";
+            return moneyValue.ToString("#,0.00", nfi);
+        }
 
     }
 }

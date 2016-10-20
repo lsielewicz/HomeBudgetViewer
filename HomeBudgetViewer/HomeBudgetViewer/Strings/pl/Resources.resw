@@ -214,6 +214,9 @@
   <data name="Expenses.Text" xml:space="preserve">
     <value>Wydatki</value>
   </data>
+  <data name="ExpensesT" xml:space="preserve">
+    <value>Wydatki</value>
+  </data>
   <data name="Fashion" xml:space="preserve">
     <value>Moda</value>
     <comment>CategoryEnum</comment>
@@ -258,6 +261,9 @@
     <value>Przychód</value>
   </data>
   <data name="Incomes.Text" xml:space="preserve">
+    <value>Przychody</value>
+  </data>
+  <data name="IncomesT" xml:space="preserve">
     <value>Przychody</value>
   </data>
   <data name="Internet" xml:space="preserve">

@@ -8,5 +8,7 @@ namespace HomeBudgetViewer.Database.Engine.Repository.Interfaces
     {
         List<BudgetItem> GetAllExpensesOfUserByDate(int userId, DateTime date);
         List<BudgetItem> GetAllIncomesOfUserByDate(int userId, DateTime date);
+        double GetSumOfMonthExpenses(int userId, DateTime date);
+        double GetSumOfMonthIncomes(int userId, DateTime date);
     }
 }

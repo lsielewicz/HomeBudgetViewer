@@ -148,12 +148,6 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
             }
         }
 
-
-        private string GetLocalizedMonth(int monthIndex)
-        {
-            return this.GetLocalizedString($"Month{monthIndex}");
-        }
-
         public RelayCommand<object> SwitchItemType
         {
             get

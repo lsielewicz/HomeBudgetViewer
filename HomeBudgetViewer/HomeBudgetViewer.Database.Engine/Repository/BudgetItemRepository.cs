@@ -44,5 +44,25 @@ namespace HomeBudgetViewer.Database.Engine.Repository
 
             return items;
         }
+
+        public double GetSumOfMonthExpenses(int userId, DateTime date)
+        {
+            var sum =
+                BudgetContext.BudgetItem.Where(
+                    item =>
+                        item.User.Id == userId && item.Date.Month == date.Month &&
+                        item.ItemType == ItemType.Expense.ToString()).Sum(item => item.MoneyValue);
+            return sum;
+        }
+
+        public double GetSumOfMonthIncomes(int userId, DateTime date)
+        {
+            var sum =
+                 BudgetContext.BudgetItem.Where(
+                     item =>
+             item.User.Id == userId && item.Date.Month == date.Month &&
+             item.ItemType == ItemType.Income.ToString()).Sum(item => item.MoneyValue);
+            return sum;
+        }
     }
 }
