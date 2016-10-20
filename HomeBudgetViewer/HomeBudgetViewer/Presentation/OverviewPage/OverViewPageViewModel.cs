@@ -51,7 +51,7 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
         {
             if (this.SelectedBudgetItem == null)
                 return;
-            this.NavigationService.Navigate(typeof(BudgetItemPage.BudgetItemPage));
+            this.NavigationService.Navigate(typeof(BudgetItemPage.BudgetItemPage),true);
             MessengerInstance.Send<IsModifyingStateToBudgetItemMessage>(new IsModifyingStateToBudgetItemMessage(this.SelectedBudgetItem));
         }
         public string CurrentDateHeader
@@ -169,6 +169,7 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
                 }));
             }
         }
+        
 
     }
 }

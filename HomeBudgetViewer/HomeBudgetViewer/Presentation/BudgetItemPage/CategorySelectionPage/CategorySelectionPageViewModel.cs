@@ -32,7 +32,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.CategorySelectionPage
 
         private void OnCategoryChanged()
         {
-            this.NavigationService.Navigate(typeof(BudgetItemPage));
+            this.NavigationService.Navigate(typeof(BudgetItemPage),true);
         }
 
         private List<CategoryModel> GetLocalizedCategories(List<CategoryModel> possibleCategories)

@@ -120,6 +120,7 @@
       <DependentUpon>UpdateUserProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
+    <Compile Include="Conventers\BudgetItemActionToVisibilityConventer.cs" />
     <Compile Include="Conventers\CategoryModelToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryModelToImageConventer.cs" />
     <Compile Include="Conventers\CategoryToBrushConventer.cs" />
@@ -182,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Icons\Black\Circled User Male-100.png" />
+    <Content Include="Assets\Icons\Red\Delete-100.png" />
     <Content Include="Assets\Icons\White\Checkmark-96.png" />
     <Content Include="Assets\Images\Categories\Animals.png" />
     <Content Include="Assets\Images\Categories\Car.png" />

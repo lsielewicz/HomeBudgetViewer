@@ -21,6 +21,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
     public class BudgetItemPageViewModel : AppViewModelBase
     {
         private RelayCommand _navigateToCategorySelectionCommand;
+        private RelayCommand _deleteSelectedBudgetItemCommand;
         private RelayCommand<object> _switchItemType;
         private CategoryModel _selectedCategory;
         private string _itemDescription;
@@ -143,7 +144,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                             break;
                     }
                    
-                    this.ClearViewModel();
+                    this.ClearViewModelData();
                 }));
             }
         }
@@ -163,13 +164,14 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
             }
         }
 
-        private void ClearViewModel()
+        public void ClearViewModelData()
         {
             this.CalculatorViewModel.ClearOutputCommand.Execute(this.CalculatorViewModel);
             this.ItemDescription = string.Empty;
             this.SelectedCategory =
                 ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
             this.BudgetItemAction = BudgetItemAction.Adding;
+            this.RaisePropertyChanged("BudgetItemAction");
         }
 
         private void HandleModifyingStateMessage(IsModifyingStateToBudgetItemMessage data)
@@ -185,6 +187,33 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                         c => c.CategoryEnum.ToString() == this.ModifyingItem.Category);
                 this.BudgetItemType = (ItemType)Enum.Parse(typeof(ItemType), this.ModifyingItem.ItemType);
             }
+        }
+
+        public RelayCommand DeleteSelectedBudgetItemCommand
+        {
+            get
+            {
+                return _deleteSelectedBudgetItemCommand ?? (_deleteSelectedBudgetItemCommand = new RelayCommand(() =>
+                {
+                    if (this.ModifyingItem == null)
+                        return;
+
+                    using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                    {
+                        unitOfWork.BudgetItems.Remove(this.ModifyingItem);
+                        unitOfWork.Complete();
+                    }
+                    this.NavigationService.Navigate(typeof(OverviewPage.OverviewPage));
+                    this.ClearViewModelData();
+                }, () => this.ModifyingItem != null && this.BudgetItemAction == BudgetItemAction.Modifying));
+            }
+        }
+
+        public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        {
+            if(parameter == null)
+                this.ClearViewModelData();
+            return base.OnNavigatedToAsync(parameter, mode, state);
         }
     }
 }
