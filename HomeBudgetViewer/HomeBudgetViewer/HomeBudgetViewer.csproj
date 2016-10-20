@@ -112,6 +112,9 @@
     </Compile>
     <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogResult.cs" />
     <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogViewModel.cs" />
+    <Compile Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml.cs">
+      <DependentUpon>NoActivitiesTextControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Template10\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,7 @@
     <Compile Include="Conventers\CategoryModelToImageConventer.cs" />
     <Compile Include="Conventers\CategoryToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryToImageConventer.cs" />
+    <Compile Include="Conventers\CoutOfCollectionItemsToVisibilityConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
     <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
@@ -189,6 +193,7 @@
   <ItemGroup>
     <Content Include="Assets\Icons\Black\Circled User Male-100.png" />
     <Content Include="Assets\Icons\Blue\Ask Question-100 %281%29.png" />
+    <Content Include="Assets\Icons\Gray\Info-500.png" />
     <Content Include="Assets\Icons\Red\Delete-100.png" />
     <Content Include="Assets\Icons\White\Ask Question-100.png" />
     <Content Include="Assets\Icons\White\Checkmark-96.png" />
@@ -239,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ConfirmationDialog\ConfirmationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

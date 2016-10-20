@@ -9,6 +9,7 @@
     xmlns:enum="using:HomeBudgetViewer.Models.Enum"
     xmlns:conventers="using:HomeBudgetViewer.Conventers"
     xmlns:itemType="using:HomeBudgetViewer.Database.Engine.Restrictions.ItemType"
+    xmlns:noActivitiesTextControl="using:HomeBudgetViewer.Controls.NoActivitiesTextControl"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=OverviewPageViewModel}"
     x:Name="Root">
@@ -18,8 +19,11 @@
         <conventers:CategoryModelToBrushConventer x:Key="CategoryToBrushConventer"/>
         <conventers:ItemTypeToForegroundConventer x:Key="ItemTypeToForegroundConventer"/>
         <conventers:ItemTypeToBackgroundConventer x:Key="ItemTypeToBackgroundConventer"/>
+        <conventers:CoutOfCollectionItemsToVisibilityConventer x:Key="CoutOfCollectionItemsToVisibilityConventer"/>
         <itemType:ItemType x:Key="ExpenseItemType">Expense</itemType:ItemType>
         <itemType:ItemType x:Key="IncomeItemType">Income</itemType:ItemType>
+        <enum:ConventerDirection x:Key="NormalConventerDirection">Normal</enum:ConventerDirection>
+        <enum:ConventerDirection x:Key="InverseConventerDirection">Inverse</enum:ConventerDirection>
     </Page.Resources>
     
 
@@ -37,6 +41,14 @@
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True" />
+            <!--Empty collection case-->
+            <noActivitiesTextControl:NoActivitiesTextControl
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Visibility="{Binding CurrentItems.Count, 
+                                     Converter={StaticResource CoutOfCollectionItemsToVisibilityConventer}, 
+                                     ConverterParameter={StaticResource InverseConventerDirection}}"/>
             <!--Month switiching section-->
             <Grid Grid.Row="1" Margin="20,0">
                 <Grid.ColumnDefinitions>
@@ -84,8 +96,15 @@
                 </Button>
             </Grid>
             <!--List od budget items-->
-        <ScrollViewer Grid.Row="2" Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
-            <ListBox 
+        <ScrollViewer 
+            Grid.Row="2" 
+            Margin="0,0,-12,0" 
+            HorizontalContentAlignment="Left" 
+            VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding CurrentItems.Count, 
+                                     Converter={StaticResource CoutOfCollectionItemsToVisibilityConventer}, 
+                                     ConverterParameter={StaticResource NormalConventerDirection}}">
+             <ListBox 
                 SelectedItem="{Binding SelectedBudgetItem, Mode=TwoWay}"
                 ItemsSource="{Binding CurrentItems}"
                 HorizontalContentAlignment="Stretch">
@@ -156,7 +175,13 @@
             </ListBox>
         </ScrollViewer>
         <!--Income/Expense-->
-        <Grid Grid.Row="3" Margin="0,10" VerticalAlignment="Bottom">
+        <Grid 
+            Grid.Row="3"
+            Margin="0,10" 
+            VerticalAlignment="Bottom"
+            Visibility="{Binding CurrentItems.Count, 
+                                     Converter={StaticResource CoutOfCollectionItemsToVisibilityConventer}, 
+                                     ConverterParameter={StaticResource NormalConventerDirection}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

@@ -326,6 +326,9 @@
   <data name="No.Text" xml:space="preserve">
     <value>Nie</value>
   </data>
+  <data name="NoActivities.Text" xml:space="preserve">
+    <value>Brak aktywności w tym okresie czasu</value>
+  </data>
   <data name="OkText.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
