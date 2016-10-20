@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Command;
+using HomeBudgetViewer.Controls.ConfirmationDialog;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
@@ -193,18 +194,24 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         {
             get
             {
-                return _deleteSelectedBudgetItemCommand ?? (_deleteSelectedBudgetItemCommand = new RelayCommand(() =>
+                return _deleteSelectedBudgetItemCommand ?? (_deleteSelectedBudgetItemCommand = new RelayCommand(async () =>
                 {
                     if (this.ModifyingItem == null)
                         return;
 
-                    using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                    var dialog = new ConfirmationDialog(this.GetLocalizedString("RemoveDialogText"));
+                    await dialog.ShowAsync();
+                    if (dialog.ConfirmationDialogResult == ConfirmationDialogResult.Confirmed)
                     {
-                        unitOfWork.BudgetItems.Remove(this.ModifyingItem);
-                        unitOfWork.Complete();
+                        using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                        {
+                            unitOfWork.BudgetItems.Remove(this.ModifyingItem);
+                            unitOfWork.Complete();
+                        }
+                        this.NavigationService.Navigate(typeof(OverviewPage.OverviewPage));
+                        this.ClearViewModelData();
                     }
-                    this.NavigationService.Navigate(typeof(OverviewPage.OverviewPage));
-                    this.ClearViewModelData();
+                                     
                 }, () => this.ModifyingItem != null && this.BudgetItemAction == BudgetItemAction.Modifying));
             }
         }

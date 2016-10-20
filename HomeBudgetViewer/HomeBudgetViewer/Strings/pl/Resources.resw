@@ -157,6 +157,9 @@
   <data name="BudgetItemHeader.Text" xml:space="preserve">
     <value>Budżet</value>
   </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
   <data name="CancelText.Text" xml:space="preserve">
     <value>Anuluj</value>
   </data>
@@ -174,6 +177,12 @@
   <data name="Clothes" xml:space="preserve">
     <value>Ubrania/Odzież</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="Confirm.Text" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="ConfirmationDialog.Title" xml:space="preserve">
+    <value>Potwierdzenie</value>
   </data>
   <data name="Credit" xml:space="preserve">
     <value>Kredyty</value>
@@ -314,6 +323,9 @@
     <value>Wrzesień</value>
     <comment>Months</comment>
   </data>
+  <data name="No.Text" xml:space="preserve">
+    <value>Nie</value>
+  </data>
   <data name="OkText.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -339,6 +351,9 @@
   <data name="RegionAndLanguage.Text" xml:space="preserve">
     <value>Region i język</value>
     <comment>Settings</comment>
+  </data>
+  <data name="RemoveDialogText" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć ten przedmiot?</value>
   </data>
   <data name="RemoveProfile.Text" xml:space="preserve">
     <value>Usuń obecny profil użytkownika</value>

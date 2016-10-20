@@ -107,6 +107,11 @@
     </Compile>
     <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialogViewModel.cs" />
     <Compile Include="Controls\AddUserProfileDialog\UserProfileDialogResult.cs" />
+    <Compile Include="Controls\ConfirmationDialog\ConfirmationDialog.xaml.cs">
+      <DependentUpon>ConfirmationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogResult.cs" />
+    <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogViewModel.cs" />
     <Compile Include="Controls\Template10\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
@@ -183,7 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Icons\Black\Circled User Male-100.png" />
+    <Content Include="Assets\Icons\Blue\Ask Question-100 %281%29.png" />
     <Content Include="Assets\Icons\Red\Delete-100.png" />
+    <Content Include="Assets\Icons\White\Ask Question-100.png" />
     <Content Include="Assets\Icons\White\Checkmark-96.png" />
     <Content Include="Assets\Images\Categories\Animals.png" />
     <Content Include="Assets\Images\Categories\Car.png" />
@@ -228,6 +235,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ConfirmationDialog\ConfirmationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
