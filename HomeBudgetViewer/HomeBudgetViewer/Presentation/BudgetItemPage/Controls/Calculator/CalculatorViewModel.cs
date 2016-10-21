@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
 using HomeBudgetViewer.Models.Enum;
+using HomeBudgetViewer.Services.SettingService;
 
 namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
 {
@@ -19,12 +21,15 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
         private string _currentArithmeticalNumber;
         private string _memoryArithmeticalNumber;
         private string _arithmeticalSignText;
+        private string _currentCurrency;
         private ArithmeticOperation _lastOperation;
 
         public CalculatorViewModel(AppViewModelBase parentViewModel)
         {
             _parentViewModel = parentViewModel;
             _lastOperation = ArithmeticOperation.None;
+            _currentCurrency =
+                    $"{CurrencyModel.PossibleCurrencies.FirstOrDefault(c => c.CurrencyEnum.ToString() == SettingsService.Instance.CurrentUser.Currency).CurrencySymbol}";
         }
 
         public string CurrentArithmeticalNumber
@@ -74,6 +79,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
                     this.MemoryArithmeticalNumber = string.Empty;
                     this.ArithmeticalSignText = string.Empty;
                     this._lastOperation = ArithmeticOperation.None;
+                    this.RaisePropertyChanged("CurrentCurrency");
                 }));
             }
         }
@@ -93,6 +99,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
                             this._lastOperation = ArithmeticOperation.None;
                         }
                         CurrentArithmeticalNumber += number;
+                        this.RaisePropertyChanged("CurrentCurrency");
                     }
                 }));
             }
@@ -176,6 +183,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
             this._lastOperation = ArithmeticOperation.Result;
             this.MemoryArithmeticalNumber = string.Empty;
             this.ArithmeticalSignText = string.Empty;
+            this.RaisePropertyChanged("CurrentCurrency");
         }
 
         public RelayCommand AppendCommaCommand
@@ -212,9 +220,27 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
                     {
                         this.CurrentArithmeticalNumber = this.CurrentArithmeticalNumber.Remove(this.CurrentArithmeticalNumber.Length - 1);
                     }
+                    this.RaisePropertyChanged("CurrentCurrency");
                 }));
             }
         }
 
+        public string CurrentCurrency
+        {
+            get
+            {
+
+                if (!string.IsNullOrEmpty(this.CurrentArithmeticalNumber) ||
+                    !string.IsNullOrEmpty(this.MemoryArithmeticalNumber))
+                {
+                    return this._currentCurrency;
+                }
+                else
+                {
+                    return $"0 {this._currentCurrency}";
+                }
+               
+            }
+        }
     }
 }

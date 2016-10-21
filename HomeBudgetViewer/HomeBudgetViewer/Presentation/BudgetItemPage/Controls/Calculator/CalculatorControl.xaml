@@ -51,21 +51,23 @@
             BorderBrush="{StaticResource MainAppBrush}" 
             BorderThickness="0,0,0,1" 
             Orientation="Horizontal"
-            Margin="25,25,0,25">
+            Margin="25,25,0,25"
+            HorizontalAlignment="Stretch">
             <TextBlock
-                x:Name="MemoryTextBox"
                 Text="{Binding MemoryArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="48"
                 />
             <TextBlock
-                x:Name="SignTextBox"
-                RelativePanel.RightOf="MemoryTextBox"
                 Text="{Binding ArithmeticalSignText, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="48"/>
             <TextBlock
-                RelativePanel.RightOf="SignTextBox"
                 Text="{Binding CurrentArithmeticalNumber, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="48"/>
+            <TextBlock
+                Text="{Binding CurrentCurrency, UpdateSourceTrigger=PropertyChanged}"
+                FontSize="48"
+                HorizontalAlignment="Right"
+                Margin="10,0"/>
         </StackPanel>
         <!--NumericButtons-->
         <Button
