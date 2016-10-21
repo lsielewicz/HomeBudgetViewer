@@ -40,7 +40,7 @@
                 HorizontalAlignment="Center"
                 />
             <!--Image-->
-            <Border 
+<!--            <Border 
                 Grid.Row="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top" 
@@ -51,12 +51,15 @@
                 Margin="15">
                 <Border.Background>
                     <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
-                </Border.Background>
+                </Border.Background>-->
                 <Image
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
                     Margin="12" 
                     Source="{Binding Logo}"
                     Stretch="None" />
-            </Border>
+            <!--</Border>-->
             <!--Author-->
             <StackPanel Grid.Row="3" Orientation="Horizontal">
                 <pointerControl:PointerControl/>
