@@ -220,6 +220,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         {
             if(parameter == null)
                 this.ClearViewModelData();
+            this.CalculatorViewModel.InitializeCurrency();
             return base.OnNavigatedToAsync(parameter, mode, state);
         }
     }

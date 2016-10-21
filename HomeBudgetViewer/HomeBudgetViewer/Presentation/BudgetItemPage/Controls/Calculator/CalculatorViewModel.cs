@@ -225,6 +225,13 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator
             }
         }
 
+        public void InitializeCurrency()
+        {
+            _currentCurrency =
+                    $"{CurrencyModel.PossibleCurrencies.FirstOrDefault(c => c.CurrencyEnum.ToString() == SettingsService.Instance.CurrentUser.Currency).CurrencySymbol}";
+            this.RaisePropertyChanged("CurrentCurrency");
+        }
+
         public string CurrentCurrency
         {
             get
