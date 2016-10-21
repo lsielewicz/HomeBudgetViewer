@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Globalization;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Controls.Template10;
+using HomeBudgetViewer.Database.Engine.Engine;
+using HomeBudgetViewer.Database.Engine.Repository.Base;
+using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage;
 using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
 using Template10.Controls;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeBudgetViewer
 {
@@ -37,17 +30,11 @@ namespace HomeBudgetViewer
             InitializeComponent();
             SplashFactory = (e) => new Splash(e);
 
-            var settings = SettingsService.Instance;
-            RequestedTheme = settings.AppTheme;
-            CacheMaxDuration = settings.CacheMaxDuration;
-            ShowShellBackButton = settings.UseShellBackButton;
-            try
+            SettingsService.Instance.InitializeStartupSettings(this);
+
+            using (var db = new BudgetContext())
             {
-                ApplicationLanguages.PrimaryLanguageOverride = settings.CurrentLanguage;
-            }
-            catch
-            {
-                ApplicationLanguages.PrimaryLanguageOverride = "en";
+                db.Database.Migrate();
             }
         }
 
@@ -74,9 +61,35 @@ namespace HomeBudgetViewer
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-
+            if (this.IsDbEmpty())
+            {
+                var dialog = new AddUserProfileDialog();
+                var result = await dialog.ShowAsync();
+                if (string.IsNullOrEmpty(SettingsService.Instance.CurrentUser.Name))
+                {
+                    using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+                    {
+                        var user = unitOfWork.Users.GetAll().FirstOrDefault();
+                        if (user != null)
+                        {
+                            SettingsService.Instance.CurrentUser = user;
+                        }
+                    }
+                }
+            }
+           
             NavigationService.Navigate(typeof(MainPage));
+
             await Task.CompletedTask;
         }
+
+        private bool IsDbEmpty()
+        {
+            using (var unitOfWork = new UnitOfWork(new BudgetContext()))
+            {
+                return !unitOfWork.Users.GetAll().Any();
+            }    
+        }
+
     }
 }

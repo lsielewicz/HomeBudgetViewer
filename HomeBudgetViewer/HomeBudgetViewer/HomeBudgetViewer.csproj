@@ -89,6 +89,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="App.config" />
     <None Include="project.json" />
     <PRIResource Include="Strings\pl\Resources.resw">
       <CustomToolNamespace>HomeBudgetViewer</CustomToolNamespace>
@@ -101,6 +102,22 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml.cs">
+      <DependentUpon>AddUserProfileDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddUserProfileDialog\AddUserProfileDialogViewModel.cs" />
+    <Compile Include="Controls\AddUserProfileDialog\UserProfileDialogResult.cs" />
+    <Compile Include="Controls\ConfirmationDialog\ConfirmationDialog.xaml.cs">
+      <DependentUpon>ConfirmationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogResult.cs" />
+    <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogViewModel.cs" />
+    <Compile Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml.cs">
+      <DependentUpon>NoActivitiesTextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PointerControl\PointerControl.xaml.cs">
+      <DependentUpon>PointerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Template10\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
@@ -110,23 +127,61 @@
     <Compile Include="Controls\Template10\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialog.xaml.cs">
+      <DependentUpon>UpdateUserProfileDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
+    <Compile Include="Conventers\BudgetItemActionToVisibilityConventer.cs" />
+    <Compile Include="Conventers\CategoryModelToBrushConventer.cs" />
+    <Compile Include="Conventers\CategoryModelToImageConventer.cs" />
+    <Compile Include="Conventers\CategoryToBrushConventer.cs" />
+    <Compile Include="Conventers\CategoryToImageConventer.cs" />
+    <Compile Include="Conventers\CoutOfCollectionItemsToVisibilityConventer.cs" />
+    <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
+    <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
+    <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
+    <Compile Include="Messages\IsModifyingStateToBudgetItemMessage.cs" />
     <Compile Include="Presentation\AppViewModelBase.cs" />
+    <Compile Include="Presentation\BudgetItemPage\BudgetItemPage.xaml.cs">
+      <DependentUpon>BudgetItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\BudgetItemPage\BudgetItemPageViewModel.cs" />
+    <Compile Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPage.xaml.cs">
+      <DependentUpon>CategorySelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPageViewModel.cs" />
+    <Compile Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorControl.xaml.cs">
+      <DependentUpon>CalculatorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorViewModel.cs" />
     <Compile Include="Presentation\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\MainPage\MainPageViewModel.cs" />
+    <Compile Include="Presentation\OverviewPage\OverviewPage.xaml.cs">
+      <DependentUpon>OverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OverviewPage\OverviewPageViewModel.cs" />
     <Compile Include="Presentation\SettingsPage\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\SettingsPageViewModel.cs" />
-    <Compile Include="Presentation\SettingsPage\Tabs\About\AboutPartView.xaml.cs">
-      <DependentUpon>AboutPartView.xaml</DependentUpon>
+    <Compile Include="Presentation\AboutPage\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\SettingsPage\Tabs\About\AboutPartViewModel.cs" />
+    <Compile Include="Presentation\AboutPage\AboutPageViewModel.cs" />
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartView.xaml.cs">
       <DependentUpon>SettingsPartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartViewModel.cs" />
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilePartView.xaml.cs">
+      <DependentUpon>UserProfilePartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilesPartViewModel.cs" />
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml.cs">
+      <DependentUpon>UserSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPageVIewModel.cs" />
     <Compile Include="Presentation\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingService\ApplicationLanguage.cs" />
@@ -139,13 +194,88 @@
     <None Include="HomeBudgetViewer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\Icons\Black\Circled User Male-100.png" />
+    <Content Include="Assets\Icons\Blue\Ask Question-100 %281%29.png" />
+    <Content Include="Assets\Icons\Gray\About-100.png" />
+    <Content Include="Assets\Icons\Gray\Info-500.png" />
+    <Content Include="Assets\Icons\Gray\Invisible-100.png" />
+    <Content Include="Assets\Icons\Gray\Plus Math-100.png" />
+    <Content Include="Assets\Icons\Gray\Settings-100.png" />
+    <Content Include="Assets\Icons\Red\Delete-100.png" />
+    <Content Include="Assets\Icons\White\Ask Question-100.png" />
+    <Content Include="Assets\Icons\White\Checkmark-96.png" />
+    <Content Include="Assets\Images\Categories\Animals.png" />
+    <Content Include="Assets\Images\Categories\Car.png" />
+    <Content Include="Assets\Images\Categories\Children.png" />
+    <Content Include="Assets\Images\Categories\Clothes.png" />
+    <Content Include="Assets\Images\Categories\Credit.png" />
+    <Content Include="Assets\Images\Categories\Culture.png" />
+    <Content Include="Assets\Images\Categories\Drinking.png" />
+    <Content Include="Assets\Images\Categories\Electronic.png" />
+    <Content Include="Assets\Images\Categories\Entertainment.png" />
+    <Content Include="Assets\Images\Categories\Fashion.png" />
+    <Content Include="Assets\Images\Categories\Food.png" />
+    <Content Include="Assets\Images\Categories\FoodOutsideTheHome.png" />
+    <Content Include="Assets\Images\Categories\Health.png" />
+    <Content Include="Assets\Images\Categories\Home.png" />
+    <Content Include="Assets\Images\Categories\Internet.png" />
+    <Content Include="Assets\Images\Categories\Lent.png" />
+    <Content Include="Assets\Images\Categories\Other.png" />
+    <Content Include="Assets\Images\Categories\Personal.png" />
+    <Content Include="Assets\Images\Categories\Phone.png" />
+    <Content Include="Assets\Images\Categories\Salary.png" />
+    <Content Include="Assets\Images\Categories\Sport.png" />
+    <Content Include="Assets\Images\Categories\Transport.png" />
+    <Content Include="Assets\Images\Categories\Vacation.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Square310x310Logo.scale-125.png" />
+    <Content Include="Assets\Square310x310Logo.scale-150.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Square310x310Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Square71x71Logo.scale-125.png" />
+    <Content Include="Assets\Square71x71Logo.scale-150.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +283,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Assets\Images\AppImages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\AddUserProfileDialog\AddUserProfileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ConfirmationDialog\ConfirmationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PointerControl\PointerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Template10\Busy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,21 +316,54 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\BudgetItemPage\BudgetItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\BudgetItemPage\CategorySelectionPage\CategorySelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\MainPage\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\OverviewPage\OverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\SettingsPage\Tabs\About\AboutPartView.xaml">
+    <Page Include="Presentation\AboutPage\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\Tabs\Settings\SettingsPartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserProfilePartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\AppBrushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Styles\Custom.xaml">
       <SubType>Designer</SubType>
@@ -188,6 +372,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HomeBudgetViewer.Database.Engine\HomeBudgetViewer.Database.Engine.csproj">
+      <Project>{17c1c4ad-2512-4e15-b89c-02535b721e83}</Project>
+      <Name>HomeBudgetViewer.Database.Engine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomeBudgetViewer.Models\HomeBudgetViewer.Models.csproj">
       <Project>{28c1568c-57f5-410b-b73d-caa677f54e47}</Project>
       <Name>HomeBudgetViewer.Models</Name>

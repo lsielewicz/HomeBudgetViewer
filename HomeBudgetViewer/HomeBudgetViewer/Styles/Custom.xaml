@@ -9,10 +9,16 @@
     <x:Double x:Key="NormalMinWidth">521</x:Double>
     <x:Double x:Key="WideMinWidth">1200</x:Double>
 
-    <Color x:Key="CustomColor">#844b8e</Color>
+    <!--<Color x:Key="CustomColor">#8a0c1c</Color>-->
+    <!--<Color x:Key="CustomColor">#403c47</Color>-->
+    <Color x:Key="CustomColor">#1f5060</Color>
     <Color x:Key="ContrastColor">White</Color>
     <Color x:Key="SystemAccentColor">SteelBlue</Color>
 
+    <Brush x:Key="MainAppBrush">#1f5060</Brush>
+    <Brush x:Key="RedAppBrush">#a23232</Brush>
+    <Brush x:Key="BlueAppBrush">#3366af</Brush>
+    
     <ResourceDictionary.ThemeDictionaries>
 
         <ResourceDictionary x:Key="Light">

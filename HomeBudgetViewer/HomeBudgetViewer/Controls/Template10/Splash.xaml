@@ -14,7 +14,7 @@
         <Canvas x:Name="rootCanvas" HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch">
             <Canvas.Background>
-                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png" Stretch="Uniform">
+                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.scale-100.png" Stretch="Uniform">
                     <ImageBrush.Transform>
                         <TranslateTransform Y="10" />
                     </ImageBrush.Transform>

@@ -1,0 +1,93 @@
+﻿<ContentDialog
+    x:Class="HomeBudgetViewer.Controls.AddUserProfileDialog.AddUserProfileDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Controls.AddUserProfileDialog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Uid="UserProfileDialog"
+    d:DataContext="{d:DesignInstance local:AddUserProfileDialogViewModel}"
+    x:Name="Root">
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Name-->
+        <StackPanel Grid.Row="0">
+            <TextBlock 
+                x:Name="NameTb"
+                x:Uid="UserProfileDialogProfileName"/>
+            <TextBox
+                Text="{Binding Path=ProfileName, Mode=TwoWay}"/>
+        </StackPanel>
+        <!--Currency-->
+        <StackPanel Grid.Row="1" Width="{Binding ElementName=NameTb, Path=Width}">
+            <TextBlock
+                x:Uid="UserProfileDialogProfileCurrency"/>
+            <ComboBox
+                x:Name="ComboBox"
+                HorizontalAlignment="Stretch"
+                SelectedValue="{Binding ProfileCurrency, Mode=TwoWay}"
+                ItemsSource="{Binding Currencies}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="{StaticResource MainAppBrush}">
+                            <TextBlock 
+                                Text="{Binding CurrencySymbol}" 
+                                Foreground="White"
+                                Margin="0,0,5,0"
+                                />
+                            </Border>
+                            <TextBlock
+                                Text="{Binding CurrencyName}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <!--Validation Message-->
+        <TextBlock 
+            Grid.Row="2"
+            Text="{Binding Path=ValidationMessage}"
+            Foreground="DarkRed"
+            Margin="0,5"/>
+        <!--Buttons?-->
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <!--Add-->
+            <Button Command="{Binding OkButtonCommand}" Padding="5,0" Margin="0,0,5,0" Background="{StaticResource CustomColorBrush}">
+                <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                    <SymbolIcon 
+                        Symbol="Add" 
+                        Width="32" 
+                        Height="32"
+                        Foreground="{StaticResource ContrastColorBrush}"/>
+                    <TextBlock
+                        x:Uid="AddText"
+                        VerticalAlignment="Center"
+                        Foreground="{StaticResource ContrastColorBrush}"/>
+                </StackPanel>
+            </Button>
+            <!--Cancel-->
+            <Button Command="{Binding CancelButtonCommand}" Padding="5,0" Margin="0,0,5,0" Background="{StaticResource RedAppBrush}">
+                <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                    <SymbolIcon
+                        Symbol="Cancel"
+                        Width="32"
+                        Height="32"
+                        Foreground="{StaticResource ContrastColorBrush}"/>
+                    <TextBlock
+                        x:Uid="CancelText"
+                        VerticalAlignment="Center"
+                        Foreground="{StaticResource ContrastColorBrush}"
+                        />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

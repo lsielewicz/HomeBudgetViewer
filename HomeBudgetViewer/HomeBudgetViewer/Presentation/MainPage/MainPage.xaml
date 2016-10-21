@@ -9,23 +9,166 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <!--Header-->
-        <controls:PageHeader x:Uid="HomePageHeader"
-                             Frame="{x:Bind Frame}"
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" />
-        <!--Content-->
-        <TextBlock 
-            Grid.Row="1"
-            x:Uid="HomeTestTextBox"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="24"/>
-    </Grid>
+    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <controls:PageHeader         
+                Frame="{x:Bind Frame}"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True" 
+                Text="{Binding HelloMessage}"/>
+            <!--Statistics-->
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="{Binding CurrentStatusMessage}"
+                FontSize="32"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="2" HorizontalAlignment="Stretch" Margin="5">
+                <TextBlock 
+                    Margin="5,0"
+                    HorizontalAlignment="Left"
+                    Text="{Binding ExpensesHeader}"/>
+                <ProgressBar 
+                    Value="{Binding ExpensesProgress}"
+                    Margin="5,0,0,10" 
+                    Height="25"
+                    Foreground="{StaticResource CultureBrush}"/>
+                <TextBlock
+                    Margin="5,0"
+                    HorizontalAlignment="Left"
+                    Text="{Binding IncomesHeader}"/>
+                <ProgressBar 
+                    Value="{Binding IncomesProgress}" 
+                    Margin="5,0,0,10" 
+                    Height="25"
+                    Foreground="{StaticResource CarBrush}"/>
+            </StackPanel>
+            <!--Tiles-->
+            <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Add item-->
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding NavigateToAddBudgetItemCommand}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    >
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <Image
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            Width="100"
+                            Height="100"
+                            Source="../../Assets/Icons/Gray/Plus Math-100.png"/>
+                        <TextBlock
+                            x:Uid="AddNewItem"
+                            FontSize="24"
+                            FontWeight="Light"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <!--Overview-->
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding NavigateToOverviewCommand}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    >
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <Image
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            Width="100"
+                            Height="100"
+                            Source="../../Assets/Icons/Gray/Invisible-100.png"/>
+                        <TextBlock
+                            x:Uid="OverviewHeader"
+                            FontSize="24"
+                            FontWeight="Light"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <!--Settings-->
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding NavigateToSettingsCommand}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    >
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <Image
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            Width="100"
+                            Height="100"
+                            Source="../../Assets/Icons/Gray/Settings-100.png"/>
+                        <TextBlock
+                            x:Uid="HamburgerSettings"
+                            FontSize="24"
+                            FontWeight="Light"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <!--About-->
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding NavigateToAboutCommand}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    >
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <Image
+                            Margin="5"
+                            HorizontalAlignment="Center"
+                            Width="100"
+                            Height="100"
+                            Source="../../Assets/Icons/Gray/About-100.png"/>
+                        <TextBlock
+                            x:Uid="AboutPart"
+                            FontSize="24"
+                            FontWeight="Light"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
