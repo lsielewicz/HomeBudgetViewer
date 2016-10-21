@@ -30,9 +30,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!--Header-->
@@ -123,6 +123,7 @@
                 Grid.Row="4"
                 Command="{Binding NavigateToCategorySelectionCommand}"
                 HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
                 Background="Transparent">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Border
@@ -162,10 +163,12 @@
             </Grid>
             <!--Assign button-->
             <Button 
+                Margin="0,10"
                 Grid.Row="6"
                 Background="{StaticResource BlueAppBrush}"
                 Command="{Binding AssignBudgetItemToDataBase}"
-                HorizontalAlignment="Stretch">
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Source="../../Assets/Icons/White/Checkmark-96.png"
