@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Database.Engine.Engine;
@@ -127,9 +128,10 @@ namespace HomeBudgetViewer.Controls.AddUserProfileDialog
             }
         }
 
-        public List<CurrencyModel> Currencies
+        private ObservableCollection<CurrencyModel> _currencies;
+        public ObservableCollection<CurrencyModel> Currencies
         {
-            get { return CurrencyModel.PossibleCurrencies; }
+            get { return _currencies ?? (_currencies = new ObservableCollection<CurrencyModel>(CurrencyModel.PossibleCurrencies.Take(5))); }
         }
 
     }

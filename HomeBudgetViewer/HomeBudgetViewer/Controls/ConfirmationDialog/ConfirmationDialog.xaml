@@ -45,14 +45,25 @@
             VerticalAlignment="Center"
             Text="{Binding DialogMessage}"
             TextWrapping="WrapWholeWords"/>
-     <!--Buttons-->
-        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="25,25,25,0" Orientation="Horizontal" VerticalAlignment="Bottom">
+        <!--Buttons-->
+        <StackPanel 
+            x:Name="ButtonsPanel"
+            Grid.Row="1" 
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Right" 
+            Orientation="Horizontal"
+            Margin="0,25,0,0"
+            VerticalAlignment="Bottom">
             <Button
                 Background="{StaticResource MainAppBrush}"
                 Foreground="{StaticResource ContrastColorBrush}"
                 Command="{Binding SetDialogResult}"
                 CommandParameter="{StaticResource ResultConfirmed}"
-                Margin="5">
+                Margin="5"
+                Padding="0"
+                Width="{Binding ElementName=CancelButton, Path=ActualWidth}"
+                Height="{Binding ElementName=CancelButton, Path=ActualHeight}">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon
                         Symbol="Accept"
@@ -75,7 +86,10 @@
                 Foreground="{StaticResource ContrastColorBrush}"
                 Command="{Binding SetDialogResult}"
                 CommandParameter="{StaticResource ResultNotConfirmed}"
-                Margin="5">
+                Margin="5"
+                Padding="0"
+                Width="{Binding ElementName=CancelButton, Path=ActualWidth}"
+                Height="{Binding ElementName=CancelButton, Path=ActualHeight}">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon
                         Symbol="Remove"
@@ -94,11 +108,13 @@
             </Button>
 
             <Button
+                x:Name="CancelButton"
                 Background="{StaticResource BlueAppBrush}"
                 Foreground="{StaticResource ContrastColorBrush}"
                 Command="{Binding SetDialogResult}"
                 CommandParameter="{StaticResource ResultCancelled}"
-                Margin="5">
+                Margin="5"
+                Padding="0">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon
                         Symbol="Cancel"
@@ -112,10 +128,40 @@
                         FontWeight="Normal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="5,0,0,0"/>
+                        Margin="5,0"/>
                 </StackPanel>
             </Button>
+            <!--Visual state groups-->
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                    <VisualState x:Name="VisualStateNarrow">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="ButtonsPanel.Orientation" Value="Vertical"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="VisualStateNormal">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="ButtonsPanel.Orientation" Value="Horizontal"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="VisualStateWide">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="ButtonsPanel.Orientation" Value="Horizontal"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
         </StackPanel>
+        
     </Grid>
 </ContentDialog>
 

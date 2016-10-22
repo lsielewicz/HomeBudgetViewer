@@ -22,10 +22,10 @@ namespace HomeBudgetViewer.Database.Engine.Restrictions.Currency
                 {
                    new CurrencyModel() {CurrencyEnum = Currency.Dolar, CurrencyName = "Dolar", CurrencySymbol = " $  "},
                    new CurrencyModel() {CurrencyEnum = Currency.Euro, CurrencyName = "Euro", CurrencySymbol = " \u20ac  "},
-                   new CurrencyModel() {CurrencyEnum = Currency.Pesos, CurrencyName = "Pesos", CurrencySymbol = " $  "},
                    new CurrencyModel() {CurrencyEnum = Currency.Pound, CurrencyName = "Pound", CurrencySymbol = " \u00a3  "},
                    new CurrencyModel() {CurrencyEnum = Currency.Yen, CurrencyName = "Yen", CurrencySymbol = " \u00A5  "},
                    new CurrencyModel() {CurrencyEnum = Currency.Zloty, CurrencyName = "Zloty", CurrencySymbol = " ZŁ "},
+                   new CurrencyModel() {CurrencyEnum = Currency.Pesos, CurrencyName = "Pesos", CurrencySymbol = " $  "}
                 });
             }
         }

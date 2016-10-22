@@ -34,8 +34,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" x:Name="DateSizeManagement" Visibility="Collapsed" />
+            <TextBlock Grid.Row="0" x:Name="DescriptionSizeManagement" Visibility="Collapsed"/>
+            
             <!--Header-->
-            <controls:PageHeader      
+            <controls:PageHeader
+                Grid.Row="0"
                 x:Uid="OverviewHeader"
                 Frame="{x:Bind Frame}"
                 RelativePanel.AlignLeftWithPanel="True"
@@ -157,14 +161,14 @@
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Text="{Binding Date}"
-                                    FontSize="16"
+                                    FontSize="{Binding ElementName=DateSizeManagement, Path=FontSize}"
                                     Margin="5,0"
                                     VerticalAlignment="Center"/>
                                 <TextBlock
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Text="{Binding Description}"
-                                    FontSize="12"
+                                    FontSize="{Binding ElementName=DescriptionSizeManagement, Path=FontSize}"
                                     Margin="5,0"
                                     VerticalAlignment="Center"/>
                             </Grid>
@@ -257,6 +261,8 @@
                         <Setter Target="PreviousMonthButton.MinWidth" Value="20"/>
                         <Setter Target="NextMonthButton.MinWidth" Value="20"/>
                         <Setter Target="MonthSwitchingGrid.Margin" Value="0,0"/>
+                        <Setter Target="DateSizeManagement.FontSize" Value="12"/>
+                        <Setter Target="DescriptionSizeManagement.FontSize" Value="10"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
@@ -268,6 +274,8 @@
                         <Setter Target="PreviousMonthButton.MinWidth" Value="80"/>
                         <Setter Target="NextMonthButton.MinWidth" Value="80"/>
                         <Setter Target="MonthSwitchingGrid.Margin" Value="10,0"/>
+                        <Setter Target="DateSizeManagement.FontSize" Value="14"/>
+                        <Setter Target="DescriptionSizeManagement.FontSize" Value="12"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateWide">
@@ -279,6 +287,8 @@
                         <Setter Target="PreviousMonthButton.MinWidth" Value="100"/>
                         <Setter Target="NextMonthButton.MinWidth" Value="100"/>
                         <Setter Target="MonthSwitchingGrid.Margin" Value="20,0"/>
+                        <Setter Target="DateSizeManagement.FontSize" Value="16"/>
+                        <Setter Target="DescriptionSizeManagement.FontSize" Value="12"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
