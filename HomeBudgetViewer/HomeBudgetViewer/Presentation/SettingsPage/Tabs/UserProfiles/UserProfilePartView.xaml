@@ -20,11 +20,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MaxWidth="750"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                 <ColumnDefinition Width="4*" MaxWidth="750"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
             <Image 
                 Source="../../../../Assets/Icons/Black/Circled User Male-100.png"
                 HorizontalAlignment="Center"
@@ -45,7 +46,7 @@
         <!--Add-->
         <Button
             Grid.Row="1"
-            Grid.Column="0"
+            Grid.Column="1"
             HorizontalAlignment="Stretch"
             Foreground="{StaticResource ContrastColorBrush}"
             Background="{StaticResource MainAppBrush}"
@@ -66,7 +67,7 @@
         <!--Update-->
         <Button
             Grid.Row="2"
-            Grid.Column="0"
+            Grid.Column="1"
             HorizontalAlignment="Stretch"
             Foreground="{StaticResource ContrastColorBrush}"
             Background="{StaticResource BlueAppBrush}"
@@ -87,7 +88,7 @@
         <!--Remove-->
         <Button
             Grid.Row="3"
-            Grid.Column="0"
+            Grid.Column="1"
             HorizontalAlignment="Stretch"
             Foreground="{StaticResource ContrastColorBrush}"
             Background="{StaticResource RedAppBrush}"
@@ -109,7 +110,7 @@
         <!--UserSelection-->
         <Button 
             Grid.Row="4"
-            Grid.Column="0"
+            Grid.Column="1"
             VerticalAlignment="Bottom"
             Command="{Binding NavigateToUserSelectionPage}"
             Foreground="{StaticResource ContrastColorBrush}"
