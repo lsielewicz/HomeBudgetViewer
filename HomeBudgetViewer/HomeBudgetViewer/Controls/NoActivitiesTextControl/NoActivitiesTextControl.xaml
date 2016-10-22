@@ -7,25 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    x:Name="Root">
 
     <StackPanel
         HorizontalAlignment="Center"
         VerticalAlignment="Center">
         <Image 
+            x:Name="Image"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Width="200"
-            Height="200"
             Margin="5,10"
+            Width="{Binding ElementName=Root, Path=ControlImageLenght, UpdateSourceTrigger=PropertyChanged}"
+            Height="{Binding ElementName=Root, Path=ControlImageLenght, UpdateSourceTrigger=PropertyChanged}"
             Source="../../Assets/Icons/Gray/Info-500.png"/>
         <TextBlock
+            x:Name="Text"
             x:Uid="NoActivities"
-            FontSize="34"
             FontWeight="Light"
             Foreground="#666666"
+            FontSize="{Binding ElementName=Root, Path=ControlTextSize, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="WrapWholeWords"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>
+    

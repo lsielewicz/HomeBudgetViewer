@@ -43,24 +43,29 @@
                 RelativePanel.AlignTopWithPanel="True" />
             <!--Empty collection case-->
             <noActivitiesTextControl:NoActivitiesTextControl
+                x:Name="EmptyCollectionMessage"
                 Grid.Row="1"
                 Grid.RowSpan="3"
                 Grid.Column="0"
                 Visibility="{Binding CurrentItems.Count, 
                                      Converter={StaticResource CoutOfCollectionItemsToVisibilityConventer}, 
-                                     ConverterParameter={StaticResource InverseConventerDirection}}"/>
+                                     ConverterParameter={StaticResource InverseConventerDirection}}"
+                ControlImageLenght="125"
+                ControlTextSize="18"/>
             <!--Month switiching section-->
-            <Grid Grid.Row="1" Margin="20,0">
+            <Grid Grid.Row="1" Margin="20,0" x:Name="MonthSwitchingGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Button
+                    x:Name="PreviousMonthButton"
                     Grid.Column="0"
                     Background="{StaticResource RedAppBrush}"
                     Command="{Binding SwitchMonthCommand}"
                     MinWidth="100"
+                    HorizontalAlignment="Left"
                     >
                     <Button.CommandParameter>
                         <enum:SwitchingMonthDirection>Previous</enum:SwitchingMonthDirection>
@@ -73,16 +78,19 @@
                     </Button.Content>
                 </Button>
                 <TextBlock
+                    x:Name="MonthTextBlock"
                     Grid.Column="1"
                     Text="{Binding CurrentDateHeader}"
                     FontSize="32"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"/>
                 <Button
+                    x:Name="NextMonthButton"
                     Grid.Column="2"
                     Background="{StaticResource RedAppBrush}"
                     Command="{Binding SwitchMonthCommand}"
                     MinWidth="100"
+                    HorizontalAlignment="Right"
                     >
                     <Button.CommandParameter>
                         <enum:SwitchingMonthDirection>Next</enum:SwitchingMonthDirection>
@@ -237,6 +245,44 @@
                 </StackPanel>
             </Button>
         </Grid>
+        <!--Visual state groups-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="24"/>
+                        <Setter Target="PreviousMonthButton.MinWidth" Value="20"/>
+                        <Setter Target="NextMonthButton.MinWidth" Value="20"/>
+                        <Setter Target="MonthSwitchingGrid.Margin" Value="0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="24"/>
+                        <Setter Target="PreviousMonthButton.MinWidth" Value="80"/>
+                        <Setter Target="NextMonthButton.MinWidth" Value="80"/>
+                        <Setter Target="MonthSwitchingGrid.Margin" Value="10,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="32"/>
+                        <Setter Target="PreviousMonthButton.MinWidth" Value="100"/>
+                        <Setter Target="NextMonthButton.MinWidth" Value="100"/>
+                        <Setter Target="MonthSwitchingGrid.Margin" Value="20,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 
 </Page>
