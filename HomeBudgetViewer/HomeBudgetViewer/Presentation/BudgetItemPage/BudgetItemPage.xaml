@@ -23,7 +23,21 @@
         <itemType:ItemType x:Key="IncomeItemType">Income</itemType:ItemType>
     </Page.Resources>
 
-    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <controls:PageHeader  
+                x:Uid="BudgetItemHeader"
+                Frame="{x:Bind Frame}"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True" >
+        </controls:PageHeader>
+
+        <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto" Grid.Row="1">
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -35,14 +49,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!--Header-->
-            <controls:PageHeader  
-                x:Uid="BudgetItemHeader"
-                Frame="{x:Bind Frame}"
-                RelativePanel.AlignLeftWithPanel="True"
-                RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.AlignTopWithPanel="True" >
-            </controls:PageHeader>
             <!--Delete item button-->
             <Button
                 Grid.Row="1"
@@ -182,4 +188,5 @@
             </Button>
         </Grid>
     </ScrollViewer>
+    </Grid>
 </Page>

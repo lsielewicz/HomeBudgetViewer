@@ -17,8 +17,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Border x:Name="TileLengthManagement" Visibility="Collapsed" Grid.Row="0"/>
+            <TextBlock x:Name="TileTextManagement" Visibility="Collapsed" Grid.Row="0"/>
             <!--Header-->
-            <controls:PageHeader         
+            <controls:PageHeader     
+                Grid.Row="0"
                 Frame="{x:Bind Frame}"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
@@ -26,10 +29,10 @@
                 Text="{Binding HelloMessage}"/>
             <!--Statistics-->
             <TextBlock
+                x:Name="MonthTextBlock"
                 Grid.Row="1"
                 Grid.Column="0"
                 Text="{Binding CurrentStatusMessage}"
-                FontSize="32"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
             <StackPanel Grid.Row="2" HorizontalAlignment="Stretch" Margin="5">
@@ -38,19 +41,21 @@
                     HorizontalAlignment="Left"
                     Text="{Binding ExpensesHeader}"/>
                 <ProgressBar 
+                    x:Name="ExpensesProgress"
                     Value="{Binding ExpensesProgress}"
                     Margin="5,0,0,10" 
-                    Height="25"
-                    Foreground="{StaticResource CultureBrush}"/>
+                    Foreground="{StaticResource CultureBrush}"
+                    Height="20"/>
                 <TextBlock
                     Margin="5,0"
                     HorizontalAlignment="Left"
                     Text="{Binding IncomesHeader}"/>
                 <ProgressBar 
+                    x:Name="IncomesProgress"
                     Value="{Binding IncomesProgress}" 
                     Margin="5,0,0,10" 
-                    Height="25"
-                    Foreground="{StaticResource CarBrush}"/>
+                    Foreground="{StaticResource CarBrush}"
+                    Height="20"/>
             </StackPanel>
             <!--Tiles-->
             <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -79,12 +84,12 @@
                         <Image
                             Margin="5"
                             HorizontalAlignment="Center"
-                            Width="100"
-                            Height="100"
+                            Width="{Binding ElementName= TileLengthManagement, Path=Width}"
+                            Height="{Binding ElementName=TileLengthManagement, Path=Height}"
                             Source="../../Assets/Icons/Gray/Plus Math-100.png"/>
                         <TextBlock
                             x:Uid="AddNewItem"
-                            FontSize="24"
+                            FontSize="{Binding ElementName=TileTextManagement, Path=FontSize}"
                             FontWeight="Light"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
@@ -105,12 +110,12 @@
                         <Image
                             Margin="5"
                             HorizontalAlignment="Center"
-                            Width="100"
-                            Height="100"
+                            Width="{Binding ElementName= TileLengthManagement, Path=Width}"
+                            Height="{Binding ElementName=TileLengthManagement, Path=Height}"
                             Source="../../Assets/Icons/Gray/Invisible-100.png"/>
                         <TextBlock
                             x:Uid="OverviewHeader"
-                            FontSize="24"
+                            FontSize="{Binding ElementName=TileTextManagement, Path=FontSize}"
                             FontWeight="Light"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
@@ -131,12 +136,12 @@
                         <Image
                             Margin="5"
                             HorizontalAlignment="Center"
-                            Width="100"
-                            Height="100"
+                            Width="{Binding ElementName= TileLengthManagement, Path=Width}"
+                            Height="{Binding ElementName=TileLengthManagement, Path=Height}"
                             Source="../../Assets/Icons/Gray/Settings-100.png"/>
                         <TextBlock
                             x:Uid="HamburgerSettings"
-                            FontSize="24"
+                            FontSize="{Binding ElementName=TileTextManagement, Path=FontSize}"
                             FontWeight="Light"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
@@ -157,12 +162,12 @@
                         <Image
                             Margin="5"
                             HorizontalAlignment="Center"
-                            Width="100"
-                            Height="100"
+                            Width="{Binding ElementName= TileLengthManagement, Path=Width}"
+                            Height="{Binding ElementName=TileLengthManagement, Path=Height}"
                             Source="../../Assets/Icons/Gray/About-100.png"/>
                         <TextBlock
                             x:Uid="AboutPart"
-                            FontSize="24"
+                            FontSize="{Binding ElementName=TileTextManagement, Path=FontSize}"
                             FontWeight="Light"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
@@ -170,5 +175,49 @@
                 </Button>
             </Grid>
         </Grid>
+        <!--Visual state groups-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="24"/>
+                        <Setter Target="TileLengthManagement.Width" Value="60"/>
+                        <Setter Target="TileLengthManagement.Height" Value="60"/>
+                        <Setter Target="TileTextManagement.FontSize" Value="14"/>
+                        <Setter Target="ExpensesProgress.Height" Value="15"/>
+                        <Setter Target="IncomesProgress.Height" Value="15"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="24"/>
+                        <Setter Target="TileLengthManagement.Width" Value="80"/>
+                        <Setter Target="TileLengthManagement.Height" Value="80"/>
+                        <Setter Target="TileTextManagement.FontSize" Value="18"/>
+                        <Setter Target="ExpensesProgress.Height" Value="15"/>
+                        <Setter Target="IncomesProgress.Height" Value="15"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="32"/>
+                        <Setter Target="TileLengthManagement.Width" Value="100"/>
+                        <Setter Target="TileLengthManagement.Height" Value="100"/>
+                        <Setter Target="TileTextManagement.FontSize" Value="24"/>
+                        <Setter Target="ExpensesProgress.Height" Value="25"/>
+                        <Setter Target="IncomesProgress.Height" Value="25"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </ScrollViewer>
 </Page>

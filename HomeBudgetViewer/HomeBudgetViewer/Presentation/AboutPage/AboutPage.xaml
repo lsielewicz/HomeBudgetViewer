@@ -35,8 +35,8 @@
             <TextBlock 
                 Grid.Row="1"
                 Margin="0,0,0,12"
-                FontSize="32"
-                Text="{Binding DisplayName}" 
+                FontSize="24"
+                Text="Home Budget Viewer" 
                 HorizontalAlignment="Center"
                 />
             <!--Image-->

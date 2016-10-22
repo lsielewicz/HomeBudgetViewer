@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,9 +132,10 @@ namespace HomeBudgetViewer.Controls.UpdateUserProfileDialog
             }
         }
 
-        public List<CurrencyModel> Currencies
+        private ObservableCollection<CurrencyModel> _currencies;
+        public ObservableCollection<CurrencyModel> Currencies
         {
-            get { return CurrencyModel.PossibleCurrencies; }
+            get { return _currencies ?? (_currencies = new ObservableCollection<CurrencyModel>(CurrencyModel.PossibleCurrencies.Take(5))); }
         }
     }
 }
