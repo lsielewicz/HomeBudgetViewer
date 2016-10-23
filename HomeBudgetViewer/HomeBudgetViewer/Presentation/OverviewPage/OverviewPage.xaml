@@ -24,6 +24,8 @@
         <itemType:ItemType x:Key="IncomeItemType">Income</itemType:ItemType>
         <enum:ConventerDirection x:Key="NormalConventerDirection">Normal</enum:ConventerDirection>
         <enum:ConventerDirection x:Key="InverseConventerDirection">Inverse</enum:ConventerDirection>
+        <enum:DateFilter x:Key="MonthDateFilter">ByMonth</enum:DateFilter>
+        <enum:DateFilter x:Key="DayDateFilter">ByDay</enum:DateFilter>
     </Page.Resources>
     
 
@@ -38,13 +40,22 @@
             <TextBlock Grid.Row="0" x:Name="DescriptionSizeManagement" Visibility="Collapsed"/>
             
             <!--Header-->
-            <controls:PageHeader
+        <controls:PageHeader
                 Grid.Row="0"
                 x:Uid="OverviewHeader"
-                Frame="{x:Bind Frame}"
-                RelativePanel.AlignLeftWithPanel="True"
-                RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.AlignTopWithPanel="True" />
+                Frame="{x:Bind Frame}">
+            <controls:PageHeader.SecondaryCommands>
+                <AppBarButton
+                    x:Uid="HeaderMonthFiltering"
+                    Command="{Binding SwitchCurrentFilteringCommand}"
+                    CommandParameter="{StaticResource MonthDateFilter}"/>
+                <AppBarButton
+                    x:Uid="HeaderDayFiltering"
+                    Command="{Binding SwitchCurrentFilteringCommand}"
+                    CommandParameter="{StaticResource DayDateFilter}"/>
+            </controls:PageHeader.SecondaryCommands>
+
+        </controls:PageHeader>
             <!--Empty collection case-->
             <noActivitiesTextControl:NoActivitiesTextControl
                 x:Name="EmptyCollectionMessage"
@@ -205,7 +216,7 @@
                                     Converter={StaticResource ItemTypeToBackgroundConventer}, 
                                     ConverterParameter={StaticResource IncomeItemType},
                                     UpdateSourceTrigger=PropertyChanged}"
-                Command="{Binding SwitchItemType}"
+                Command="{Binding SwitchItemTypeCommand}"
                 CommandParameter="{StaticResource IncomeItemType}">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon
@@ -230,7 +241,7 @@
                                         Converter={StaticResource ItemTypeToBackgroundConventer}, 
                                         ConverterParameter={StaticResource ExpenseItemType},
                                         UpdateSourceTrigger=PropertyChanged}"          
-                    Command="{Binding SwitchItemType}"
+                    Command="{Binding SwitchItemTypeCommand}"
                     CommandParameter="{StaticResource ExpenseItemType}">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon

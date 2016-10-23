@@ -20,18 +20,24 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
 {
     public class OverviewPageViewModel : AppViewModelBase
     {
+        private delegate List<BudgetItem> GetDataByDate(int id, DateTime date);
+
         private ObservableCollection<BudgetItem> _currentItems;
         private RelayCommand<object> _switchMonthCommand;
-        private RelayCommand<object> _switchItemType;
+        private RelayCommand<object> _switchItemTypeCommand;
+        private RelayCommand<object> _switchCurrentFilteringCommand;
         private BudgetItem _selectedBudgetItem;
         private ItemType _budgetItemType;
         public int CurrentMonthIndex { get; private set; }
+        public int CurrentDayIndex { get; private set; }
         public DateTime CurrentDateTime { get; private set; }
+        public DateFilter CurrentDateFilter { get; private set; }
 
         public OverviewPageViewModel()
         {
             this.CurrentDateTime = DateTime.Now.Date;
             this.CurrentMonthIndex = 0;
+            this.CurrentDayIndex = 0;
         }
 
         public BudgetItem SelectedBudgetItem
@@ -56,7 +62,17 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
         }
         public string CurrentDateHeader
         {
-            get { return $"{this.GetLocalizedMonth(this.CurrentDateTime.Month)} {this.CurrentDateTime.Year}"; }
+            get
+            {
+                switch (this.CurrentDateFilter)
+                {
+                    case DateFilter.ByMonth:
+                        return $"{this.GetLocalizedMonth(this.CurrentDateTime.Month)} {this.CurrentDateTime.Year}";
+                    case DateFilter.ByDay:
+                        return $"{this.CurrentDateTime.ToString("D")}";
+                }
+                return string.Empty;
+            }
         }
 
         public string CurrentCurrencyString
@@ -83,24 +99,23 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
             }
         }
 
+
         private void GetData()
         {
+            GetDataByDate getDataMethod = null;
             using (var unitOfWork = new UnitOfWork(new BudgetContext()))
             {
                 List<BudgetItem> items=null;
-                switch (this.BudgetItemType)
-                {
-                    case ItemType.Expense:
-                        items = unitOfWork.BudgetItems.GetAllExpensesOfUserByDate(
-                            SettingsService.Instance.CurrentUser.Id,
-                            this.CurrentDateTime);
-                        break;
-                    case ItemType.Income:
-                        items = unitOfWork.BudgetItems.GetAllIncomesOfUserByDate(
-                            SettingsService.Instance.CurrentUser.Id,
-                            this.CurrentDateTime);
-                        break;
-                }
+                if(this.BudgetItemType == ItemType.Expense && this.CurrentDateFilter == DateFilter.ByMonth)
+                    getDataMethod = unitOfWork.BudgetItems.GetAllExpensesOfUserByMonth;
+                else if(this.BudgetItemType == ItemType.Expense && this.CurrentDateFilter == DateFilter.ByDay)
+                    getDataMethod = unitOfWork.BudgetItems.GetAllExpensesOfUserByDay;
+                else if(this.BudgetItemType == ItemType.Income && this.CurrentDateFilter == DateFilter.ByMonth)
+                    getDataMethod = unitOfWork.BudgetItems.GetAllIncomesOfUserByMonth;
+                else
+                    getDataMethod = unitOfWork.BudgetItems.GetAllIncomesOfUserByDay;
+                
+                items = getDataMethod(SettingsService.Instance.CurrentUser.Id, this.CurrentDateTime);
 
                 CurrentItems = new ObservableCollection<BudgetItem>(items);
             }
@@ -108,6 +123,7 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
 
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
+            this.CurrentDateFilter = DateFilter.ByMonth;
             this.GetData();
             return base.OnNavigatedToAsync(parameter, mode, state);
         }
@@ -134,13 +150,23 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
                         switch (direction)
                         {
                             case SwitchingMonthDirection.Next:
-                                this.CurrentMonthIndex++;
+                                if (this.CurrentDateFilter == DateFilter.ByMonth)
+                                    this.CurrentMonthIndex++;
+                                else
+                                    this.CurrentDayIndex++;
                                 break;
                             case SwitchingMonthDirection.Previous:
-                                this.CurrentMonthIndex--;
+                                if (this.CurrentDateFilter == DateFilter.ByMonth)
+                                    this.CurrentMonthIndex--;
+                                else
+                                    this.CurrentDayIndex--;
                                 break;
                         }
-                        this.CurrentDateTime = DateTime.Now.Date.AddMonths(this.CurrentMonthIndex);
+                        if (this.CurrentDateFilter == DateFilter.ByMonth)
+                            this.CurrentDateTime = DateTime.Now.Date.AddMonths(this.CurrentMonthIndex);
+                        else
+                            this.CurrentDateTime = DateTime.Now.Date.AddDays(this.CurrentDayIndex);
+
                         this.RaisePropertyChanged("CurrentDateHeader");
                         this.GetData();
                     }
@@ -148,11 +174,11 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
             }
         }
 
-        public RelayCommand<object> SwitchItemType
+        public RelayCommand<object> SwitchItemTypeCommand
         {
             get
             {
-                return _switchItemType ?? (_switchItemType = new RelayCommand<object>(param =>
+                return _switchItemTypeCommand ?? (_switchItemTypeCommand = new RelayCommand<object>(param =>
                 {
                     if (param != null)
                     {
@@ -163,7 +189,29 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
                 }));
             }
         }
-        
 
+        public RelayCommand<object> SwitchCurrentFilteringCommand
+        {
+            get
+            {
+                return _switchCurrentFilteringCommand ?? (_switchCurrentFilteringCommand = new RelayCommand<object>(
+                    param =>
+                    {
+                        if (param != null)
+                        {
+                            var paramFilter = (DateFilter) param;
+                            if (this.CurrentDateFilter != paramFilter)
+                            {
+                                this.CurrentDateFilter = paramFilter;
+                                this.CurrentDateTime = DateTime.Now;
+                                this.CurrentMonthIndex = 0;
+                                this.CurrentDayIndex = 0;
+                                this.GetData();
+                                this.RaisePropertyChanged("CurrentDateHeader");
+                            }
+                        }
+                    }));
+            }
+        }
     }
 }

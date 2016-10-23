@@ -6,9 +6,11 @@ namespace HomeBudgetViewer.Database.Engine.Repository.Interfaces
 {
     public interface IBudgetItemRepository : IRepository<BudgetItem>
     {
-        List<BudgetItem> GetAllExpensesOfUserByDate(int userId, DateTime date);
-        List<BudgetItem> GetAllIncomesOfUserByDate(int userId, DateTime date);
+        List<BudgetItem> GetAllExpensesOfUserByMonth(int userId, DateTime date);
+        List<BudgetItem> GetAllIncomesOfUserByMonth(int userId, DateTime date);
         double GetSumOfMonthExpenses(int userId, DateTime date);
         double GetSumOfMonthIncomes(int userId, DateTime date);
+        List<BudgetItem> GetAllIncomesOfUserByDay(int userId, DateTime date);
+        List<BudgetItem> GetAllExpensesOfUserByDay(int userId, DateTime date);
     }
 }

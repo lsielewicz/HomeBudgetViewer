@@ -23,7 +23,7 @@ namespace HomeBudgetViewer.Database.Engine.Repository
             get { return Context as BudgetContext; }
         }
 
-        public List<BudgetItem> GetAllExpensesOfUserByDate(int userId, DateTime date)
+        public List<BudgetItem> GetAllExpensesOfUserByMonth(int userId, DateTime date)
         {
             var items = BudgetContext.BudgetItem.
                 Where(
@@ -34,7 +34,7 @@ namespace HomeBudgetViewer.Database.Engine.Repository
             return items;
         }
 
-        public List<BudgetItem> GetAllIncomesOfUserByDate(int userId, DateTime date)
+        public List<BudgetItem> GetAllIncomesOfUserByMonth(int userId, DateTime date)
         {
             var items = BudgetContext.BudgetItem.
                 Where(
@@ -63,6 +63,32 @@ namespace HomeBudgetViewer.Database.Engine.Repository
              item.User.Id == userId && item.Date.Month == date.Month &&
              item.ItemType == ItemType.Income.ToString()).Sum(item => item.MoneyValue);
             return sum;
+        }
+
+        public List<BudgetItem> GetAllIncomesOfUserByDay(int userId, DateTime date)
+        {
+            var items = BudgetContext.BudgetItem.
+                    Where(
+                        item =>
+                            item.Date.Month == date.Month && 
+                            item.Date.Year == date.Year && item.UserId == userId &&
+                            item.ItemType == ItemType.Income.ToString() &&
+                            item.Date.Day == date.Day)
+                            .ToList();
+            return items;
+        }
+
+        public List<BudgetItem> GetAllExpensesOfUserByDay(int userId, DateTime date)
+        {
+            var items = BudgetContext.BudgetItem.
+                    Where(
+                        item =>
+                            item.Date.Month == date.Month &&
+                            item.Date.Year == date.Year && item.UserId == userId &&
+                            item.ItemType == ItemType.Expense.ToString() &&
+                            item.Date.Day == date.Day)
+                            .ToList();
+            return items;
         }
     }
 }
