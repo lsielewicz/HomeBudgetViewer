@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Windows.UI.Xaml.Data;
 
 namespace HomeBudgetViewer.Conventers
@@ -10,7 +11,9 @@ namespace HomeBudgetViewer.Conventers
             if (value != null)
             {
                 var dValue = (double)value;
-                return $"{dValue.ToString("F")}";
+                NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+                nfi.NumberGroupSeparator = " ";
+                return $"{dValue.ToString("#,0.00", nfi)}";
             }
             return string.Empty;
         }

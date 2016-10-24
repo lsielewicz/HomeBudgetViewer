@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace HomeBudgetViewer.Conventers
             if (value != null)
             {
                 var dValue = (double)value;
+                NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+                nfi.NumberGroupSeparator = " ";
                 if (dValue > 0)
-                    return $"+{dValue.ToString("F")}";
+                    return $"+{dValue.ToString("#,0.00", nfi)}";
                 else if (dValue < 0)
-                    return $"-{dValue.ToString("F")}";
+                    return $"-{dValue.ToString("#,0.00", nfi)}";
                 else
-                    return $"{dValue.ToString("F")}";
+                    return $"{dValue.ToString("#,0.00", nfi)}";
             }
             return string.Empty;
         }
