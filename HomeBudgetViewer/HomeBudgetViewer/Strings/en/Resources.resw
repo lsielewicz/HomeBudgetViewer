@@ -148,6 +148,15 @@
   <data name="Author.Text" xml:space="preserve">
     <value>Author</value>
   </data>
+  <data name="AverageBalance.Text" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="AverageExpenses.Text" xml:space="preserve">
+    <value>Average expenses</value>
+  </data>
+  <data name="AverageIncomes.Text" xml:space="preserve">
+    <value>Average incomes</value>
+  </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Use shell-drawn back button</value>
     <comment>Settings</comment>

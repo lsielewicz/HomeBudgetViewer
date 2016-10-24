@@ -112,9 +112,9 @@
             <StackPanel Grid.Row="0" HorizontalAlignment="Stretch">
                 <Border Background="{StaticResource RedAppBrush}" Padding="5" Opacity="0.85">
                     <TextBlock
+                        x:Uid="AverageExpenses"
                         FontSize="16"
                         FontWeight="Normal"
-                        Text="Average Expenses"
                         HorizontalAlignment="Center"
                         Foreground="White"/>
                 </Border>
@@ -136,11 +136,11 @@
                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch">
                     <Border Background="{StaticResource MainAppBrush}" Padding="5" Opacity="0.85">
                         <TextBlock
-                                FontSize="16"
-                                FontWeight="Normal"
-                                Text="Average Incomes"
-                                HorizontalAlignment="Center"
-                                Foreground="White"/>
+                            x:Uid="AverageIncomes"
+                            FontSize="16"
+                            FontWeight="Normal"
+                            HorizontalAlignment="Center"
+                            Foreground="White"/>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock
@@ -160,9 +160,9 @@
                 <StackPanel Grid.Row="2" HorizontalAlignment="Stretch">
                     <Border Background="{StaticResource BlueAppBrush}" Padding="5" Opacity="0.85">
                         <TextBlock
+                            x:Uid="AverageBalance"
                             FontSize="16"
                             FontWeight="Normal"
-                            Text="Average Balance"
                             HorizontalAlignment="Center"
                             Foreground="White"/>
                     </Border>

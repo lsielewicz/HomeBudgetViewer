@@ -148,6 +148,15 @@
   <data name="Author.Text" xml:space="preserve">
     <value>Autor</value>
   </data>
+  <data name="AverageBalance.Text" xml:space="preserve">
+    <value>Bilans</value>
+  </data>
+  <data name="AverageExpenses.Text" xml:space="preserve">
+    <value>Średnie wydatki</value>
+  </data>
+  <data name="AverageIncomes.Text" xml:space="preserve">
+    <value>Średnie przychody</value>
+  </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Pokaż przycisk cofania widoku</value>
     <comment>Settings</comment>
