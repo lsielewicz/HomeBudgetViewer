@@ -154,6 +154,7 @@
       <DependentUpon>CalculatorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorViewModel.cs" />
+    <Compile Include="Presentation\DateOperationViewModelBase.cs" />
     <Compile Include="Presentation\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -381,7 +382,9 @@
       <Name>HomeBudgetViewer.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Presentation\SummaryPage\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

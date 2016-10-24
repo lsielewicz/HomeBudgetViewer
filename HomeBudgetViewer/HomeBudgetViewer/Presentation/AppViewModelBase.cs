@@ -75,5 +75,6 @@ namespace HomeBudgetViewer.Presentation
             return moneyValue.ToString("#,0.00", nfi);
         }
 
+
     }
 }
