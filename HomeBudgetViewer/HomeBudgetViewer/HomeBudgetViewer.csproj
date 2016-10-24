@@ -131,6 +131,7 @@
       <DependentUpon>UpdateUserProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
+    <Compile Include="Conventers\BoolToVisibilityConventer.cs" />
     <Compile Include="Conventers\BudgetItemActionToVisibilityConventer.cs" />
     <Compile Include="Conventers\CategoryModelToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryModelToImageConventer.cs" />

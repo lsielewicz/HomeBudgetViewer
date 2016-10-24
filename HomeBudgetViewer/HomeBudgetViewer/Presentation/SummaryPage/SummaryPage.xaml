@@ -2,13 +2,13 @@
     x:Class="HomeBudgetViewer.Presentation.SummaryPage.SummaryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:HomeBudgetViewer.Presentation.SummaryPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Template10.Controls"
     xmlns:enum="using:HomeBudgetViewer.Models.Enum"
-    xmlns:itemType="using:HomeBudgetViewer.Database.Engine.Restrictions.ItemType"
     xmlns:conventers="using:HomeBudgetViewer.Conventers"
+    xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:noActivitiesTextControl="using:HomeBudgetViewer.Controls.NoActivitiesTextControl"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=SummaryPageViewModel}">
 
@@ -16,9 +16,12 @@
         <conventers:DoubleToSignedStringConventer x:Key="DoubleToSignedStringConventer"/>
         <conventers:DateFilterToVisibilityConventer x:Key="DateFilterToVisibilityConventer"/>
         <conventers:DoubleToUnsignedString x:Key="DoubleToUnsignedString"/>
+        <conventers:BoolToVisibilityConventer x:Key="BoolToVisibilityConventer"/>
         <enum:DateFilter x:Key="MonthDateFilter">ByMonth</enum:DateFilter>
         <enum:DateFilter x:Key="DayDateFilter">ByDay</enum:DateFilter>
         <enum:DateFilter x:Key="NoneDateFileter">None</enum:DateFilter>
+        <enum:ConventerDirection x:Key="ConventerDirectionNormal">Normal</enum:ConventerDirection>
+        <enum:ConventerDirection x:Key="ConventerDirectionInverse">Inverse</enum:ConventerDirection>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -107,6 +110,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
             <!--Average Expenses-->
             <StackPanel Grid.Row="0" HorizontalAlignment="Stretch">
@@ -178,6 +182,59 @@
                             FontWeight="Light"/>
                     </StackPanel>
                 </StackPanel>
+                <!--No activities control-->
+                <noActivitiesTextControl:NoActivitiesTextControl
+                    Grid.Row="3"
+                    Visibility="{Binding Path=IsChartVisible, 
+                                         Converter={StaticResource BoolToVisibilityConventer},
+                                         ConverterParameter={StaticResource ConventerDirectionInverse}}"
+                    ControlImageLenght="120"
+                    ControlTextSize="18"
+                    />
+                <!--Chart-->
+                <charting:Chart
+                    Visibility="{Binding Path=IsChartVisible, 
+                                         Converter={StaticResource BoolToVisibilityConventer},
+                                         ConverterParameter={StaticResource ConventerDirectionNormal}}"
+                    x:Uid="BalanceChart"
+                    FontSize="16"
+                    FontWeight="Normal"
+                    Grid.Row="3"
+                    MinWidth="250"
+                    MinHeight="250"> 
+                    <charting:PieSeries
+                        ItemsSource="{Binding ChartCollection}"
+                        IndependentValuePath="Key"
+                        DependentValuePath="Value"/>
+                    <charting:Chart.Palette>
+                        <charting:ResourceDictionaryCollection>
+                            <!-- Green -->
+                            <ResourceDictionary>
+                                <Style x:Key="DataPointStyle" TargetType="Control">
+                                    <Setter Property="Background" Value="{StaticResource MainAppBrush}" />
+                                </Style>
+                                <Style x:Key="DataShapeStyle" TargetType="Shape">
+                                    <Setter Property="Stroke" Value="{StaticResource CarBrush}" />
+                                    <Setter Property="StrokeThickness" Value="2" />
+                                    <Setter Property="StrokeMiterLimit" Value="1" />
+                                    <Setter Property="Fill" Value="{StaticResource MainAppBrush}" />
+                                </Style>
+                            </ResourceDictionary>
+                            <!-- Red -->
+                            <ResourceDictionary>
+                                <Style x:Key="DataPointStyle" TargetType="Control">
+                                    <Setter Property="Background" Value="{StaticResource RedAppBrush}" />
+                                </Style>
+                                <Style x:Key="DataShapeStyle" TargetType="Shape">
+                                    <Setter Property="Stroke" Value="{StaticResource CultureBrush}" />
+                                    <Setter Property="StrokeThickness" Value="2" />
+                                    <Setter Property="StrokeMiterLimit" Value="1" />
+                                    <Setter Property="Fill" Value="{StaticResource RedAppBrush}" />
+                                </Style>
+                            </ResourceDictionary>
+                        </charting:ResourceDictionaryCollection>
+                    </charting:Chart.Palette>
+                </charting:Chart>
             </Grid>
         </ScrollViewer>
       

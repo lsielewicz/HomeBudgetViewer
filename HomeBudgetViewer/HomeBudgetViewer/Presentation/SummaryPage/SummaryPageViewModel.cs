@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,28 @@ namespace HomeBudgetViewer.Presentation.SummaryPage
         private double _averageExpenses;
         private double _averageIncomes;
         private double _averageBalance;
+        private bool _isChartVisibile;
 
         public SummaryPageViewModel()
         {
-            
+            ChartCollection = new List<KeyValuePair<string, int>>();
+        }
+
+        public List<KeyValuePair<string,int>> ChartCollection { get; set; }
+
+        public bool IsChartVisible
+        {
+            get
+            {
+                return _isChartVisibile;
+            }
+            set
+            {
+                if (_isChartVisibile == value)
+                    return;
+                _isChartVisibile = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public double AverageExpenses
@@ -75,6 +94,15 @@ namespace HomeBudgetViewer.Presentation.SummaryPage
                 this.AverageExpenses = !double.IsNaN((sumExpenses / countExpenses)) ? (sumExpenses/countExpenses) : 0;
                 this.AverageIncomes = !double.IsNaN((sumIncomes / countIncomes)) ? (sumIncomes / countIncomes) : 0;
                 this.AverageBalance = sumIncomes - sumExpenses;
+
+                this.ChartCollection = new List<KeyValuePair<string, int>>()
+                {
+                    new KeyValuePair<string, int>(this.GetLocalizedString("IncomesT"), Convert.ToInt32(sumIncomes)),
+                    new KeyValuePair<string, int>(this.GetLocalizedString("ExpensesT"),Convert.ToInt32(sumExpenses))
+                };
+                this.IsChartVisible = Math.Abs(sumIncomes) > 1 || Math.Abs(sumExpenses) > 1;
+
+                this.RaisePropertyChanged("ChartCollection");
             }
         }
 
