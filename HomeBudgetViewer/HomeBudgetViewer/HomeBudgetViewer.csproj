@@ -137,6 +137,9 @@
     <Compile Include="Conventers\CategoryToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryToImageConventer.cs" />
     <Compile Include="Conventers\CoutOfCollectionItemsToVisibilityConventer.cs" />
+    <Compile Include="Conventers\DateFilterToVisibilityConventer.cs" />
+    <Compile Include="Conventers\DoubleToSignedStringConventer.cs" />
+    <Compile Include="Conventers\DoubleToUnsignedString.cs" />
     <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
     <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
@@ -183,6 +186,10 @@
       <DependentUpon>UserSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPageVIewModel.cs" />
+    <Compile Include="Presentation\SummaryPage\SummaryPage.xaml.cs">
+      <DependentUpon>SummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SummaryPage\SummaryPageViewModel.cs" />
     <Compile Include="Presentation\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingService\ApplicationLanguage.cs" />
@@ -206,6 +213,7 @@
     <Content Include="Assets\Icons\Gray\Info-500.png" />
     <Content Include="Assets\Icons\Gray\Invisible-100.png" />
     <Content Include="Assets\Icons\Gray\Plus Math-100.png" />
+    <Content Include="Assets\Icons\Gray\Report Card-100.png" />
     <Content Include="Assets\Icons\Gray\Settings-100.png" />
     <Content Include="Assets\Icons\Red\Delete-100.png" />
     <Content Include="Assets\Icons\White\Ask Question-100.png" />
@@ -361,6 +369,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\SummaryPage\SummaryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\AppBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -382,9 +394,7 @@
       <Name>HomeBudgetViewer.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presentation\SummaryPage\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

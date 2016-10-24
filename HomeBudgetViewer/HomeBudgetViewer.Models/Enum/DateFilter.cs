@@ -3,6 +3,7 @@
     public enum DateFilter
     {
         ByMonth,
-        ByDay
+        ByDay,
+        None
     }
 }

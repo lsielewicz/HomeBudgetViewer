@@ -28,6 +28,14 @@ namespace HomeBudgetViewer.Presentation
         public DateTime CurrentDateTime { get; protected set; }
         public DateFilter CurrentDateFilter { get; protected set; }
 
+        protected DateOperationViewModelBase()
+        {
+            this.CurrentDateTime = DateTime.Now.Date;
+            this.CurrentMonthIndex = 0;
+            this.CurrentDayIndex = 0;
+        }
+
+
         public BudgetItem SelectedBudgetItem
         {
             get
@@ -59,6 +67,8 @@ namespace HomeBudgetViewer.Presentation
                         return $"{this.GetLocalizedMonth(this.CurrentDateTime.Month)} {this.CurrentDateTime.Year}";
                     case DateFilter.ByDay:
                         return $"{this.CurrentDateTime.ToString("D")}";
+                    case DateFilter.None:
+                        return $"{this.GetLocalizedString("AllTogether")}";
                 }
                 return string.Empty;
             }
@@ -158,6 +168,7 @@ namespace HomeBudgetViewer.Presentation
                                 this.CurrentDayIndex = 0;
                                 this.GetData();
                                 this.RaisePropertyChanged("CurrentDateHeader");
+                                this.RaisePropertyChanged("CurrentDateFilter");
                             }
                         }
                     }));

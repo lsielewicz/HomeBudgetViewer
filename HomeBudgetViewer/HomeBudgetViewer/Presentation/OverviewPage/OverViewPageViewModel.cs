@@ -22,11 +22,8 @@ namespace HomeBudgetViewer.Presentation.OverviewPage
     {
         private ObservableCollection<BudgetItem> _currentItems;
 
-        public OverviewPageViewModel()
+        public OverviewPageViewModel() : base()
         {
-            this.CurrentDateTime = DateTime.Now.Date;
-            this.CurrentMonthIndex = 0;
-            this.CurrentDayIndex = 0;
         }
 
         public ObservableCollection<BudgetItem> CurrentItems

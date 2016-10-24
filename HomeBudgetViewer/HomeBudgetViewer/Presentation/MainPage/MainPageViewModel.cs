@@ -20,10 +20,22 @@ namespace HomeBudgetViewer.Presentation.MainPage
         private RelayCommand _navigateToOverviewCommand;
         private RelayCommand _navigateToSettingsCommand;
         private RelayCommand _navigateToAboutCommand;
+        private RelayCommand _navigateToSummaryCommand;
 
         public MainPageViewModel()
         {
            
+        }
+
+        public RelayCommand NavigateToSummaryCommand
+        {
+            get
+            {
+                return _navigateToSummaryCommand ?? (_navigateToSummaryCommand = new RelayCommand(() =>
+                {
+                    this.NavigationService.Navigate(typeof(SummaryPage.SummaryPage));
+                }));
+            }
         }
 
         public RelayCommand NavigateToAboutCommand

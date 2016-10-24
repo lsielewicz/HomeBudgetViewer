@@ -135,6 +135,9 @@
   <data name="AddText.Text" xml:space="preserve">
     <value>Dodaj</value>
   </data>
+  <data name="AllTogether" xml:space="preserve">
+    <value>Ogółem</value>
+  </data>
   <data name="Animals" xml:space="preserve">
     <value>Zwierzęta</value>
     <comment>CategoryEnum</comment>
@@ -347,6 +350,9 @@
   <data name="NoActivities.Text" xml:space="preserve">
     <value>Brak aktywności w tym okresie czasu</value>
   </data>
+  <data name="NoFilter.Label" xml:space="preserve">
+    <value>Brak filtra</value>
+  </data>
   <data name="OkText.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -410,6 +416,9 @@
   <data name="Sport" xml:space="preserve">
     <value>Sport</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="SummaryHeader.Text" xml:space="preserve">
+    <value>Podsumowanie</value>
   </data>
   <data name="ThemeSetting.Header" xml:space="preserve">
     <value>Użyj jasnego motywu</value>
