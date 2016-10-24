@@ -243,6 +243,12 @@
     <value>Ustawienia</value>
     <comment>Hamburger</comment>
   </data>
+  <data name="HeaderDayFiltering.Label" xml:space="preserve">
+    <value>Według dnia</value>
+  </data>
+  <data name="HeaderMonthFiltering.Label" xml:space="preserve">
+    <value>Według miesiąca</value>
+  </data>
   <data name="Health" xml:space="preserve">
     <value>Zdrowie</value>
     <comment>CategoryEnum</comment>
