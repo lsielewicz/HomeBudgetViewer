@@ -1,0 +1,215 @@
+﻿<Page
+    x:Class="HomeBudgetViewer.Presentation.Statistics.StatisticsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HomeBudgetViewer.Presentation.Statistics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:enum="using:HomeBudgetViewer.Models.Enum"
+    xmlns:conventers="using:HomeBudgetViewer.Conventers"
+    xmlns:noActivitiesTextControl="using:HomeBudgetViewer.Controls.NoActivitiesTextControl"
+    xmlns:dataVisualization="using:WinRTXamlToolkit.Controls.DataVisualization"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=StatisticsPageViewModel}">
+
+    <Page.Resources>
+        <conventers:DoubleToSignedStringConventer x:Key="DoubleToSignedStringConventer"/>
+        <conventers:DateFilterToVisibilityConventer x:Key="DateFilterToVisibilityConventer"/>
+        <conventers:DoubleToUnsignedString x:Key="DoubleToUnsignedString"/>
+        <conventers:BoolToVisibilityConventer x:Key="BoolToVisibilityConventer"/>
+        <conventers:IntToVisibilityConventer x:Key="IntToVisibilityConventer"/>
+        <conventers:IntToLenghtConventer x:Key="IntToLenghtConventer"/>
+        <enum:DateFilter x:Key="MonthDateFilter">ByMonth</enum:DateFilter>
+        <enum:DateFilter x:Key="DayDateFilter">ByDay</enum:DateFilter>
+        <enum:DateFilter x:Key="NoneDateFileter">None</enum:DateFilter>
+        <enum:ConventerDirection x:Key="ConventerDirectionNormal">Normal</enum:ConventerDirection>
+        <enum:ConventerDirection x:Key="ConventerDirectionInverse">Inverse</enum:ConventerDirection>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <controls:PageHeader
+                Grid.Row="0"
+                x:Uid="StatisticsHeader"
+                Frame="{x:Bind Frame}">
+            <controls:PageHeader.SecondaryCommands>
+                <AppBarButton
+                    x:Uid="HeaderMonthFiltering"
+                    Command="{Binding SwitchCurrentFilteringCommand}"
+                    CommandParameter="{StaticResource MonthDateFilter}"/>
+                <AppBarButton
+                    x:Uid="HeaderDayFiltering"
+                    Command="{Binding SwitchCurrentFilteringCommand}"
+                    CommandParameter="{StaticResource DayDateFilter}"/>
+                <AppBarButton
+                    x:Uid="NoFilter"
+                    Command="{Binding SwitchCurrentFilteringCommand}"
+                    CommandParameter="{StaticResource NoneDateFileter}"/>
+            </controls:PageHeader.SecondaryCommands>
+
+        </controls:PageHeader>
+        <!--Progress-->
+        <ProgressRing
+            Grid.Row="1"
+            Visibility="{Binding Path=IsLoading, 
+                                           UpdateSourceTrigger=PropertyChanged,
+                                           Converter={StaticResource BoolToVisibilityConventer}, 
+                                           ConverterParameter={StaticResource ConventerDirectionNormal}}"
+             HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="3"
+            Foreground="{StaticResource MainAppBrush}"
+            Height="60"
+            Width="60"
+            IsActive="True"/>
+        <!--content-->
+        <ScrollViewer Margin="0,0,0,0" 
+                      HorizontalContentAlignment="Left"
+                      VerticalScrollBarVisibility="Auto" 
+                      Grid.Row="1" 
+                      Visibility="{Binding Path=IsLoading, 
+                                           UpdateSourceTrigger=PropertyChanged,
+                                           Converter={StaticResource BoolToVisibilityConventer}, 
+                                           ConverterParameter={StaticResource ConventerDirectionInverse}}">
+            
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Month switiching section-->
+                <Grid Grid.Row="0" Margin="20,0" x:Name="MonthSwitchingGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="PreviousMonthButton"
+                        Visibility="{Binding CurrentDateFilter, Converter={StaticResource DateFilterToVisibilityConventer}, UpdateSourceTrigger=PropertyChanged}"
+                        Grid.Column="0"
+                        Background="{StaticResource RedAppBrush}"
+                        Command="{Binding SwitchMonthCommand}"
+                        MinWidth="100"
+                        HorizontalAlignment="Left">
+                        <Button.CommandParameter>
+                            <enum:SwitchingMonthDirection>Previous</enum:SwitchingMonthDirection>
+                        </Button.CommandParameter>
+                        <Button.Content>
+                            <SymbolIcon 
+                                HorizontalAlignment="Left"
+                                Symbol="Previous"
+                                Foreground="White"/>
+                        </Button.Content>
+                    </Button>
+                    <TextBlock
+                        x:Name="MonthTextBlock"
+                        Grid.Column="1"
+                        Text="{Binding CurrentDateHeader}"
+                        FontSize="32"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                    <Button
+                        x:Name="NextMonthButton"
+                        Visibility="{Binding CurrentDateFilter, Converter={StaticResource DateFilterToVisibilityConventer}, UpdateSourceTrigger=PropertyChanged}"
+                        Grid.Column="2"
+                        Background="{StaticResource RedAppBrush}"
+                        Command="{Binding SwitchMonthCommand}"
+                        MinWidth="100"
+                        HorizontalAlignment="Right">
+                        <Button.CommandParameter>
+                            <enum:SwitchingMonthDirection>Next</enum:SwitchingMonthDirection>
+                        </Button.CommandParameter>
+                        <Button.Content>
+                            <SymbolIcon 
+                            Symbol="Next"
+                            Foreground="White"
+                            HorizontalAlignment="Right"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <!--No Activiteis-->
+                <noActivitiesTextControl:NoActivitiesTextControl
+                    Grid.Row="1"
+                    Visibility="{Binding Path=ChartCollection.Count,
+                                         Converter={StaticResource IntToVisibilityConventer},
+                                         ConverterParameter={StaticResource ConventerDirectionInverse},
+                                         UpdateSourceTrigger=PropertyChanged}"
+                    ControlImageLenght="120"
+                    ControlTextSize="18"
+                    />
+                <!--Chart-->
+                <charting:Chart
+                    Visibility="{Binding Path=ChartCollection.Count,
+                                            Converter={StaticResource IntToVisibilityConventer},
+                                            ConverterParameter={StaticResource ConventerDirectionNormal},
+                                            UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Row="1"
+                    FontSize="12"
+                    FontWeight="Normal"
+                    MinWidth="250"
+                    MinHeight="250"
+                    Height="{Binding ChartCollection.Count, Converter={StaticResource IntToLenghtConventer}, UpdateSourceTrigger=PropertyChanged}">
+                    <charting:BarSeries
+                        ItemsSource="{Binding ChartCollection}"
+                        FontSize="12"
+                        Margin="3,0"
+                        IndependentValuePath="Key"
+                        DependentValuePath="Value"
+                        Height="{Binding ChartCollection.Count, Converter={StaticResource IntToLenghtConventer}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <charting:Chart.LegendStyle>
+                        <Style TargetType="dataVisualization:Legend">
+                            <Setter Property="Width" Value="0" />
+                        </Style>
+                    </charting:Chart.LegendStyle>
+                </charting:Chart>
+            </Grid>
+        </ScrollViewer>
+        <!--Visual state groups-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="14"/>
+                        <Setter Target="PreviousMonthButton.MinWidth" Value="20"/>
+                        <Setter Target="NextMonthButton.MinWidth" Value="20"/>
+                        <Setter Target="MonthSwitchingGrid.Margin" Value="0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="16"/>
+                        <Setter Target="PreviousMonthButton.MinWidth" Value="60"/>
+                        <Setter Target="NextMonthButton.MinWidth" Value="60"/>
+                        <Setter Target="MonthSwitchingGrid.Margin" Value="10,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MonthTextBlock.FontSize" Value="32"/>
+                        <Setter Target="PreviousMonthButton.MinWidth" Value="100"/>
+                        <Setter Target="NextMonthButton.MinWidth" Value="100"/>
+                        <Setter Target="MonthSwitchingGrid.Margin" Value="20,0"/>
+                        <Setter Target="DateSizeManagement.FontSize" Value="16"/>
+                        <Setter Target="DescriptionSizeManagement.FontSize" Value="12"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

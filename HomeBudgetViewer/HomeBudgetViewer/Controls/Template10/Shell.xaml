@@ -12,9 +12,12 @@
     xmlns:budgetItemPage="using:HomeBudgetViewer.Presentation.BudgetItemPage"
     xmlns:overviewPage="using:HomeBudgetViewer.Presentation.OverviewPage"
     xmlns:summaryPage="using:HomeBudgetViewer.Presentation.SummaryPage"
+    xmlns:statistics="using:HomeBudgetViewer.Presentation.Statistics"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
+    <controls:ModalDialog IsModal="{x:Bind IsBusy, Mode=OneWay}">
+        <controls:ModalDialog.Content>
     <controls:HamburgerMenu x:Name="MyHamburgerMenu">
         <controls:HamburgerMenu.PrimaryButtons>
             <!--  mainpage button  -->
@@ -65,6 +68,18 @@
                         VerticalAlignment="Center"/>
                 </StackPanel>
             </controls:HamburgerButtonInfo>
+            <!--  mainpage button  -->
+            <controls:HamburgerButtonInfo ClearHistory="True" PageType="statistics:StatisticsPage" AutomationProperties.Name="Jerry">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon
+                        Width="48" Height="48"
+                        Symbol="LeaveChat" />
+                    <TextBlock 
+                        x:Uid="StatisticsHeader"
+                        Margin="12,0,0,0" 
+                        VerticalAlignment="Center"/>    
+                </StackPanel>
+            </controls:HamburgerButtonInfo>
         </controls:HamburgerMenu.PrimaryButtons>
 
         <controls:HamburgerMenu.SecondaryButtons>
@@ -101,4 +116,18 @@
         </controls:HamburgerMenu.SecondaryButtons>
 
     </controls:HamburgerMenu>
+            </controls:ModalDialog.Content>
+        <controls:ModalDialog.ModalContent>
+
+            <Viewbox Height="32">
+                <StackPanel Orientation="Horizontal">
+                    <ProgressRing Width="16" Height="16"
+                                  Margin="12,0" Foreground="White"
+                                  IsActive="{x:Bind IsBusy, Mode=OneWay}" />
+                    <TextBlock VerticalAlignment="Center" Foreground="White" Text="{x:Bind BusyText, Mode=OneWay}" />
+                </StackPanel>
+            </Viewbox>
+
+        </controls:ModalDialog.ModalContent>
+        </controls:ModalDialog>
 </Page>

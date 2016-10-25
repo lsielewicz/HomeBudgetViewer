@@ -108,7 +108,7 @@ namespace HomeBudgetViewer.Presentation.SummaryPage
 
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            this.CurrentDateFilter = DateFilter.None;
+            this.CurrentDateFilter = DateFilter.ByMonth;
             this.RaisePropertyChanged("CurrentDateFilter");
             this.RaisePropertyChanged("CurrentDateHeader");
             this.RaisePropertyChanged("CurrentCurrencyString");

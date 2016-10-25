@@ -141,6 +141,9 @@
     <Compile Include="Conventers\DateFilterToVisibilityConventer.cs" />
     <Compile Include="Conventers\DoubleToSignedStringConventer.cs" />
     <Compile Include="Conventers\DoubleToUnsignedString.cs" />
+    <Compile Include="Conventers\IntToBooleanConventer.cs" />
+    <Compile Include="Conventers\IntToLenghtConventer.cs" />
+    <Compile Include="Conventers\IntToVisibilityConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
     <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
@@ -187,6 +190,10 @@
       <DependentUpon>UserSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPageVIewModel.cs" />
+    <Compile Include="Presentation\Statistics\StatisticsPage.xaml.cs">
+      <DependentUpon>StatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Statistics\StatisticsPageViewModel.cs" />
     <Compile Include="Presentation\SummaryPage\SummaryPage.xaml.cs">
       <DependentUpon>SummaryPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +220,7 @@
     <Content Include="Assets\Icons\Gray\About-100.png" />
     <Content Include="Assets\Icons\Gray\Info-500.png" />
     <Content Include="Assets\Icons\Gray\Invisible-100.png" />
+    <Content Include="Assets\Icons\Gray\Pie Chart Filled-100.png" />
     <Content Include="Assets\Icons\Gray\Plus Math-100.png" />
     <Content Include="Assets\Icons\Gray\Report Card-100.png" />
     <Content Include="Assets\Icons\Gray\Settings-100.png" />
@@ -367,6 +375,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Statistics\StatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

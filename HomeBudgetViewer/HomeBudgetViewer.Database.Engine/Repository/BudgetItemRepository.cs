@@ -8,6 +8,7 @@ using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
+using HomeBudgetViewer.Database.Engine.Restrictions.Categories;
 using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
 using HomeBudgetViewer.Models.Enum;
 
@@ -187,6 +188,42 @@ namespace HomeBudgetViewer.Database.Engine.Repository
                           item.Date.Year == date.Year &&
                           item.Date.Month == date.Month &&
                           item.Date.Day == date.Day)
+                          .Sum(item => item.MoneyValue);
+                    break;
+            }
+
+            return itemsSum;
+        }
+
+        public double GetSumOfItemsByCategory(int userId, DateTime date, ItemType itemType, DateFilter dateFilter, Category category)
+        {
+            double itemsSum = 0;
+            switch (dateFilter)
+            {
+                case DateFilter.None:
+                    itemsSum = BudgetContext.BudgetItem.Where(item =>
+                         item.User.Id == userId &&
+                         item.ItemType == itemType.ToString() &&
+                         item.Category == category.ToString())
+                         .Sum(item => item.MoneyValue);
+                    break;
+                case DateFilter.ByMonth:
+                    itemsSum = BudgetContext.BudgetItem.Where(item =>
+                         item.User.Id == userId &&
+                         item.ItemType == itemType.ToString() &&
+                         item.Date.Year == date.Year &&
+                         item.Date.Month == date.Month &&
+                         item.Category == category.ToString())
+                         .Sum(item => item.MoneyValue);
+                    break;
+                case DateFilter.ByDay:
+                    itemsSum = BudgetContext.BudgetItem.Where(item =>
+                          item.User.Id == userId &&
+                          item.ItemType == itemType.ToString() &&
+                          item.Date.Year == date.Year &&
+                          item.Date.Month == date.Month &&
+                          item.Date.Day == date.Day &&
+                          item.Category == category.ToString())
                           .Sum(item => item.MoneyValue);
                     break;
             }

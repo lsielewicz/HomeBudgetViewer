@@ -185,6 +185,9 @@
     <value>Car</value>
     <comment>CategoryEnum</comment>
   </data>
+  <data name="Categories.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="CategorySelectionHeader.Text" xml:space="preserve">
     <value>Select the category</value>
   </data>
@@ -428,6 +431,9 @@
   <data name="Sport" xml:space="preserve">
     <value>Sport</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="StatisticsHeader.Text" xml:space="preserve">
+    <value>Statistics</value>
   </data>
   <data name="SummaryHeader.Text" xml:space="preserve">
     <value>Summary</value>

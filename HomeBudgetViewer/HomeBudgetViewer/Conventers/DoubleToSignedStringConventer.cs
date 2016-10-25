@@ -17,12 +17,12 @@ namespace HomeBudgetViewer.Conventers
                 var dValue = (double)value;
                 NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
                 nfi.NumberGroupSeparator = " ";
+                if (Math.Abs(dValue) < 1)
+                    return $"{dValue.ToString("#,0.00", nfi)}";
                 if (dValue > 0)
                     return $"+{dValue.ToString("#,0.00", nfi)}";
-                else if (dValue < 0)
+                if (dValue < 0)
                     return $"-{dValue.ToString("#,0.00", nfi)}";
-                else
-                    return $"{dValue.ToString("#,0.00", nfi)}";
             }
             return string.Empty;
         }

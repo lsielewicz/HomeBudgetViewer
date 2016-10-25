@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HomeBudgetViewer.Database.Engine.Entities;
+using HomeBudgetViewer.Database.Engine.Restrictions.Categories;
 using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
 using HomeBudgetViewer.Models.Enum;
 
@@ -21,5 +22,8 @@ namespace HomeBudgetViewer.Database.Engine.Repository.Interfaces
 
         int GetCountOfItems(int userId, DateTime date, ItemType itemType, DateFilter dateFiler);
         double GetSumOfItems(int userId, DateTime date, ItemType itemType, DateFilter dateFiler);
+
+        double GetSumOfItemsByCategory(int userId, DateTime date, ItemType itemType, DateFilter dateFilter,Category category);
+
     }
 }
