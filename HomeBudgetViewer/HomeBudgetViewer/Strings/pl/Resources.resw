@@ -188,6 +188,9 @@
   <data name="Categories.Text" xml:space="preserve">
     <value>Kategorie</value>
   </data>
+  <data name="CategoriesChart.Title" xml:space="preserve">
+    <value>Wykres kategorii</value>
+  </data>
   <data name="CategorySelectionHeader.Text" xml:space="preserve">
     <value>Wybierz kategorie</value>
   </data>

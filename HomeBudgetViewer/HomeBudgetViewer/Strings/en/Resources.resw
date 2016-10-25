@@ -188,6 +188,9 @@
   <data name="Categories.Text" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="CategoriesChart.Title" xml:space="preserve">
+    <value>Chart of categories</value>
+  </data>
   <data name="CategorySelectionHeader.Text" xml:space="preserve">
     <value>Select the category</value>
   </data>

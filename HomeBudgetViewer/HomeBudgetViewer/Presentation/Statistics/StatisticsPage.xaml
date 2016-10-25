@@ -11,10 +11,13 @@
     xmlns:conventers="using:HomeBudgetViewer.Conventers"
     xmlns:noActivitiesTextControl="using:HomeBudgetViewer.Controls.NoActivitiesTextControl"
     xmlns:dataVisualization="using:WinRTXamlToolkit.Controls.DataVisualization"
+    xmlns:itemType="using:HomeBudgetViewer.Database.Engine.Restrictions.ItemType"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=StatisticsPageViewModel}">
 
     <Page.Resources>
+        <itemType:ItemType x:Key="ExpenseItemType">Expense</itemType:ItemType>
+        <itemType:ItemType x:Key="IncomeItemType">Income</itemType:ItemType>
         <conventers:DoubleToSignedStringConventer x:Key="DoubleToSignedStringConventer"/>
         <conventers:DateFilterToVisibilityConventer x:Key="DateFilterToVisibilityConventer"/>
         <conventers:DoubleToUnsignedString x:Key="DoubleToUnsignedString"/>
@@ -26,6 +29,10 @@
         <enum:DateFilter x:Key="NoneDateFileter">None</enum:DateFilter>
         <enum:ConventerDirection x:Key="ConventerDirectionNormal">Normal</enum:ConventerDirection>
         <enum:ConventerDirection x:Key="ConventerDirectionInverse">Inverse</enum:ConventerDirection>
+        <conventers:CategoryModelToImageConventer x:Key="CategoryToImageConventer"/>
+        <conventers:CategoryModelToBrushConventer x:Key="CategoryToBrushConventer"/>
+        <conventers:ItemTypeToForegroundConventer x:Key="ItemTypeToForegroundConventer"/>
+        <conventers:ItemTypeToBackgroundConventer x:Key="ItemTypeToBackgroundConventer"/>
     </Page.Resources>
     
     <Grid>
@@ -82,6 +89,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <!--Month switiching section-->
                 <Grid Grid.Row="0" Margin="20,0" x:Name="MonthSwitchingGrid">
@@ -146,6 +154,7 @@
                     />
                 <!--Chart-->
                 <charting:Chart
+                    x:Uid="CategoriesChart"
                     Visibility="{Binding Path=ChartCollection.Count,
                                             Converter={StaticResource IntToVisibilityConventer},
                                             ConverterParameter={StaticResource ConventerDirectionNormal},
@@ -169,6 +178,66 @@
                         </Style>
                     </charting:Chart.LegendStyle>
                 </charting:Chart>
+                <!--Income/Expense-->
+                <Grid 
+                    Grid.Row="2"
+                    Margin="0,10" 
+                    VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        Background="{Binding BudgetItemType, 
+                                            Converter={StaticResource ItemTypeToBackgroundConventer}, 
+                                            ConverterParameter={StaticResource IncomeItemType},
+                                            UpdateSourceTrigger=PropertyChanged}"
+                        Command="{Binding SwitchItemTypeCommand}"
+                        CommandParameter="{StaticResource IncomeItemType}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon
+                                Symbol="Add"
+                                Foreground="{Binding BudgetItemType, 
+                                                Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                                ConverterParameter={StaticResource IncomeItemType},
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                Margin="5,0"/>
+                            <TextBlock
+                                x:Uid="Incomes"
+                                Foreground="{Binding BudgetItemType, 
+                                                Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                                ConverterParameter={StaticResource IncomeItemType},
+                                                UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        Background="{Binding BudgetItemType, 
+                                            Converter={StaticResource ItemTypeToBackgroundConventer}, 
+                                            ConverterParameter={StaticResource ExpenseItemType},
+                                            UpdateSourceTrigger=PropertyChanged}"          
+                        Command="{Binding SwitchItemTypeCommand}"
+                        CommandParameter="{StaticResource ExpenseItemType}">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon
+                                Symbol="Remove"
+                                Foreground="{Binding BudgetItemType, 
+                                                Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                                ConverterParameter={StaticResource ExpenseItemType},
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                Margin="5,0"/>
+                            <TextBlock
+                                x:Uid="Expenses"
+                                Foreground="{Binding BudgetItemType, 
+                                                Converter={StaticResource ItemTypeToForegroundConventer}, 
+                                                ConverterParameter={StaticResource ExpenseItemType},
+                                                UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
             </Grid>
         </ScrollViewer>
         <!--Visual state groups-->
