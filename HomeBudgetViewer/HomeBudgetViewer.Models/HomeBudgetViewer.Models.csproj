@@ -110,6 +110,7 @@
     <Compile Include="Enum\ArithmeticOperation.cs" />
     <Compile Include="Enum\BudgetItemAction.cs" />
     <Compile Include="Enum\ConventerDirection.cs" />
+    <Compile Include="Enum\DateFilter.cs" />
     <Compile Include="Enum\SwitchingMonthDirection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\HomeBudgetViewer.Models.rd.xml" />

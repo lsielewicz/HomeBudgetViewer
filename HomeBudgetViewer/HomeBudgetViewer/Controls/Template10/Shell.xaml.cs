@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Template10.Common;
 using Template10.Controls;
 using Template10.Services.NavigationService;
 
@@ -41,6 +44,27 @@ namespace HomeBudgetViewer.Controls.Template10
         public void SetNavigationService(INavigationService navigationService)
         {
             MyHamburgerMenu.NavigationService = navigationService;
+        }
+
+        public bool IsBusy { get; set; } = false;
+        public string BusyText { get; set; } = "Please wait...";
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public static void SetBusy(bool busy, string text = null)
+        {
+            WindowWrapper.Current().Dispatcher.Dispatch(() =>
+            {
+                if (busy)
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+                else
+                    BootStrapper.Current.UpdateShellBackButton();
+
+                Instance.IsBusy = busy;
+                Instance.BusyText = text;
+
+                Instance.PropertyChanged?.Invoke(Instance, new PropertyChangedEventArgs(nameof(IsBusy)));
+                Instance.PropertyChanged?.Invoke(Instance, new PropertyChangedEventArgs(nameof(BusyText)));
+            });
         }
     }
 }

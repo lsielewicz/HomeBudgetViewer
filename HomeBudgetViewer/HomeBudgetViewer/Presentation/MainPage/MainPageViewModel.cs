@@ -10,6 +10,7 @@ using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
 using HomeBudgetViewer.Presentation.BudgetItemPage.CategorySelectionPage;
+using HomeBudgetViewer.Presentation.Statistics;
 using HomeBudgetViewer.Services.SettingService;
 
 namespace HomeBudgetViewer.Presentation.MainPage
@@ -20,10 +21,34 @@ namespace HomeBudgetViewer.Presentation.MainPage
         private RelayCommand _navigateToOverviewCommand;
         private RelayCommand _navigateToSettingsCommand;
         private RelayCommand _navigateToAboutCommand;
+        private RelayCommand _navigateToSummaryCommand;
+        private RelayCommand _navigateToStatisticsCommand;
 
         public MainPageViewModel()
         {
            
+        }
+
+        public RelayCommand NavigateToStatisticsCommand
+        {
+            get
+            {
+                return _navigateToStatisticsCommand ?? (_navigateToStatisticsCommand = new RelayCommand(() =>
+                {
+                    this.NavigationService.Navigate(typeof(StatisticsPage));
+                }));
+            }
+        }
+
+        public RelayCommand NavigateToSummaryCommand
+        {
+            get
+            {
+                return _navigateToSummaryCommand ?? (_navigateToSummaryCommand = new RelayCommand(() =>
+                {
+                    this.NavigationService.Navigate(typeof(SummaryPage.SummaryPage));
+                }));
+            }
         }
 
         public RelayCommand NavigateToAboutCommand
@@ -142,7 +167,6 @@ namespace HomeBudgetViewer.Presentation.MainPage
 
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            //this.NavigationService.Navigate(typeof(BudgetItemPage.BudgetItemPage));
             return base.OnNavigatedToAsync(parameter, mode, state);
         }
     }   

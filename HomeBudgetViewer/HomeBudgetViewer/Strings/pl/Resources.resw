@@ -135,6 +135,9 @@
   <data name="AddText.Text" xml:space="preserve">
     <value>Dodaj</value>
   </data>
+  <data name="AllTogether" xml:space="preserve">
+    <value>Ogółem</value>
+  </data>
   <data name="Animals" xml:space="preserve">
     <value>Zwierzęta</value>
     <comment>CategoryEnum</comment>
@@ -144,6 +147,15 @@
   </data>
   <data name="Author.Text" xml:space="preserve">
     <value>Autor</value>
+  </data>
+  <data name="AverageBalance.Text" xml:space="preserve">
+    <value>Bilans</value>
+  </data>
+  <data name="AverageExpenses.Text" xml:space="preserve">
+    <value>Średnie wydatki</value>
+  </data>
+  <data name="AverageIncomes.Text" xml:space="preserve">
+    <value>Średnie przychody</value>
   </data>
   <data name="BackButtonSetting.Header" xml:space="preserve">
     <value>Pokaż przycisk cofania widoku</value>
@@ -157,6 +169,9 @@
     <value>Przycisk cofania w pasku tytułowym</value>
     <comment>Settings</comment>
   </data>
+  <data name="BalanceChart.Title" xml:space="preserve">
+    <value>Wykres bilansu</value>
+  </data>
   <data name="BudgetItemHeader.Text" xml:space="preserve">
     <value>Budżet</value>
   </data>
@@ -169,6 +184,12 @@
   <data name="Car" xml:space="preserve">
     <value>Samochód</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="Categories.Text" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="CategoriesChart.Title" xml:space="preserve">
+    <value>Wykres kategorii</value>
   </data>
   <data name="CategorySelectionHeader.Text" xml:space="preserve">
     <value>Wybierz kategorie</value>
@@ -242,6 +263,12 @@
   <data name="HamburgerSettings.Text" xml:space="preserve">
     <value>Ustawienia</value>
     <comment>Hamburger</comment>
+  </data>
+  <data name="HeaderDayFiltering.Label" xml:space="preserve">
+    <value>Według dnia</value>
+  </data>
+  <data name="HeaderMonthFiltering.Label" xml:space="preserve">
+    <value>Według miesiąca</value>
   </data>
   <data name="Health" xml:space="preserve">
     <value>Zdrowie</value>
@@ -341,6 +368,9 @@
   <data name="NoActivities.Text" xml:space="preserve">
     <value>Brak aktywności w tym okresie czasu</value>
   </data>
+  <data name="NoFilter.Label" xml:space="preserve">
+    <value>Brak filtra</value>
+  </data>
   <data name="OkText.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -404,6 +434,12 @@
   <data name="Sport" xml:space="preserve">
     <value>Sport</value>
     <comment>CategoryEnum</comment>
+  </data>
+  <data name="StatisticsHeader.Text" xml:space="preserve">
+    <value>Statystyki</value>
+  </data>
+  <data name="SummaryHeader.Text" xml:space="preserve">
+    <value>Podsumowanie</value>
   </data>
   <data name="ThemeSetting.Header" xml:space="preserve">
     <value>Użyj jasnego motywu</value>

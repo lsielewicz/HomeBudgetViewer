@@ -134,7 +134,12 @@
     <Compile Include="Restrictions\ItemType\ItemType.cs" />
     <EmbeddedResource Include="Properties\HomeBudgetViewer.Database.Engine.rd.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HomeBudgetViewer.Models\HomeBudgetViewer.Models.csproj">
+      <Project>{28c1568c-57f5-410b-b73d-caa677f54e47}</Project>
+      <Name>HomeBudgetViewer.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -12,6 +12,8 @@ using HomeBudgetViewer.Presentation.MainPage;
 using HomeBudgetViewer.Presentation.OverviewPage;
 using HomeBudgetViewer.Presentation.SettingsPage;
 using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage;
+using HomeBudgetViewer.Presentation.Statistics;
+using HomeBudgetViewer.Presentation.SummaryPage;
 using Microsoft.Practices.ServiceLocation;
 
 namespace HomeBudgetViewer.Presentation
@@ -44,6 +46,18 @@ namespace HomeBudgetViewer.Presentation
             SimpleIoc.Default.Register<BudgetItemPageViewModel>();
             SimpleIoc.Default.Register<CategorySelectionPageViewModel>();
             SimpleIoc.Default.Register<OverviewPageViewModel>();
+            SimpleIoc.Default.Register<SummaryPageViewModel>();
+            SimpleIoc.Default.Register<StatisticsPageViewModel>();
+        }
+
+        public StatisticsPageViewModel StatisticsPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<StatisticsPageViewModel>(); }
+        }
+
+        public SummaryPageViewModel SummaryPageViewModel
+        {
+            get { return ServiceLocator.Current.GetInstance<SummaryPageViewModel>(); }
         }
 
         public OverviewPageViewModel OverviewPageViewModel

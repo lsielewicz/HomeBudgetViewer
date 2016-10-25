@@ -131,12 +131,19 @@
       <DependentUpon>UpdateUserProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\UpdateUserProfileDialog\UpdateUserProfileDialogViewModel.cs" />
+    <Compile Include="Conventers\BoolToVisibilityConventer.cs" />
     <Compile Include="Conventers\BudgetItemActionToVisibilityConventer.cs" />
     <Compile Include="Conventers\CategoryModelToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryModelToImageConventer.cs" />
     <Compile Include="Conventers\CategoryToBrushConventer.cs" />
     <Compile Include="Conventers\CategoryToImageConventer.cs" />
     <Compile Include="Conventers\CoutOfCollectionItemsToVisibilityConventer.cs" />
+    <Compile Include="Conventers\DateFilterToVisibilityConventer.cs" />
+    <Compile Include="Conventers\DoubleToSignedStringConventer.cs" />
+    <Compile Include="Conventers\DoubleToUnsignedString.cs" />
+    <Compile Include="Conventers\IntToBooleanConventer.cs" />
+    <Compile Include="Conventers\IntToLenghtConventer.cs" />
+    <Compile Include="Conventers\IntToVisibilityConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBackgroundConventer.cs" />
     <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
     <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
@@ -154,6 +161,7 @@
       <DependentUpon>CalculatorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\BudgetItemPage\Controls\Calculator\CalculatorViewModel.cs" />
+    <Compile Include="Presentation\DateOperationViewModelBase.cs" />
     <Compile Include="Presentation\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -182,6 +190,14 @@
       <DependentUpon>UserSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPageVIewModel.cs" />
+    <Compile Include="Presentation\Statistics\StatisticsPage.xaml.cs">
+      <DependentUpon>StatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Statistics\StatisticsPageViewModel.cs" />
+    <Compile Include="Presentation\SummaryPage\SummaryPage.xaml.cs">
+      <DependentUpon>SummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\SummaryPage\SummaryPageViewModel.cs" />
     <Compile Include="Presentation\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingService\ApplicationLanguage.cs" />
@@ -204,7 +220,9 @@
     <Content Include="Assets\Icons\Gray\About-100.png" />
     <Content Include="Assets\Icons\Gray\Info-500.png" />
     <Content Include="Assets\Icons\Gray\Invisible-100.png" />
+    <Content Include="Assets\Icons\Gray\Pie Chart Filled-100.png" />
     <Content Include="Assets\Icons\Gray\Plus Math-100.png" />
+    <Content Include="Assets\Icons\Gray\Report Card-100.png" />
     <Content Include="Assets\Icons\Gray\Settings-100.png" />
     <Content Include="Assets\Icons\Red\Delete-100.png" />
     <Content Include="Assets\Icons\White\Ask Question-100.png" />
@@ -357,6 +375,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SettingsPage\Tabs\UserProfiles\UserSelectionPage\UserSelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Statistics\StatisticsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\SummaryPage\SummaryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
