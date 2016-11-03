@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Controls.ConfirmationDialog;
+using HomeBudgetViewer.Controls.InformationDialog;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
@@ -91,11 +92,16 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         {
             get
             {
-                return _assignBudgetItemToDatabase ?? (_assignBudgetItemToDatabase = new RelayCommand(() =>
+                return _assignBudgetItemToDatabase ?? (_assignBudgetItemToDatabase = new RelayCommand(async () =>
                 {
                     if (this.CalculatorViewModel.CurrentArithmeticalNumber == "0" ||
                         string.IsNullOrEmpty(this.CalculatorViewModel.CurrentArithmeticalNumber))
+                    {
+                        InformationDialog dialog = new InformationDialog(this.GetLocalizedString("CannotAddItemWithEmptyValue"));
+                        await dialog.ShowAsync();
                         return;
+                    }
+
                     this.CalculatorViewModel.CalculateResultCommand.Execute(this.CalculatorViewModel);
                     double moneyValue;
                     try

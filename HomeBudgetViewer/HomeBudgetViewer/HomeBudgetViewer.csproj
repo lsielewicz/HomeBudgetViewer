@@ -112,6 +112,10 @@
     </Compile>
     <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogResult.cs" />
     <Compile Include="Controls\ConfirmationDialog\ConfirmationDialogViewModel.cs" />
+    <Compile Include="Controls\InformationDialog\InformationDialog.xaml.cs">
+      <DependentUpon>InformationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InformationDialog\InformationDialogViewModel.cs" />
     <Compile Include="Controls\NoActivitiesTextControl\NoActivitiesTextControl.xaml.cs">
       <DependentUpon>NoActivitiesTextControl.xaml</DependentUpon>
     </Compile>
@@ -225,6 +229,7 @@
     <Content Include="Assets\Icons\Gray\Plus Math-100.png" />
     <Content Include="Assets\Icons\Gray\Report Card-100.png" />
     <Content Include="Assets\Icons\Gray\Settings-100.png" />
+    <Content Include="Assets\Icons\Green\Info Filled-100.png" />
     <Content Include="Assets\Icons\Red\Delete-100.png" />
     <Content Include="Assets\Icons\White\Ask Question-100.png" />
     <Content Include="Assets\Icons\White\Checkmark-96.png" />
@@ -312,6 +317,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ConfirmationDialog\ConfirmationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\InformationDialog\InformationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
