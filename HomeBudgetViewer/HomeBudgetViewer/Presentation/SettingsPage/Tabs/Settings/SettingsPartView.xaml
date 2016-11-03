@@ -10,7 +10,7 @@
     d:DesignWidth="400"
     d:DataContext="{d:DesignInstance local:SettingsPartViewModel}">
 
-    <ScrollViewer Margin="0,12,-12,0" HorizontalContentAlignment="Left"
+    <ScrollViewer Margin="0" HorizontalContentAlignment="Left"
                               VerticalScrollBarVisibility="Auto">
         <StackPanel HorizontalAlignment="Left">
 

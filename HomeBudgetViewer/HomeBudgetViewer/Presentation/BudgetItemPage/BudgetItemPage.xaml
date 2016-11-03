@@ -37,7 +37,7 @@
                 RelativePanel.AlignTopWithPanel="True" >
         </controls:PageHeader>
 
-        <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+        <ScrollViewer Margin="0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto" Grid.Row="1">
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

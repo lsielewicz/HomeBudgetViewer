@@ -222,6 +222,8 @@
     <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\Icons\Black\Circled User Male-100.png" />
     <Content Include="Assets\Icons\Blue\Ask Question-100 %281%29.png" />
+    <Content Include="Assets\Icons\GitHub Filled-100.png" />
+    <Content Include="Assets\Icons\GitHub-96.png" />
     <Content Include="Assets\Icons\Gray\About-100.png" />
     <Content Include="Assets\Icons\Gray\Info-500.png" />
     <Content Include="Assets\Icons\Gray\Invisible-100.png" />
@@ -230,6 +232,7 @@
     <Content Include="Assets\Icons\Gray\Report Card-100.png" />
     <Content Include="Assets\Icons\Gray\Settings-100.png" />
     <Content Include="Assets\Icons\Green\Info Filled-100.png" />
+    <Content Include="Assets\Icons\LinkedIn-96.png" />
     <Content Include="Assets\Icons\Red\Delete-100.png" />
     <Content Include="Assets\Icons\White\Ask Question-100.png" />
     <Content Include="Assets\Icons\White\Checkmark-96.png" />
@@ -260,6 +263,7 @@
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\splash_template.png" />
     <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\Square150x150Logo.scale-125.png" />
     <Content Include="Assets\Square150x150Logo.scale-150.png" />

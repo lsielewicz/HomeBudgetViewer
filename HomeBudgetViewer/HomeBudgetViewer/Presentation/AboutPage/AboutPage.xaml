@@ -12,7 +12,26 @@
     d:DesignWidth="400"
     DataContext="{Binding Source={StaticResource Locator}, Path=AboutPageViewModel}">
 
-    <ScrollViewer Margin="0,0,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader 
+            Grid.Row="0"
+            x:Uid="AboutPart"
+            Frame="{x:Bind Frame}"/>
+        <Image
+            Grid.Row="1"
+            Source="../../Assets/splash_template.png"
+            Opacity="0.15"
+            Stretch="UniformToFill"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="45"/>
+
+        <ScrollViewer Grid.Row="1" Margin="0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -25,94 +44,112 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-        
-            <controls:PageHeader 
-                Grid.Row="0"
-                x:Uid="AboutPart"
-                Frame="{x:Bind Frame}"/>
-        
-            <!--Application name-->
-            <TextBlock 
-                Grid.Row="1"
-                Margin="0,0,0,12"
-                FontSize="24"
-                Text="Home Budget Viewer" 
-                HorizontalAlignment="Center"
-                />
-            <!--Image-->
-<!--            <Border 
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top" 
-                BorderBrush="Transparent"
-                CornerRadius="48"
-                BorderThickness="0" 
-                IsHitTestVisible="False"
-                Margin="15">
-                <Border.Background>
-                    <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
-                </Border.Background>-->
-                <Image
-                    Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Margin="12" 
-                    Source="{Binding Logo}"
-                    Stretch="None" />
-            <!--</Border>-->
+       
             <!--Author-->
-            <StackPanel Grid.Row="3" Orientation="Horizontal">
-                <pointerControl:PointerControl/>
+            <Border Grid.Row="3" HorizontalAlignment="Stretch" Background="{StaticResource RedAppBrush}" Padding="5" Margin="0,5,0,10">
                 <TextBlock 
                     x:Uid="Author"
-                    FontSize="24"
-                    VerticalAlignment="Center"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Margin="48,0,0,0">
+                    FontSize="22"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontWeight="Light"
+                    Foreground="{StaticResource ContrastColorBrush}"/>
+            </Border>
+            <StackPanel Grid.Row="4" Margin="0,0,0,0" HorizontalAlignment="Stretch">
                 <TextBlock
                     Text="{Binding Publisher}"
+                    FontWeight="Normal"
+                    FontSize="18"
+                    HorizontalAlignment="Center"/>
+                <TextBlock
+                    Text="lsielewicz8@gmail.com"
+                    FontWeight="Light"
                     FontSize="16"
-                    FontWeight="Light"/>
-                <HyperlinkButton
-                    NavigateUri="https://github.com/lsielewicz"
-                    Content="https://github.com/lsielewicz"
-                    FontSize="16"
-                    FontWeight="Light"/>
-                <HyperlinkButton
-                    NavigateUri="https://pl.linkedin.com/in/%C5%82ukasz-sielewicz-569298bb"
-                    Content="LinkedIn"
-                    FontSize="16"
-                    FontWeight="Light"/>
+                    HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <HyperlinkButton
+                        NavigateUri="https://github.com/lsielewicz"
+                        FontSize="16"
+                        FontWeight="Light"
+                        Margin="15,0,0,0">
+                        <StackPanel>
+                            <Image
+                                Source="../../Assets/Icons/GitHub-96.png"
+                                Width="60"
+                                Height="60"
+                                HorizontalAlignment="Center"/>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Github"
+                                Margin="0"/>
+                        </StackPanel>
+                    </HyperlinkButton>
+                    <HyperlinkButton
+                        NavigateUri="https://pl.linkedin.com/in/%C5%82ukasz-sielewicz-569298bb"
+                        FontSize="16"
+                        FontWeight="Light"
+                        Margin="15,0,0,0">
+                        <StackPanel>
+                        <Image
+                            Source="../../Assets/Icons/LinkedIn-96.png"
+                            Width="60"
+                            Height="60"
+                            HorizontalAlignment="Center"/>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="LinkedIn"
+                            Margin="0"/>
+                        </StackPanel>
+                    </HyperlinkButton>
+                </StackPanel>
             </StackPanel> 
             <!--Version-->
-            <StackPanel Grid.Row="5" Orientation="Horizontal">
-                <pointerControl:PointerControl/>
+            <Border Grid.Row="5" HorizontalAlignment="Stretch" Background="{StaticResource RedAppBrush}" Padding="5" Margin="0,5,0,10">
                 <TextBlock 
                     x:Uid="Version"
-                    FontSize="24"
-                    VerticalAlignment="Center"/>
-            </StackPanel>
-            <StackPanel Grid.Row="6" Margin="48,0,0,0">
+                    FontSize="22"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"
+                    FontWeight="Light"/>
+            </Border>
+            <StackPanel Grid.Row="6" HorizontalAlignment="Stretch">
+                <TextBlock
+                    Text="Home Budget Viewer [BETA]"
+                    FontSize="16"
+                    FontWeight="Normal"
+                    HorizontalAlignment="Center"/>
                 <TextBlock
                     Text="{Binding Version}"
                     FontSize="16"
-                    FontWeight="Light"/>
+                    FontWeight="Light"
+                    HorizontalAlignment="Center"/>
             </StackPanel>
             <!--Icons-->
-            <StackPanel Grid.Row="7" Orientation="Horizontal">
-                <pointerControl:PointerControl/>
+            <Border Grid.Row="7"  HorizontalAlignment="Stretch" Background="{StaticResource RedAppBrush}" Padding="5" Margin="0,5,0,10">
                 <TextBlock 
                     x:Uid="Icons"
-                    FontSize="24"
-                    VerticalAlignment="Center"/>
-            </StackPanel>
-            <StackPanel Grid.Row="8" Margin="48,0,0,0">
+                    FontSize="22"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="{StaticResource ContrastColorBrush}"
+                    FontWeight="Light"/>
+            </Border>
+            <StackPanel Grid.Row="8" HorizontalAlignment="Stretch">
+                <HyperlinkButton
+                    NavigateUri="https://msdn.microsoft.com/library/windows/apps/dn252842"
+                    Content="Microsoft symbol enumeration"
+                    FontSize="16"
+                    FontWeight="Light"
+                    HorizontalAlignment="Center"/>
                 <HyperlinkButton
                     NavigateUri="https://icons8.com/"
-                    Content="https://icons8.com/"
+                    Content="Icons8.com"
                     FontSize="16"
-                    FontWeight="Light"/>
+                    FontWeight="Light"
+                    HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>
+    </Grid>
 </Page>
