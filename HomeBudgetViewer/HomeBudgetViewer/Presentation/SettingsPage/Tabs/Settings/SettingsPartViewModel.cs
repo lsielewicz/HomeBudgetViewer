@@ -1,5 +1,9 @@
-﻿using Windows.Globalization;
+﻿using System;
+using System.Globalization;
+using Windows.Globalization;
 using Windows.UI.Xaml;
+using HomeBudgetViewer.Controls.InformationDialog;
+using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Services.SettingService;
 
 namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
@@ -44,12 +48,11 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
             set
             {
                 SetCurrentLanguage(value);
-                _parentViewModel.NavigationService.Navigate(typeof(SettingsPage));
                 this.RaisePropertyChanged();
             }
         }
 
-        private void SetCurrentLanguage(string item)
+        private async void SetCurrentLanguage(string item)
         {
             if (item == this.GetLocalizedString("Polish"))
             {
@@ -62,7 +65,9 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
                 _settings.CurrentLanguage = ApplicationLanguage.English;
                 ApplicationLanguages.PrimaryLanguageOverride = ApplicationLanguage.English;
             }
-             
+            InformationDialog dialog = new InformationDialog(this.GetLocalizedString("AssignLanguageText"));
+            await dialog.ShowAsync();
+            _parentViewModel.NavigationService.Navigate(typeof(HomeBudgetViewer.MainPage));
         }
 
         private string GetCurrentLanguage()

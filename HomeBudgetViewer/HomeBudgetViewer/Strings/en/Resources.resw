@@ -145,6 +145,9 @@
   <data name="Assign.Text" xml:space="preserve">
     <value>Assign</value>
   </data>
+  <data name="AssignLanguageText" xml:space="preserve">
+    <value>All changes will be submitted after the application reboot</value>
+  </data>
   <data name="Author.Text" xml:space="preserve">
     <value>Author</value>
   </data>
