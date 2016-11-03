@@ -2,13 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
-using Windows.Globalization;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
-using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelectionPage;
 using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
 using Template10.Controls;

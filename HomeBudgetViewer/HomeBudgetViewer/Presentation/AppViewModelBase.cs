@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Resources;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight;
-using HomeBudgetViewer.Services.SettingService;
 using Template10.Common;
 using Template10.Services.NavigationService;
 

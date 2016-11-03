@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HomeBudgetViewer.Database.Engine.Entities
+﻿namespace HomeBudgetViewer.Database.Engine.Entities
 {
     public abstract class EntityBase
     {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Command;
@@ -15,7 +14,6 @@ using HomeBudgetViewer.Messages;
 using HomeBudgetViewer.Models.Enum;
 using HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator;
 using HomeBudgetViewer.Services.SettingService;
-using Template10.Utils;
 
 namespace HomeBudgetViewer.Presentation.BudgetItemPage
 {

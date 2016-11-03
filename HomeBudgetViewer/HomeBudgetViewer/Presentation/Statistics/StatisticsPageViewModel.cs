@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.Generic;   
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
-using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Database.Engine.Restrictions.Categories;
-using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
 using HomeBudgetViewer.Models.Enum;
 using HomeBudgetViewer.Services.SettingService;
 

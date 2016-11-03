@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
 using HomeBudgetViewer.Models.Enum;

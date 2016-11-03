@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Globalization;
+﻿using Windows.Globalization;
 using Windows.UI.Xaml;
-using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Services.SettingService;
-using Template10.Mvvm;
 
 namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings
 {

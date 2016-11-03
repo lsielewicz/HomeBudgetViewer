@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Database.Engine.Engine;

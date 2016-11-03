@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HomeBudgetViewer.Services.SettingService
+﻿namespace HomeBudgetViewer.Services.SettingService
 {
     public sealed class ApplicationLanguage
     {

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Command;
-using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Database.Engine.Engine;
-using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
-using HomeBudgetViewer.Presentation.BudgetItemPage.CategorySelectionPage;
 using HomeBudgetViewer.Presentation.Statistics;
 using HomeBudgetViewer.Services.SettingService;
 

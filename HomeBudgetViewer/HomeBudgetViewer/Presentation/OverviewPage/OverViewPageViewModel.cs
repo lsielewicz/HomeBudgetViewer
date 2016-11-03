@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
-using HomeBudgetViewer.Database.Engine.Restrictions.Currency;
 using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
-using HomeBudgetViewer.Messages;
 using HomeBudgetViewer.Models.Enum;
 using HomeBudgetViewer.Services.SettingService;
 

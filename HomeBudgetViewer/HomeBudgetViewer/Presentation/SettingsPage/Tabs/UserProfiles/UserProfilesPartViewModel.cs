@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight.Command;
 using HomeBudgetViewer.Controls.AddUserProfileDialog;
 using HomeBudgetViewer.Controls.UpdateUserProfileDialog;
 using HomeBudgetViewer.Database.Engine.Engine;
-using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Services.SettingService;
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings;
+﻿using HomeBudgetViewer.Presentation.SettingsPage.Tabs.Settings;
 using HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles;
 
 
