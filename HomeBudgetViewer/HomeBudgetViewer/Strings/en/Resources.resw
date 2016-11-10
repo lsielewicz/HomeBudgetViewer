@@ -148,6 +148,9 @@
   <data name="AssignLanguageText" xml:space="preserve">
     <value>All changes will be submitted after the application reboot</value>
   </data>
+  <data name="AtLeastOneUserProfile" xml:space="preserve">
+    <value>There must be at least one user profile to continue</value>
+  </data>
   <data name="Author.Text" xml:space="preserve">
     <value>Author</value>
   </data>

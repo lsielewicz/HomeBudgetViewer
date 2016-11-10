@@ -2,8 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using HomeBudgetViewer.Controls.AddUserProfileDialog;
+using HomeBudgetViewer.Controls.ConfirmationDialog;
+using HomeBudgetViewer.Controls.InformationDialog;
 using HomeBudgetViewer.Controls.Template10;
 using HomeBudgetViewer.Database.Engine.Engine;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
@@ -54,15 +58,11 @@ namespace HomeBudgetViewer
                     ModalContent = new Busy(),
                 };
             }
-            await Task.CompletedTask;
-        }
 
-        public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
-        {
-            if (this.IsDbEmpty())
+            while (this.IsDbEmpty())
             {
                 var dialog = new AddUserProfileDialog();
-                var result = await dialog.ShowAsync();
+                await dialog.ShowAsync();
                 if (string.IsNullOrEmpty(SettingsService.Instance.CurrentUser.Name))
                 {
                     using (var unitOfWork = new UnitOfWork(new BudgetContext()))
@@ -74,7 +74,19 @@ namespace HomeBudgetViewer
                         }
                     }
                 }
+                if (dialog.Result == UserProfileDialogResult.Cancel)
+                {
+                    var confirmationDialog = new InformationDialog(ResourceLoader.GetForViewIndependentUse().GetString("AtLeastOneUserProfile"));
+                    await confirmationDialog.ShowAsync();      
+                }
             }
+
+            await Task.CompletedTask;
+        }
+
+        public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
+        {
+           
            
             NavigationService.Navigate(typeof(MainPage));
 

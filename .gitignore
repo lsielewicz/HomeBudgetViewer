@@ -250,3 +250,8 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/HomeBudgetViewer/HomeBudgetViewer/_scale-400.appx
+/HomeBudgetViewer/HomeBudgetViewer/_scale-150.appx
+/HomeBudgetViewer/HomeBudgetViewer/_scale-125.appx
+/HomeBudgetViewer/HomeBudgetViewer/_scale-100.appx
+/HomeBudgetViewer/HomeBudgetViewer/_language-pl.appx

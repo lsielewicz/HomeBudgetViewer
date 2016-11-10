@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="54070c97-4a0c-48fa-af6a-e804015be22b" Publisher="CN=lsiel" Version="1.0.0.0" />
+  <Identity Name="34917lsielewicz.HomeBudgetViewer" Publisher="CN=DCDDFF88-B99C-4DE6-BAF0-869619FE1AA3" Version="1.1.5.0" />
   <mp:PhoneIdentity PhoneProductId="54070c97-4a0c-48fa-af6a-e804015be22b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>HomeBudgetViewer</DisplayName>
-    <PublisherDisplayName>lsiel</PublisherDisplayName>
+    <PublisherDisplayName>lsielewicz</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

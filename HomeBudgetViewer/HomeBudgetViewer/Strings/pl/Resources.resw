@@ -148,6 +148,9 @@
   <data name="AssignLanguageText" xml:space="preserve">
     <value>Zmiana języka będzie zatwierdzona po ponownym uruchomieniu aplikacji</value>
   </data>
+  <data name="AtLeastOneUserProfile" xml:space="preserve">
+    <value>Aby kontynuować, musi być conajmniej jeden profil użytkownika</value>
+  </data>
   <data name="Author.Text" xml:space="preserve">
     <value>Autor</value>
   </data>
