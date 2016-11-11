@@ -51,7 +51,6 @@ namespace HomeBudgetViewer.Database.Engine.Restrictions.Categories
                     new CategoryModel(Category.Fashion, ItemType.Expense),
                     new CategoryModel(Category.Health, ItemType.Expense),
                     new CategoryModel(Category.Drinking, ItemType.Expense),
-                    new CategoryModel(Category.Other, ItemType.Common),
                     new CategoryModel(Category.Salary, ItemType.Income),
                     new CategoryModel(Category.Allowance, ItemType.Income),
                     new CategoryModel(Category.Bonus, ItemType.Income),
@@ -61,7 +60,8 @@ namespace HomeBudgetViewer.Database.Engine.Restrictions.Categories
                     new CategoryModel(Category.PersonalSavings, ItemType.Income),
                     new CategoryModel(Category.Pension, ItemType.Income),
                     new CategoryModel(Category.Rent, ItemType.Income),
-                    new CategoryModel(Category.MoneyFromTheSale,ItemType.Income)
+                    new CategoryModel(Category.MoneyFromTheSale,ItemType.Income),
+                    new CategoryModel(Category.Other, ItemType.Common)
                 });
             }
         }
