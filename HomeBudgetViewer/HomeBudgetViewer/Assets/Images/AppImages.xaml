@@ -25,6 +25,15 @@
     <BitmapImage x:Key="Other" UriSource="Categories/Other.png"/>
     <BitmapImage x:Key="Fashion" UriSource="Categories/Fashion.png"/>
     <BitmapImage x:Key="Health" UriSource="Categories/Health.png"/>
-    <BitmapImage x:Key="Salary" UriSource="Categories/Salary.png"/>
     <BitmapImage x:Key="Drinking" UriSource="Categories/Drinking.png"/>
+    <BitmapImage x:Key="Salary" UriSource="Categories/Salary.png"/>
+    <BitmapImage x:Key="Allowance" UriSource="Categories/Allowance.png"/>
+    <BitmapImage x:Key="Bonus" UriSource="Categories/Bonus.png"/>
+    <BitmapImage x:Key="PettyCash" UriSource="Categories/PettyCash.png"/>
+    <BitmapImage x:Key="WonMoney" UriSource="Categories/WonMoney.png"/>
+    <BitmapImage x:Key="OddJobs" UriSource="Categories/OddJobs.png"/>
+    <BitmapImage x:Key="PersonalSavings" UriSource="Categories/PersonalSavings.png"/>
+    <BitmapImage x:Key="Pension" UriSource="Categories/Pension.png"/>
+    <BitmapImage x:Key="Rent" UriSource="Categories/Rent.png"/>
+    <BitmapImage x:Key="MoneyFromTheSale" UriSource="Categories/MoneyFromSale.png"/>
 </ResourceDictionary>

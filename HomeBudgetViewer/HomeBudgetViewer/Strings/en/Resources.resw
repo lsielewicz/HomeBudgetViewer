@@ -135,6 +135,10 @@
   <data name="AddText.Text" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Allowance" xml:space="preserve">
+    <value>Allowance</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="AllTogether" xml:space="preserve">
     <value>All together</value>
   </data>
@@ -177,6 +181,10 @@
   </data>
   <data name="BalanceChart.Title" xml:space="preserve">
     <value>Balance chart</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Bonus</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="BudgetItemHeader.Text" xml:space="preserve">
     <value>Budget item</value>
@@ -323,7 +331,11 @@
     <comment>Settings</comment>
   </data>
   <data name="Lent" xml:space="preserve">
-    <value>Lent</value>
+    <value>Lend</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="MoneyFromTheSale" xml:space="preserve">
+    <value>Money from the sale</value>
     <comment>CategoryEnum</comment>
   </data>
   <data name="Month1" xml:space="preserve">
@@ -383,6 +395,10 @@
   <data name="NoFilter.Label" xml:space="preserve">
     <value>No filter</value>
   </data>
+  <data name="OddJobs" xml:space="preserve">
+    <value>Odd jobs</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="Ok.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -396,8 +412,20 @@
   <data name="OverviewHeader.Text" xml:space="preserve">
     <value>Overview</value>
   </data>
+  <data name="Pension" xml:space="preserve">
+    <value>Pension</value>
+    <comment>CategoryEnum</comment>
+  </data>
   <data name="Personal" xml:space="preserve">
     <value>Personal</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="PersonalSavings" xml:space="preserve">
+    <value>Personal savings</value>
+    <comment>CategoryEnum</comment>
+  </data>
+  <data name="PettyCash" xml:space="preserve">
+    <value>Petty cash</value>
     <comment>CategoryEnum</comment>
   </data>
   <data name="Phone" xml:space="preserve">
@@ -418,6 +446,10 @@
   <data name="RemoveProfile.Text" xml:space="preserve">
     <value>Remove current user profile</value>
     <comment>UserProfilePart</comment>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Rent</value>
+    <comment>CategoryEnum</comment>
   </data>
   <data name="Salary" xml:space="preserve">
     <value>Salary</value>
@@ -514,5 +546,9 @@
   </data>
   <data name="Version.Text" xml:space="preserve">
     <value>Version</value>
+  </data>
+  <data name="WonMoney" xml:space="preserve">
+    <value>Won money</value>
+    <comment>CategoryEnum</comment>
   </data>
 </root>
