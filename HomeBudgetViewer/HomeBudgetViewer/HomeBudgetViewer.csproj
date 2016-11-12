@@ -148,6 +148,7 @@
     <Compile Include="Conventers\CategoryToImageConventer.cs" />
     <Compile Include="Conventers\CoutOfCollectionItemsToVisibilityConventer.cs" />
     <Compile Include="Conventers\DateFilterToVisibilityConventer.cs" />
+    <Compile Include="Conventers\DateTimeToDateTimeOffsetConventer.cs" />
     <Compile Include="Conventers\DoubleToSignedStringConventer.cs" />
     <Compile Include="Conventers\DoubleToUnsignedString.cs" />
     <Compile Include="Conventers\IntToBooleanConventer.cs" />
@@ -230,6 +231,7 @@
     <Content Include="Assets\Icons\GitHub Filled-100.png" />
     <Content Include="Assets\Icons\GitHub-96.png" />
     <Content Include="Assets\Icons\Gray\About-100.png" />
+    <Content Include="Assets\Icons\Gray\Calendar-100.png" />
     <Content Include="Assets\Icons\Gray\Info-500.png" />
     <Content Include="Assets\Icons\Gray\Invisible-100.png" />
     <Content Include="Assets\Icons\Gray\Pie Chart Filled-100.png" />

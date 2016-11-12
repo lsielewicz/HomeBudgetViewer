@@ -19,6 +19,7 @@
         <conventers:ItemTypeToForegroundConventer x:Key="ItemTypeToForegroundConventer"/>
         <conventers:ItemTypeToBackgroundConventer x:Key="ItemTypeToBackgroundConventer"/>
         <conventers:BudgetItemActionToVisibilityConventer x:Key="BudgetItemActionToVisibilityConventer"/>
+        <conventers:DateTimeToDateTimeOffsetConventer x:Key="DateTimeToDateTimeOffsetConventer"/>
         <itemType:ItemType x:Key="ExpenseItemType">Expense</itemType:ItemType>
         <itemType:ItemType x:Key="IncomeItemType">Income</itemType:ItemType>
     </Page.Resources>
@@ -40,6 +41,7 @@
         <ScrollViewer Margin="0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto" Grid.Row="1">
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -124,9 +126,33 @@
                     </StackPanel>
                 </Button>
             </Grid>
+            <!--Date-->
+            <DatePicker
+                Grid.Row="4"
+                HorizontalAlignment="Stretch"
+                Date="{Binding ItemDate, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConventer}}"
+                Margin="5">
+                <DatePicker.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image
+                                Source="../../Assets/Icons/Gray/Calendar-100.png"
+                                Width="32"
+                                Height="32"/>
+                            <TextBlock
+                                x:Uid="Date"
+                                FontWeight="Light"
+                                VerticalAlignment="Center"
+                                Margin="5,0"
+                                />
+                        </StackPanel>
+                    </DataTemplate>
+                </DatePicker.HeaderTemplate>
+            </DatePicker>
+            
             <!--Category Selection-->
             <Button
-                Grid.Row="4"
+                Grid.Row="5"
                 Command="{Binding NavigateToCategorySelectionCommand}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
@@ -150,7 +176,7 @@
                 </StackPanel>
             </Button>
             <!--Description-->
-            <Grid Grid.Row="5" Margin="25,25,0,25">
+            <Grid Grid.Row="6" Margin="25,25,0,25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -170,7 +196,7 @@
             <!--Assign button-->
             <Button 
                 Margin="0,10"
-                Grid.Row="6"
+                Grid.Row="7"
                 Background="{StaticResource BlueAppBrush}"
                 Command="{Binding AssignBudgetItemToDataBase}"
                 HorizontalAlignment="Stretch"

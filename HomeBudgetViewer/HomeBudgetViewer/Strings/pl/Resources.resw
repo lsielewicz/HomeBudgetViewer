@@ -551,4 +551,7 @@
     <value>Wygrane pieniądze</value>
     <comment>CategoryEnum</comment>
   </data>
+  <data name="Date.Text" xml:space="preserve">
+    <value>Data</value>
+  </data>
 </root>

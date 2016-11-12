@@ -25,6 +25,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         private RelayCommand<object> _switchItemType;
         private CategoryModel _selectedCategory;
         private string _itemDescription;
+        private DateTime _itemDate;
         private ItemType _budgetItemType;
         public BudgetItem ModifyingItem { get; set; }
        
@@ -50,6 +51,16 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                 RaisePropertyChanged();
             }
         }
+
+        public DateTime ItemDate
+        {
+            get { return _itemDate; }
+            set
+            {
+                _itemDate = value;
+                this.RaisePropertyChanged();
+            }
+    }
 
         public string ItemDescription
         {
@@ -122,7 +133,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                             {
                                 Category = this.SelectedCategory.CategoryEnum.ToString(),
                                 UserId = SettingsService.Instance.CurrentUser.Id,
-                                Date = DateTime.Now,
+                                Date = this.ItemDate,
                                 Description = this.ItemDescription,
                                 MoneyValue = moneyValue,
                                 ItemType = this.BudgetItemType.ToString(),
@@ -141,6 +152,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                                 this.ModifyingItem.Category = this.SelectedCategory.CategoryEnum.ToString();
                                 this.ModifyingItem.Description = this.ItemDescription;
                                 this.ModifyingItem.MoneyValue = moneyValue;
+                                this.ModifyingItem.Date = this.ItemDate.Date;
                                 this.ModifyingItem.ItemType = this.BudgetItemType.ToString();
                             }
                             using (var unitOfWork = new UnitOfWork(new BudgetContext()))
@@ -189,6 +201,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
             this.SelectedCategory =
                 ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c=>c.ItemType == ItemType.Common);
             this.BudgetItemAction = BudgetItemAction.Adding;
+            this.ItemDate = DateTime.Now;
             this.RaisePropertyChanged("BudgetItemAction");
         }
 
@@ -204,6 +217,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                     ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(
                         c => c.CategoryEnum.ToString() == this.ModifyingItem.Category);
                 this.BudgetItemType = (ItemType)Enum.Parse(typeof(ItemType), this.ModifyingItem.ItemType);
+                this.ItemDate = ModifyingItem.Date;
             }
         }
 

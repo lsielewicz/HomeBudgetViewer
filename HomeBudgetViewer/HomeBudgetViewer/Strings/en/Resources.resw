@@ -551,4 +551,7 @@
     <value>Won money</value>
     <comment>CategoryEnum</comment>
   </data>
+  <data name="Date.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
 </root>
