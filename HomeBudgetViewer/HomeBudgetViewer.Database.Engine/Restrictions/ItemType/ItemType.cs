@@ -3,6 +3,7 @@
     public enum ItemType
     {
         Expense,
-        Income
+        Income,
+        Common
     }
 }

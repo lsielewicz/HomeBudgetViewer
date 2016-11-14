@@ -25,6 +25,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         private RelayCommand<object> _switchItemType;
         private CategoryModel _selectedCategory;
         private string _itemDescription;
+        private DateTime _itemDate;
         private ItemType _budgetItemType;
         public BudgetItem ModifyingItem { get; set; }
        
@@ -32,7 +33,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         {
             this.MessengerInstance.Register<IsModifyingStateToBudgetItemMessage>(this, HandleModifyingStateMessage);
             this.CalculatorViewModel = new CalculatorViewModel(this);
-            this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
+            this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c=>c.CategoryEnum == Category.Other);
         }
 
         public CalculatorViewModel CalculatorViewModel { get; set; }
@@ -50,6 +51,16 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                 RaisePropertyChanged();
             }
         }
+
+        public DateTime ItemDate
+        {
+            get { return _itemDate; }
+            set
+            {
+                _itemDate = value;
+                this.RaisePropertyChanged();
+            }
+    }
 
         public string ItemDescription
         {
@@ -70,14 +81,17 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                 return _navigateToCategorySelectionCommand ?? (_navigateToCategorySelectionCommand = new RelayCommand(
                     () =>
                     {
-                        this.NavigationService.Navigate(typeof(CategorySelectionPage.CategorySelectionPage));
+                        this.NavigationService.Navigate(typeof(CategorySelectionPage.CategorySelectionPage),this.BudgetItemType);
                     }));
             }
         }
 
         public CategoryModel SelectedCategory
         {
-            get { return _selectedCategory; }
+            get
+            {
+                return _selectedCategory;
+            }
             set
             {
                 if (_selectedCategory == value)
@@ -119,7 +133,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                             {
                                 Category = this.SelectedCategory.CategoryEnum.ToString(),
                                 UserId = SettingsService.Instance.CurrentUser.Id,
-                                Date = DateTime.Now,
+                                Date = this.ItemDate,
                                 Description = this.ItemDescription,
                                 MoneyValue = moneyValue,
                                 ItemType = this.BudgetItemType.ToString(),
@@ -138,6 +152,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                                 this.ModifyingItem.Category = this.SelectedCategory.CategoryEnum.ToString();
                                 this.ModifyingItem.Description = this.ItemDescription;
                                 this.ModifyingItem.MoneyValue = moneyValue;
+                                this.ModifyingItem.Date = this.ItemDate.Date;
                                 this.ModifyingItem.ItemType = this.BudgetItemType.ToString();
                             }
                             using (var unitOfWork = new UnitOfWork(new BudgetContext()))
@@ -160,10 +175,20 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
             {
                 return _switchItemType ?? (_switchItemType = new RelayCommand<object>(param =>
                 {
+                    if (this.SelectedCategory == null)
+                    {
+                        this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c => c.CategoryEnum == Category.Other);
+                    }
                     if (param != null)
                     {
                         var itemType = (ItemType) param;
                         this.BudgetItemType = itemType;
+                        if (this.SelectedCategory.ItemType != this.BudgetItemType)
+                        {
+                            this.SelectedCategory =
+                                ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories
+                                    .FirstOrDefault(c => c.CategoryEnum == Category.Other);
+                        }
                     }
                 }));
             }
@@ -174,8 +199,9 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
             this.CalculatorViewModel.ClearOutputCommand.Execute(this.CalculatorViewModel);
             this.ItemDescription = string.Empty;
             this.SelectedCategory =
-                ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault();
+                ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c=>c.ItemType == ItemType.Common);
             this.BudgetItemAction = BudgetItemAction.Adding;
+            this.ItemDate = DateTime.Now;
             this.RaisePropertyChanged("BudgetItemAction");
         }
 
@@ -191,6 +217,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                     ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(
                         c => c.CategoryEnum.ToString() == this.ModifyingItem.Category);
                 this.BudgetItemType = (ItemType)Enum.Parse(typeof(ItemType), this.ModifyingItem.ItemType);
+                this.ItemDate = ModifyingItem.Date;
             }
         }
 

@@ -24,6 +24,15 @@
         Fashion,
         Health,
         Salary,
-        Drinking
+        Drinking,
+        Allowance,
+        Bonus,
+        PettyCash,
+        WonMoney,
+        OddJobs,
+        PersonalSavings,
+        Pension,
+        Rent,
+        MoneyFromTheSale
     }
 }
