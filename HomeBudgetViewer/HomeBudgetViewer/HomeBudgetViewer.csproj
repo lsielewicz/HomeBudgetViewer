@@ -158,6 +158,7 @@
     <Compile Include="Conventers\ItemTypeToBooleanConventer.cs" />
     <Compile Include="Conventers\ItemTypeToForegroundConventer.cs" />
     <Compile Include="Conventers\NegativeBooleanConventer.cs" />
+    <Compile Include="Helpers_\CategoriesHelper.cs" />
     <Compile Include="Messages\IsModifyingStateToBudgetItemMessage.cs" />
     <Compile Include="Presentation\AppViewModelBase.cs" />
     <Compile Include="Presentation\BudgetItemPage\BudgetItemPage.xaml.cs">

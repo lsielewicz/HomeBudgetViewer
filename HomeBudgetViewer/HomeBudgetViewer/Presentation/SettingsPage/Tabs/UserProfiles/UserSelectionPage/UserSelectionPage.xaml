@@ -48,17 +48,17 @@
         
         <Button
             Grid.Row="2"
-            Command="{Binding SetSelectedUserAsCurrentUserCommand}"
-            Background="{StaticResource MainAppBrush}"
+            Command="{Binding CancelCommand}"
+            Background="{StaticResource RedAppBrush}"
             HorizontalAlignment="Stretch">
             <StackPanel Orientation="Horizontal">
                 <SymbolIcon 
-                    Symbol="Accept" 
+                    Symbol="Back" 
                     Width="32" 
                     Height="32"
                     Foreground="{StaticResource ContrastColorBrush}"/>
                 <TextBlock
-                    x:Uid="SelectUserProfile"
+                    x:Uid="Cancel"
                     VerticalAlignment="Center"
                     Foreground="{StaticResource ContrastColorBrush}"
                     />

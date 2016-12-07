@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Windows.ApplicationModel.Resources;
 
 
 namespace HomeBudgetViewer.Database.Engine.Restrictions.Categories
@@ -65,5 +67,6 @@ namespace HomeBudgetViewer.Database.Engine.Restrictions.Categories
                 });
             }
         }
+
     }
 }

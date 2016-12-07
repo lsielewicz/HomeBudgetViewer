@@ -11,6 +11,7 @@ using HomeBudgetViewer.Database.Engine.Entities;
 using HomeBudgetViewer.Database.Engine.Repository.Base;
 using HomeBudgetViewer.Database.Engine.Restrictions.Categories;
 using HomeBudgetViewer.Database.Engine.Restrictions.ItemType;
+using HomeBudgetViewer.Helpers_;
 using HomeBudgetViewer.Messages;
 using HomeBudgetViewer.Models.Enum;
 using HomeBudgetViewer.Presentation.BudgetItemPage.Controls.Calculator;
@@ -33,7 +34,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
         {
             this.MessengerInstance.Register<IsModifyingStateToBudgetItemMessage>(this, HandleModifyingStateMessage);
             this.CalculatorViewModel = new CalculatorViewModel(this);
-            this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c=>c.CategoryEnum == Category.Other);
+            this.SelectedCategory = CategoriesHelper.Instance.LocalizedCategories.FirstOrDefault(c=>c.CategoryEnum == Category.Other);
         }
 
         public CalculatorViewModel CalculatorViewModel { get; set; }
@@ -129,6 +130,12 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                     switch (this.BudgetItemAction)
                     {
                         case BudgetItemAction.Adding:
+                            if (this.SelectedCategory == null)
+                            {
+                                this.SelectedCategory =
+                                   CategoriesHelper.Instance.LocalizedCategories
+                                        .FirstOrDefault(c => c.CategoryEnum == Category.Other);
+                            }
                             var budgetItem = new BudgetItem()
                             {
                                 Category = this.SelectedCategory.CategoryEnum.ToString(),
@@ -147,8 +154,16 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                             this.NavigationService.Navigate(typeof(HomeBudgetViewer.MainPage));
                             break;
                         case BudgetItemAction.Modifying:
+
                             if (this.ModifyingItem != null)
                             {
+                                if (this.SelectedCategory == null)
+                                {
+                                    this.SelectedCategory =
+                                        CategoriesHelper.Instance.LocalizedCategories
+                                            .FirstOrDefault(c => c.CategoryEnum.ToString() == this.ModifyingItem.Category);
+                                }
+
                                 this.ModifyingItem.Category = this.SelectedCategory.CategoryEnum.ToString();
                                 this.ModifyingItem.Description = this.ItemDescription;
                                 this.ModifyingItem.MoneyValue = moneyValue;
@@ -177,7 +192,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                 {
                     if (this.SelectedCategory == null)
                     {
-                        this.SelectedCategory = ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c => c.CategoryEnum == Category.Other);
+                        this.SelectedCategory = CategoriesHelper.Instance.LocalizedCategories.FirstOrDefault(c => c.CategoryEnum == Category.Other);
                     }
                     if (param != null)
                     {
@@ -186,7 +201,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                         if (this.SelectedCategory.ItemType != this.BudgetItemType)
                         {
                             this.SelectedCategory =
-                                ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories
+                                CategoriesHelper.Instance.LocalizedCategories
                                     .FirstOrDefault(c => c.CategoryEnum == Category.Other);
                         }
                     }
@@ -199,7 +214,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
             this.CalculatorViewModel.ClearOutputCommand.Execute(this.CalculatorViewModel);
             this.ItemDescription = string.Empty;
             this.SelectedCategory =
-                ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(c=>c.ItemType == ItemType.Common);
+                CategoriesHelper.Instance.LocalizedCategories.FirstOrDefault(c=>c.ItemType == ItemType.Common);
             this.BudgetItemAction = BudgetItemAction.Adding;
             this.ItemDate = DateTime.Now;
             this.RaisePropertyChanged("BudgetItemAction");
@@ -214,7 +229,7 @@ namespace HomeBudgetViewer.Presentation.BudgetItemPage
                 this.ItemDescription = this.ModifyingItem.Description;
                 this.CalculatorViewModel.CurrentArithmeticalNumber = this.ModifyingItem.MoneyValue.ToString();
                 this.SelectedCategory =
-                    ViewModelLocator.Instance.CategorySelectionPageViewModel.PossibleCategories.FirstOrDefault(
+                    CategoriesHelper.Instance.LocalizedCategories.FirstOrDefault(
                         c => c.CategoryEnum.ToString() == this.ModifyingItem.Category);
                 this.BudgetItemType = (ItemType)Enum.Parse(typeof(ItemType), this.ModifyingItem.ItemType);
                 this.ItemDate = ModifyingItem.Date;

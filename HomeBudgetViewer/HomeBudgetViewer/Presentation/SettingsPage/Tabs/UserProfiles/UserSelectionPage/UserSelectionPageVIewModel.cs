@@ -17,17 +17,29 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelec
     {
         private RelayCommand _setSelectedUserAsCurrentUserCommand;
         private ObservableCollection<User> _users;
-        public User SelectedUser { get; set; }
 
-        public UserSelectionPageVIewModel()
+        private User _selectedUser;
+
+        public User SelectedUser
         {
-            
+            get { return _selectedUser; }
+            set
+            {
+                if (_selectedUser == value)
+                {
+                    return;
+                }
+                _selectedUser = value;
+                this.SetSelectedUser();
+                this.RaisePropertyChanged();
+            }
         }
 
         private async void AddNewUser()
         {
             var dialog = new AddUserProfileDialog();
             await dialog.ShowAsync();
+            this.GetUsers();
         }
 
         public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
@@ -65,19 +77,24 @@ namespace HomeBudgetViewer.Presentation.SettingsPage.Tabs.UserProfiles.UserSelec
             }
         }
 
-        public RelayCommand SetSelectedUserAsCurrentUserCommand
+        public RelayCommand CancelCommand
         {
             get
             {
                 return _setSelectedUserAsCurrentUserCommand ?? (_setSelectedUserAsCurrentUserCommand = new RelayCommand(
                     () =>
                     {
-                        if (this.SelectedUser != null)
-                        {
-                            SettingsService.Instance.CurrentUser = this.SelectedUser;
-                        }
                         this.NavigationService.Navigate(typeof(SettingsPage));
                     }));
+            }
+        }
+
+        private void SetSelectedUser()
+        {
+            if (this.SelectedUser != null)
+            {
+                SettingsService.Instance.CurrentUser = this.SelectedUser;
+                this.NavigationService.Navigate(typeof(SettingsPage));
             }
         }
     }
